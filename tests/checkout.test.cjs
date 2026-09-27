@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const {totals,searchAddresses}=require('../checkout-model.js');
+const {totals,searchAddresses,paymentDetails}=require('../checkout-model.js');
 const {Cart}=require('../cart-model.js');
 
 test('card demo rounds fee to halers and includes a tip, cash has neither',()=>{
@@ -22,4 +22,19 @@ test('invalid checkout amounts are rejected',()=>{
  assert.throws(()=>totals(-1,'card'));
  assert.throws(()=>totals(209,'card',-20));
  assert.throws(()=>totals(NaN));
+});
+
+test('all online methods include the same card fee and voluntary tip',()=>{
+ for(const method of ['card','apple-pay','google-pay']) {
+  assert.deepEqual(totals(209,method,20),{subtotal:209,cardFee:3.11,tip:20,delivery:0,total:232.11});
+  assert.equal(paymentDetails(method).online,true);
+ }
+});
+test('handover methods cannot inherit an online tip',()=>{
+ assert.deepEqual(totals(209,'cash',50),{subtotal:209,cardFee:0,tip:0,delivery:0,total:209});
+ assert.deepEqual(totals(209,'card-on-delivery',50),{subtotal:209,cardFee:3.11,tip:0,delivery:0,total:212.11});
+ assert.equal(paymentDetails('card-on-delivery').online,false);
+});
+test('unknown payment methods cannot silently receive cash totals',()=>{
+ for(const method of ['unknown','toString','__proto__','']) assert.throws(()=>totals(209,method));
 });

@@ -46,13 +46,17 @@
     "hotovost": "Osobní vyzvednutí bez adresy, bez příplatku; potvrzení 209 Kč prošlo",
     "dokonceni": "Souhrn zůstane v potvrzení, košík se vyprázdní, objednávka i platba pouze lokální",
     "mobil": "390 px a 320 px bez horizontálního přesahu, formulář i platba ověřeny",
-    "data": "Bez síťových požadavků checkoutu, platebních SDK, persistování kontaktů a bez skutečného odeslání"
+    "data": "Bez síťových požadavků checkoutu, platebních SDK, persistování kontaktů a bez skutečného odeslání",
+    "platebni_metody": "Karta online, Apple Pay, Google Pay, hotovost při převzetí a karta při převzetí; všechny volby ověřeny v UI",
+    "penezenky": "Apple Pay s 20 Kč spropitným: 232,11 Kč. Google Pay bez spropitného: 212,11 Kč; potvrzení a vyprázdnění košíku ověřeny.",
+    "mobil_plateb": "390 a 320 px bez vodorovného přesahu, loga a potvrzovací tlačítka ověřeny vizuálně.",
+    "indikace_simulace": "Nenápadná informace v patičce checkoutu; žádné velké demo štítky."
   },
   "spodni_lista_detailu": "Pevná u spodního okraje; 320 px / scrollY 928: dolní okraj lišty 800 = výška viewportu.",
   "cele_fotografie": "object-fit: contain, poměr 1:1, vypnuté přibližování při najetí",
   "logo_skvrna": "Červená skvrna zachovaná i ve zmenšené hlavičce (opacity 1) a v checkoutu",
   "testy_checkout_model": {
-    "proslo": 4,
+    "proslo": 7,
     "selhalo": 0,
     "prikaz": "node --test tests/checkout.test.cjs"
   }

@@ -1,4 +1,4 @@
-/* Demo checkout and the final shopping refinements. */
+/* Checkout and the final shopping refinements. */
 .header-compact .site-header .brand-art{width:125px}
 .header-compact .site-header .brand-splash{opacity:1;width:68px;left:47px;top:0}
 .product-image-button{aspect-ratio:1;background:#f0eeea}
@@ -20,7 +20,7 @@
 .checkout-head{display:flex;align-items:center;padding:22px 32px 16px;gap:18px;background:#fffefa;border-bottom:1px solid #e8ebdf}
 .checkout-brand{font-size:22px;font-weight:800;letter-spacing:-.06em;color:var(--green)}
 .checkout-brand>span>span{color:var(--red)}
-.checkout-head .demo-badge{margin-left:auto}
+.checkout-head-caption{margin-left:auto;font-size:11px;color:#7b8871;line-height:1.5;text-align:right}
 .checkout-head .icon-button{width:35px;height:35px;background:#f0f1e9;border-radius:50%}
 .checkout-steps{margin:0;display:flex;align-items:center;justify-content:center;gap:60px;list-style:none;padding:23px 28px;background:#fffefa;border-bottom:1px solid #e8ebdf}
 .checkout-steps li{display:flex;align-items:center;gap:9px;color:#979e8c;font-size:12px;font-weight:600;position:relative}
@@ -114,19 +114,46 @@
 .checkout-foot .button{min-height:46px;border-radius:8px;font-size:12px;gap:12px;padding:14px 20px}
 .checkout-foot .button .icon{width:18px;height:18px}
 .checkout-foot .button:disabled{opacity:.65;cursor:progress}
-.payment-options{display:grid;gap:11px}
-.payment-options .checkout-choice>span{min-height:78px;padding:16px 19px}
+/* Payment methods share the same selection and focus behavior. */
+.payment-options{display:grid;gap:12px}
+.payment-options .checkout-choice>span{min-height:82px;padding:16px;transition:border-color .18s,background .18s,box-shadow .18s}
+.payment-options .checkout-choice:hover>span{border-color:#91ac88}
 .payment-options .checkout-choice strong{font-size:13px}
-.payment-options .checkout-choice>span>.icon{width:27px;height:27px;margin-right:4px}
-.demo-card-panel{background:#eaf0e2;border:1px solid #dfe7d5;border-radius:12px;padding:22px;margin-bottom:25px}
-.demo-card{max-width:305px;background:linear-gradient(115deg,#06462d,#2e7050);border:1px solid #356e47;box-shadow:0 10px 20px #10442918;padding:19px 21px;border-radius:12px;color:#fcfce9;position:relative;overflow:hidden;margin:auto}
-.demo-card:after{content:'';position:absolute;border:1px solid #ffffef1a;border-radius:50%;width:240px;height:240px;top:-125px;right:-75px;pointer-events:none}
-.demo-card>div{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:8px;letter-spacing:.08em}
-.demo-card>div:first-child>span:first-child{font-size:15px;font-weight:700;letter-spacing:-.03em}
-.demo-card>strong{display:block;font-size:18px;letter-spacing:.06em;margin:8px 0 20px;white-space:nowrap}
-.card-chip{width:29px;height:23px;fill:#cabf83;stroke:#8f874e;stroke-width:1;margin-top:18px}
-.demo-card-panel>p{display:flex;gap:7px;justify-content:center;align-items:center;font-size:10px;color:#698053;line-height:1.6;margin-top:16px}
-.demo-card-panel>p .icon{width:17px;height:17px;flex-shrink:0}
+.payment-group-caption{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:600;color:#54654b;margin:1px 0 2px}
+.payment-caption-line{height:1px;flex:1;background:#dce4d3}
+.payment-group-caption>small{font-size:9px;font-weight:400;color:#7d8874}
+.payment-receipt-caption{margin-top:11px}
+.payment-method-icon{display:grid;place-items:center;width:38px;height:38px;flex-shrink:0;border-radius:10px;background:#edf1e6;color:var(--green)}
+.payment-method-icon .icon{width:23px;height:23px}
+.payment-method-copy{min-width:0}
+.payment-method-copy small{font-size:10px;color:#718065}
+.accepted-cards{display:flex;align-items:center;gap:4px;margin-left:auto}
+.accepted-cards img{width:36px;height:25px;object-fit:contain;padding:2px;border:1px solid #e0e5d9;border-radius:4px;background:white}
+.payment-card-online .payment-method-copy{flex:1}
+.payment-card-online .accepted-cards{margin-left:0}
+.payment-card-online i{margin-left:4px}
+.wallet-methods,.receipt-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:0}
+.payment-options .payment-wallet>span{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;min-height:106px;align-content:center;background:#fffefa}
+.payment-wallet .wallet-logo{width:88px;height:44px;object-fit:contain;object-position:left center;grid-column:1;grid-row:1;margin-left:-7px}
+.payment-wallet .payment-method-copy{grid-column:1/-1;grid-row:2}
+.payment-wallet .payment-method-copy small{margin:0}
+.payment-wallet i{grid-column:2;grid-row:1}
+.payment-options .payment-wallet input:checked+span{background:#edf3e8}
+.payment-options .payment-receipt>span{padding:15px 12px;gap:9px;min-height:85px}
+.payment-receipt .payment-method-icon{width:30px;height:34px;background:transparent}
+.payment-receipt .payment-method-copy small{font-size:9px}
+.payment-receipt i{width:13px;height:13px}
+.checkout-foot{flex-wrap:wrap;row-gap:9px}
+.checkout-preview-notice{flex-basis:100%;font-size:9px;color:#7a8270;line-height:1.5;text-align:right;margin:0}
+#checkout-next{min-width:220px}
+#checkout-next[data-payment="apple-pay"]{background:#111;color:white;border:1px solid #111}
+#checkout-next[data-payment="apple-pay"]:hover{background:#303030}
+#checkout-next[data-payment="google-pay"]{background:white;color:#252525;border:1px solid #cbd3c5}
+#checkout-next[data-payment="google-pay"]:hover{background:#f2f4ef}
+.pay-button-logo{width:58px;height:25px;object-fit:contain}
+#checkout-next[data-payment="apple-pay"] .pay-button-logo{filter:brightness(0) invert(1)}
+.pay-button-amount{padding-left:12px;border-left:1px solid currentColor;white-space:nowrap}
+#checkout-next[data-payment="google-pay"] .checkout-spinner{border-color:#c2c8bc;border-top-color:#252525}
 .tip-options{display:flex;gap:7px;flex-wrap:wrap}
 .tip-options span{display:block;padding:10px 12px;border:1px solid #dce4d1;border-radius:7px;background:#fffefa;font-size:10px}
 .tip-options input:checked+span{background:var(--green);color:white;border-color:var(--green)}
@@ -180,7 +207,7 @@
  .detail-order-bar .detail-buy{min-width:0;flex:1;max-width:260px;min-height:43px}
  .product-view .toast{bottom:140px}
  .checkout-dialog{max-width:100%;width:100%;max-height:100dvh;height:100dvh;border-radius:0}
- .checkout-head{padding:16px 20px}.checkout-head .demo-badge{font-size:8px}
+ .checkout-head{padding:16px 20px}.checkout-head-caption{font-size:9px;max-width:130px}
  .checkout-steps{gap:34px;padding:18px 20px}.checkout-steps li{font-size:10px;gap:6px}.checkout-steps li:not(:last-child):after{width:18px;left:calc(100% + 8px)}
  .checkout-layout{display:flex;flex-direction:column;padding:25px 20px;gap:25px}
  .checkout-form,.checkout-summary{width:100%}.checkout-summary{position:static;padding:20px}
@@ -195,14 +222,24 @@
  .checkout-foot .button{grid-column:1/-1;grid-row:2;width:100%;font-size:12px;min-height:46px}
  .checkout-success{padding:12px 0 0}.checkout-success h2{font-size:30px}
  .checkout-dialog[data-step="3"] .checkout-foot>div{grid-column:1/-1;justify-self:center}
- .demo-card-panel{padding:20px 16px}
+ .checkout-preview-notice{grid-column:1/-1;grid-row:3;text-align:center;font-size:9px}
+ .payment-group-caption>small{font-size:8px}
+ .payment-options .checkout-choice>span{padding:14px}
+ .payment-options .payment-receipt>span{padding:13px 10px;gap:7px}
+ .accepted-cards{gap:3px}.accepted-cards img{width:30px;height:22px}
+ .payment-options .checkout-choice strong{font-size:12px}
+ #checkout-next{min-width:0}
 }
 @media(max-width:380px){
  .checkout-head,.checkout-steps{padding-inline:15px}.checkout-layout{padding:22px 15px}.checkout-foot{padding-inline:15px}
  .checkout-fields{grid-template-columns:1fr}.field-full{grid-column:auto}
  .checkout-steps{gap:28px}.checkout-panel h2{font-size:24px}.checkout-success h2{font-size:27px}
  .checkout-choice i{width:12px;height:12px}.checkout-choice strong{font-size:10px}.checkout-choice small{font-size:8px}
- .demo-card>strong{font-size:15px}.demo-card{padding:17px}.demo-card-panel>p{font-size:9px}
+ .payment-method-icon{width:29px;height:32px}.payment-method-copy small{font-size:9px}
+ .payment-card-online .accepted-cards{display:none}
+ .wallet-methods,.receipt-methods{gap:9px}.payment-options .payment-receipt>span{gap:5px;padding:12px 8px}
+ .payment-receipt .payment-method-icon{width:22px}.payment-receipt .payment-method-copy small{font-size:8px}
+ .payment-group-caption>small{display:none}
  .detail-order-bar{padding-inline:15px}.detail-order-summary>small{max-width:135px;font-size:8px}
 }
 @media(prefers-reduced-motion:reduce){.checkout-spinner{animation:none}}
