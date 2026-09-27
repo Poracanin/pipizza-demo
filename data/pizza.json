@@ -1,0 +1,627 @@
+[
+  {
+    "id": "01-margarita",
+    "poradi": 1,
+    "cislo_na_webu": 1,
+    "nazev": "Pizza MARGARITA",
+    "nadpis_original": "Pizza MARGARITA obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, čerstvá rajčata, oregáno",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 209,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/01-margarita.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/margarita.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": []
+  },
+  {
+    "id": "02-sunkova",
+    "poradi": 2,
+    "cislo_na_webu": 2,
+    "nazev": "Pizza ŠUNKOVÁ",
+    "nadpis_original": "Pizza ŠUNKOVÁ obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, šunka(šunkový nářez), kukuřice",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 209,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/02-sunkova.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/sunka.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "03-hawai",
+    "poradi": 3,
+    "cislo_na_webu": 3,
+    "nazev": "Pizza HAWAI",
+    "nadpis_original": "Pizza HAWAI obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, šunka(šunkový nářez), ananas",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 209,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/03-hawai.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/hawai.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "04-syrova",
+    "poradi": 4,
+    "cislo_na_webu": 4,
+    "nazev": "Pizza SÝROVÁ",
+    "nadpis_original": "Pizza SÝROVÁ obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, eidam, hermelín(camembert), uzený sýr, niva",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/04-syrova.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/syr.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "05-boston",
+    "poradi": 5,
+    "cislo_na_webu": 5,
+    "nazev": "Pizza BOSTON",
+    "nadpis_original": "Pizza BOSTON obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, šunka(šunkový nářez), kuře, niva, červená cibule",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/05-boston.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/boston.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "06-los-angeles",
+    "poradi": 6,
+    "cislo_na_webu": 6,
+    "nazev": "Pizza LOS ANGELES",
+    "nadpis_original": "Pizza LOS ANGELES obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, pikantní salám, anglická slanina, červená cibule, feferony",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/06-los-angeles.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/LA.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "07-san-francisco",
+    "poradi": 7,
+    "cislo_na_webu": 7,
+    "nazev": "Pizza SAN FRANCISCO",
+    "nadpis_original": "Pizza SAN FRANCISCO obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, poličan, klobása, šunka(šunkový nářez), vysočina, čerstvé žampiony, anglická slanina, kukuřice",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/07-san-francisco.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/sf.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "08-chicago",
+    "poradi": 8,
+    "cislo_na_webu": 8,
+    "nazev": "Pizza CHICAGO",
+    "nadpis_original": "Pizza CHICAGO obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, kuře, šunka(šunkový nářez), čerstvé žampiony, kukuřice",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/08-chicago.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/chicago.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "09-orlando",
+    "poradi": 9,
+    "cislo_na_webu": 9,
+    "nazev": "Pizza ORLANDO",
+    "nadpis_original": "Pizza ORLANDO obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, hermelín(camembert), anglická slanina, čerstvá paprika",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/09-orlando.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/orlando.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "10-new-york",
+    "poradi": 10,
+    "cislo_na_webu": 10,
+    "nazev": "Pizza NEW YORK",
+    "nadpis_original": "Pizza NEW YORK obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, klobása, hermelín(camembert), červená cibule, česnek",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/10-new-york.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/NY.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "11-full-house",
+    "poradi": 11,
+    "cislo_na_webu": 11,
+    "nazev": "Pizza FULL HOUSE",
+    "nadpis_original": "Pizza FULL HOUSE obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, šunka(šunkový nářez), anglická slanina, suchý salám, klobása, hermelín(camembert), čerstvá paprika, čerstvé žampiony, kukuřice, červená cibule, olivy",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/11-full-house.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/full.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "12-vegetarianska",
+    "poradi": 12,
+    "cislo_na_webu": 12,
+    "nazev": "Pizza VEGETARIÁNSKÁ",
+    "nadpis_original": "Pizza VEGETARIÁNSKÁ obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, čerstvá rajčata, čerstvá paprika, červená cibule, olivy, žampiony, kukuřice",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 209,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/12-vegetarianska.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/vegetarian.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "13-montana",
+    "poradi": 13,
+    "cislo_na_webu": 13,
+    "nazev": "Pizza MONTANA",
+    "nadpis_original": "Pizza MONTANA obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, šunka(šunkový nářez), kuře, hermelín(camembert)",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/13-montana.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/montana.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "14-tvaruzkova",
+    "poradi": 14,
+    "cislo_na_webu": 14,
+    "nazev": "Pizza TVARŮŽKOVÁ",
+    "nadpis_original": "Pizza TVARŮŽKOVÁ obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, šunka(šunkový nářez), tvarůžky, č. cibule",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/14-tvaruzkova.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/tvaruzka.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "15-detroit",
+    "poradi": 15,
+    "cislo_na_webu": 15,
+    "nazev": "Pizza DETROIT",
+    "nadpis_original": "Pizza DETROIT obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, kuře, niva, čerstvá rajčata, červená cibule, žampiony",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/15-detroit.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/detroit.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "16-keywest",
+    "poradi": 16,
+    "cislo_na_webu": 16,
+    "nazev": "Pizza KEYWEST",
+    "nadpis_original": "Pizza KEYWEST obsahuje alergeny(1,2,4,7,14)",
+    "popis_original": "Mozzarella, mořské plody, česnek, oregano",
+    "alergeny": [
+      1,
+      2,
+      4,
+      7,
+      14
+    ],
+    "alergeny_original": "obsahuje alergeny(1,2,4,7,14)",
+    "cena_kc": 209,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/16-keywest.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/sunkova.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "KEYWEST i ATLANTA používají na původním webu stejný soubor sunkova.png; nejde o ověřené samostatné fotografie těchto pizz.",
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "17-atlanta",
+    "poradi": 17,
+    "cislo_na_webu": 17,
+    "nazev": "Pizza ATLANTA",
+    "nadpis_original": "Pizza ATLANTA obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, kuře, č. cibule, žampiony, kari koření",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/17-atlanta.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/sunkova.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "KEYWEST i ATLANTA používají na původním webu stejný soubor sunkova.png; nejde o ověřené samostatné fotografie těchto pizz.",
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "18-florida",
+    "poradi": 18,
+    "cislo_na_webu": 18,
+    "nazev": "Pizza FLORIDA",
+    "nadpis_original": "Pizza FLORIDA obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, kuře, broskve",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/18-florida.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/florida.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "19-broccoli",
+    "poradi": 19,
+    "cislo_na_webu": 19,
+    "nazev": "Pizza BROCCOLI",
+    "nadpis_original": "Pizza BROCCOLI obsahuje alergeny(1,7)",
+    "popis_original": "Smetanový základ\nMozzarella, šunka(šunkový nářez), hermelín(camembert), rajčata, brokolice, niva",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/19-broccoli.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/broccoli.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "20-oregon",
+    "poradi": 20,
+    "cislo_na_webu": 20,
+    "nazev": "Pizza OREGON",
+    "nadpis_original": "Pizza OREGON obsahuje alergeny(1,3,7,10)",
+    "popis_original": "Hořčicový základ\nMozzarella, šunka(šunkový nářez), anglická slanina, hermelín(camembert), vejce, pórek",
+    "alergeny": [
+      1,
+      3,
+      7,
+      10
+    ],
+    "alergeny_original": "obsahuje alergeny(1,3,7,10)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/20-oregon.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/oregon.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "21-balkan",
+    "poradi": 21,
+    "cislo_na_webu": 21,
+    "nazev": "Pizza BALKÁN",
+    "nadpis_original": "Pizza BALKÁN obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, šunka(šunkový nářez), čerstvá rajčata, olivy, kukuřice, paprika, červená cibule, balkánský sýr",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/21-balkan.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/balkan.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "22-brooklyn",
+    "poradi": 22,
+    "cislo_na_webu": 22,
+    "nazev": "Pizza BROOKLYN",
+    "nadpis_original": "Pizza BROOKLYN obsahuje alergeny(1,3,7)",
+    "popis_original": "Mozzarella, čerstvá rajčata, šunka(šunkový nářez), anglická slanina, červená cibule, vejce, tvarůžky",
+    "alergeny": [
+      1,
+      3,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,3,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/22-brooklyn.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/brooklyn.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "23-colorado",
+    "poradi": 23,
+    "cislo_na_webu": 23,
+    "nazev": "Pizza COLORADO",
+    "nadpis_original": "Pizza COLORADO obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, anglická slanina, kuře, červená cibule, česnek, beraní rohy",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/23-colorado.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/colorado.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "24-dallas",
+    "poradi": 24,
+    "cislo_na_webu": 24,
+    "nazev": "Pizza DALLAS",
+    "nadpis_original": "Pizza DALLAS obsahuje alergeny(1,3,7)",
+    "popis_original": "Mozzarella, vejce, pálivec, vysočina, červená cibule, kozí rohy, paprika a oregáno",
+    "alergeny": [
+      1,
+      3,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,3,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/24-dallas.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/dallas.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "25-moravska",
+    "poradi": 25,
+    "cislo_na_webu": 25,
+    "nazev": "Pizza MORAVSKÁ",
+    "nadpis_original": "Pizza MORAVSKÁ obsahuje alergeny(1,7)",
+    "popis_original": "Mozzarella, kysané zelí, uzené maso, červená cibule, uzený sýr",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/25-moravska.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/moravska.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "26-dle-vaseho-prani",
+    "poradi": 26,
+    "cislo_na_webu": 26,
+    "nazev": "Pizza dle Vašeho přání",
+    "nadpis_original": "Pizza dle Vašeho přání alergeny(1,2,3,4,7,10,14)",
+    "popis_original": "pizza podklad + 3 jakékoliv ingredience zdarma",
+    "alergeny": [
+      1,
+      2,
+      3,
+      4,
+      7,
+      10,
+      14
+    ],
+    "alergeny_original": "alergeny(1,2,3,4,7,10,14)",
+    "cena_kc": 219,
+    "mena": "CZK",
+    "cena_zdroj": "společný ceník podle čísla pizzy",
+    "fotka": "media/fotky-pizzy/26-dle-vaseho-prani.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/nic.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "27-chleba",
+    "poradi": 27,
+    "cislo_na_webu": null,
+    "nazev": "Pizza CHLEBA",
+    "nadpis_original": "Pizza CHLEBA: 89,- obsahuje alergeny(1,7)",
+    "popis_original": "Rozvoz pouze s objednávkou pizzy.",
+    "alergeny": [
+      1,
+      7
+    ],
+    "alergeny_original": "obsahuje alergeny(1,7)",
+    "cena_kc": 89,
+    "mena": "CZK",
+    "cena_zdroj": "nadpis položky",
+    "fotka": "media/fotky-pizzy/27-chleba.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/chleba.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  },
+  {
+    "id": "28-chilli-omacka",
+    "poradi": 28,
+    "cislo_na_webu": null,
+    "nazev": "Chilli omáčka",
+    "nadpis_original": "Chilli omáčka - Příplatek 29.- Kč",
+    "popis_original": "Nyní máme v nabídce chili omáčku, takže budete-li chtít jakoukoliv pizzu přiostřit, stačí se při objednávání zmínit.",
+    "alergeny": [],
+    "alergeny_original": "",
+    "cena_kc": 29,
+    "mena": "CZK",
+    "cena_zdroj": "nadpis položky",
+    "fotka": "media/fotky-pizzy/28-chilli-omacka.png",
+    "fotka_url": "https://pipizza.cz/images/pizzy/chill.png",
+    "zdroj_url": "https://pipizza.cz/pizza",
+    "poznamky": [
+      "Původní alt je chybně „margarita“; přiřazení vychází ze sousedního názvu v HTML, nikoli z alt textu."
+    ]
+  }
+]

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#06462d">
+  <meta name="description" content="PiPizza Jistebník. Vyberte si svou oblíbenou pizzu, zavolejte a my vám ji přivezeme. Rozvoz zdarma, čerstvé suroviny a pizza pečená s radostí.">
+  <title>PiPizza Jistebník — dobrá pizza, dobrý den.</title>
+  <link rel="icon" href="assets/images/favicon.gif" type="image/gif">
+  <link rel="preload" href="assets/fonts/libre-franklin-400.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/libre-franklin-700.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=20260927-8">
+  <link rel="stylesheet" href="menu.css?v=20260927-8">
+  <link rel="stylesheet" href="refinements.css?v=20260927-8">
+  <link rel="stylesheet" href="checkout.css?v=20260927-8">
+  <script src="menu-data.js?v=20260927-8" defer></script>
+  <script src="cart-model.js?v=20260927-8" defer></script>
+  <script src="checkout-model.js?v=20260927-8" defer></script>
+  <script src="checkout.js?v=20260927-8" defer></script>
+  <script src="script.js?v=20260927-8" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#menu">Přejít na nabídku</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon-library" aria-hidden="true"><defs>
+
+    <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="3"/><path d="M3 8h18m-5 4h5v5h-5a2.5 2.5 0 0 1 0-5Z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-cheese" viewBox="0 0 32 32"><path d="m4 15 20-9 5 9H4v13h25V15M4 15l20-9v9"/><circle cx="11" cy="21" r="2"/><circle cx="22" cy="23" r="2"/></symbol>
+    <symbol id="i-meat" viewBox="0 0 32 32"><path d="M12 21c-9-9 7-23 15-13 7 10-7 24-15 13Zm0 0-5 5m0-4c-5-4-9 3-4 5-1 5 7 7 8 1"/><path d="M21 9c5 1 6 8 1 12"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M2 3h3l3 13h11l3-10H6M8 16l-1 3h13"/><circle cx="9" cy="22" r=".7"/><circle cx="19" cy="22" r=".7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="m7 3 3 5-2.5 2.5a15 15 0 0 0 6 6L16 14l5 3-1 4c-9 1-17-7-17-16z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="13" r="9"/><path d="M12 8v5l4 2M9 1h6M12 1v3"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></symbol>
+    <symbol id="i-pizza" viewBox="0 0 32 32"><path d="m7 27 10-22c5 2 9 6 11 11L7 27Z"/><path d="m17 5 2-3c6 3 10 7 12 13l-3 1M14 11l3 2M13 21l3-1"/><circle cx="21" cy="15" r="2"/><circle cx="14" cy="17" r="1.5"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 32 32"><path d="M26 3C10 4 3 11 5 20c3 11 19 6 21-17ZM4 29 23 7M11 20l-1-8m6 3 6 1"/></symbol>
+    <symbol id="i-pepper" viewBox="0 0 32 32"><path d="M22 11c-5-2-7 0-9 5S6 25 3 26c10 4 23-4 23-11 0-2-1-3-4-4ZM22 11c3-4 3-7-1-9M18 11l4 5 4-1"/></symbol>
+    <symbol id="i-drink" viewBox="0 0 32 32"><path d="M7 9h18l-3 21H10L7 9ZM19 9l3-7h5M8 15h16"/><path d="M14 20c0-4 4-4 4 0s-4 4-4 0Z"/></symbol>
+    <symbol id="i-box" viewBox="0 0 32 32"><path d="m3 10 13-7 13 7v15l-13 6-13-6V10Zm0 0 13 7 13-7M16 17v14M10 6l13 7v6"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 32 32"><path d="M4 14h24v15H4ZM2 9h28v5H2ZM16 9v20"/><path d="M16 9S5 10 6 4c1-5 10 5 10 5Zm0 0s11 1 10-5c-1-5-10 5-10 5Z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 32 32"><path d="M16 28S3 19 3 10a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 18-13 18Z"/></symbol>
+    <symbol id="i-chef" viewBox="0 0 32 32"><path d="M8 20C-1 20 0 7 8 8 8-1 22-1 23 8c9-1 10 12 1 12v10H8V20Zm0 5h16M12 20v5m8-5v5"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 32 32"><path d="M3 7h17v17H7M20 13h6l4 6v5h-4M3 12h8M1 17h8M3 22h4"/><circle cx="10" cy="25" r="3"/><circle cx="24" cy="25" r="3"/><path d="M20 19h10"/></symbol>
+    <symbol id="i-card" viewBox="0 0 32 32"><rect x="2" y="5" width="28" height="22" rx="3"/><path d="M2 12h28M7 21h5m4 0h3"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h5m4 0h7M4 17h9m4 0h3"/><circle cx="11" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4-5.7-3-5.7 3 1.1-6.4L2.8 9.7l6.4-.9Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </defs></svg>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="PiPizza Jistebník, úvodní stránka"><span class="brand-art"><img class="brand-splash" src="assets/images/logo-back.png" alt="" width="166" height="126"><img class="brand-word" src="assets/images/logo-front.png" alt="PiPizza" width="206" height="111"></span><span class="brand-place">JISTEBNÍK</span></a>
+      <nav class="main-nav" aria-label="Hlavní navigace" id="main-nav"><a href="#menu" class="nav-active">Menu</a><a href="#rozvoz">Rozvoz</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav>
+      <div class="header-actions"><a class="header-phone" href="tel:+420720400500"><svg class="icon"><use href="#i-phone"/></svg><span><strong>720 400 500</strong><small id="today-hours">Po–Čt 15:00–21:54</small></span></a><button class="button button-green cart-toggle" aria-label="Otevřít moji objednávku"><span>Moje objednávka</span><span class="cart-icon"><svg class="icon"><use href="#i-cart"/></svg><span class="cart-count" aria-hidden="true">0</span></span></button><button class="icon-button mobile-menu" aria-label="Otevřít navigaci" aria-controls="main-nav" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button></div>
+    </div>
+  </header>
+
+  <main class="container" id="home-page">
+    <div class="category-slot" id="category-slot">
+    <section class="menu-browser" aria-label="Výběr z nabídky">
+      <div class="menu-browser-top"><div class="menu-browser-caption"><span class="eyebrow">PIZZA PŘESNĚ PODLE VÁS</span><span>Na jakou máte dnes chuť?</span></div><label class="search-box"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="menu-search" placeholder="Najít pizzu nebo surovinu…" aria-label="Hledat v nabídce" autocomplete="off"><kbd>/</kbd></label></div>
+      <div class="category-list" role="group" aria-label="Vyberte kategorii">
+        <button class="category active" data-category="pizza" aria-pressed="true"><span class="category-icon"><svg aria-hidden="true"><use href="#i-pizza"/></svg></span><span class="category-copy"><strong>Všechny pizzy</strong><small>Najděte svou oblíbenou</small></span><span class="category-count">26</span></button>
+        <button class="category" data-category="vegetarian" aria-pressed="false"><span class="category-icon"><svg aria-hidden="true"><use href="#i-leaf"/></svg></span><span class="category-copy"><strong>Bez masa</strong><small>Zelenina &amp; dobrý sýr</small></span><span class="category-count">3</span></button>
+        <button class="category" data-category="spicy" aria-pressed="false"><span class="category-icon"><svg aria-hidden="true"><use href="#i-pepper"/></svg></span><span class="category-copy"><strong>Pikantní</strong><small>Pro trochu vzrušení</small></span><span class="category-count">2</span></button>
+        <button class="category" data-category="drinks" aria-pressed="false"><span class="category-icon"><svg aria-hidden="true"><use href="#i-drink"/></svg></span><span class="category-copy"><strong>Nápoje</strong><small>Něco na osvěžení</small></span><span class="category-count">5</span></button>
+        <button class="category" data-category="extras" aria-pressed="false"><span class="category-icon"><svg aria-hidden="true"><use href="#i-box"/></svg></span><span class="category-copy"><strong>Něco navíc</strong><small>Malá tečka k pizze</small></span><span class="category-count">3</span></button>
+        <a class="category category-offer" href="#akce"><span class="category-icon"><svg aria-hidden="true"><use href="#i-gift"/></svg></span><span class="category-copy"><strong>Pro celou partu</strong><small>Čtvrtá pizza za 129 Kč</small></span><span class="category-count">3 + 1</span></a>
+      </div>
+    </section>
+
+    </div>
+
+    <section class="menu-layout" id="menu" aria-labelledby="menu-heading">
+      <div class="menu-content"><div class="section-heading"><div><span class="eyebrow">Z NAŠÍ PECE. PODLE VAŠÍ CHUTI.</span><h1 id="menu-heading">Všechny naše pizzy.</h1></div><span class="menu-result-count" id="menu-result-count" role="status">26 pizz</span></div><div class="menu-toolbar"><p><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg>Každou pizzu si můžete upravit.</p><label class="sort-control"><span>Řadit:</span><select id="menu-sort" aria-label="Řazení nabídky"><option value="number">Podle čísla</option><option value="price-asc">Od nejlevnější</option><option value="price-desc">Od nejdražší</option><option value="name">Podle názvu</option></select></label></div><div id="product-grid" class="product-grid"></div><div id="empty-results" class="empty-results" hidden><svg aria-hidden="true"><use href="#i-search"/></svg><h2>Tuhle chuť jsme nenašli.</h2><p>Zkuste jiný název nebo třeba oblíbenou surovinu.</p><button class="button button-green" id="reset-search">Zobrazit všechny pizzy</button></div><noscript><p>Pro prohlížení nabídky zapněte JavaScript. Objednat můžete na <a href="tel:+420720400500">720 400 500</a>.</p></noscript></div>
+      <aside class="weekly-card" aria-labelledby="weekly-title"><div class="weekly-kicker"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>NÁŠ TIP TOHOTO TÝDNE</span></div><h2 id="weekly-title">Dnes zkuste<br>něco nového.</h2><button class="weekly-image" data-detail="05-boston" aria-label="Prohlédnout pizzu Boston"><img src="assets/pizza/12-kureci.webp" alt="Pizza Boston — ilustrační fotografie" width="900" height="900"><span>Č. 05</span></button><div class="weekly-info"><div class="weekly-name"><h3>Boston</h3><strong>219 <small>Kč</small></strong></div><p>Mozzarella, šunka, kuře, niva a červená cibule.</p><span class="weekly-annotation">Trocha sýra. Spousta chuti.</span></div><div class="weekly-actions"><button class="button button-red" data-add="05-boston">Ochutnat Boston <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button><button class="weekly-edit" data-detail="05-boston"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg>Upravit podle sebe</button></div></aside>
+    </section>
+
+    <section class="values-layout" aria-label="Proč právě PiPizza"><div class="values-grid"><article class="value-card"><svg><use href="#i-leaf"/></svg><h2>Čerstvé suroviny</h2><p>Mozzarella, zelenina a pravý olivový olej.</p></article><article class="value-card"><svg><use href="#i-chef"/></svg><h2>Poctivě upečená</h2><p>Výběrová mouka. Dobré těsto. Pořádná chuť.</p></article><article class="value-card"><svg class="red-icon"><use href="#i-heart"/></svg><h2>Pečeme s radostí</h2><p>Baví nás to. A těší nás, že vám chutná.</p></article></div><div class="brand-message"><span>Dobrá pizza.<br>Dobrý den.</span><span class="handline"></span><small>VAŠE PIPIZZA</small></div></section>
+
+    <section class="stories-grid" aria-label="Z naší pizzerie"><article class="story-card promotion-card" id="akce"><img src="assets/pizza/20-bellizzi.webp" alt="Pizza pro společný večer" loading="lazy" width="900" height="900"><span class="story-label">PRO CELOU PARTU</span><div class="story-content"><span class="promotion-price">3 + 1</span><h2>Dobré věci se sdílí.</h2><p>Objednejte si 3 pizzy a čtvrtou<br>máte jen za <strong>129 Kč.</strong></p><button class="outline-button" id="pick-pizzas">Vybrat pizzy <svg class="icon"><use href="#i-arrow"/></svg></button></div></article><article class="story-card"><img src="assets/images/priprava-testa.webp" alt="Ruce připravující těsto na moukou posypaném stole" loading="lazy" width="1024" height="1280"><div class="story-content"><h2>Každá pizza<br>má svůj příběh.</h2><p>A ten náš začíná dobrým těstem.</p><a class="outline-button" href="#o-nas">O naší pizzerii <svg class="icon"><use href="#i-arrow"/></svg></a></div></article><article class="story-card"><img src="assets/images/cerstve-suroviny.webp" alt="Čerstvá rajčata, bazalka a mozzarella" loading="lazy" width="1024" height="1280"><div class="story-content"><h2>Na surovinách<br>záleží.</h2><p>Proto vybíráme to, co máme sami rádi.</p><a class="outline-button" href="#menu">Ochutnejte <svg class="icon"><use href="#i-arrow"/></svg></a></div></article></section>
+
+    <section class="about-contact" id="o-nas"><div class="about-copy"><span class="eyebrow">MALÁ PIZZERIE. VELKÁ CHUŤ.</span><h2>Z Jistebníku.<br>S láskou k pizze.</h2><p>Pizzu pro vás pečeme, jak nejlíp umíme. Baví nás to a máme radost, že vám chutná. Sázíme na výběrovou mouku, čerstvé suroviny a mozzarellu — jak má na dobré pizze být.</p><a class="text-button" href="tel:+420556400500">Stačí zavolat. My už se postaráme. <svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="contact-card" id="kontakt"><span id="rozvoz" class="section-anchor" aria-hidden="true"></span><div class="contact-details"><h2>Tady nás najdete.</h2><ul><li><svg class="icon"><use href="#i-pin"/></svg><span>Jistebník 181, 742 82</span></li><li><svg class="icon"><use href="#i-phone"/></svg><span><a href="tel:+420720400500">720 400 500</a> <span class="muted">/</span> <a class="second-phone" href="tel:+420556400500">556 400 500</a></span></li><li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:info@pipizza.cz">info@pipizza.cz</a></li></ul><div class="hours"><svg class="icon"><use href="#i-clock"/></svg><div><p><span>Po–Čt</span><strong>15:00–21:54</strong></p><p><span>Pá–So</span><strong>11:00–23:54</strong></p><p><span>Ne</span><strong>11:00–21:54</strong></p></div></div><button class="button button-red" id="show-delivery-map">Kam rozvážíme <svg class="icon"><use href="#i-arrow"/></svg></button></div><div class="contact-map"><iframe title="Google mapa — PiPizza, Jistebník 181, 742 82" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41243.78524755882!2d18.05669112167969!3d49.753400100000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713e5fc31e18e11%3A0x87f38d5eb07acbe1!2sRestaurace%20Na%20Obci%20Jistebn%C3%ADk!5e0!3m2!1scs!2scz!4v1790497898102!5m2!1scs!2scz" loading="eager" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><a href="https://www.google.com/maps/search/?api=1&amp;query=PiPizza+Jistebn%C3%ADk+181+74282" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-pin"/></svg><span>Jistebník 181<small>Otevřít v Google Mapách</small></span><svg class="icon"><use href="#i-arrow"/></svg></a></div></div></section>
+  </main>
+
+  <main id="product-page" class="product-page container" hidden aria-labelledby="detail-title"></main>
+
+  <footer class="site-footer"><div class="container"><div class="footer-grid"><a class="brand footer-brand" href="#" aria-label="PiPizza, zpět nahoru"><span class="brand-art"><img class="brand-splash" src="assets/images/logo-back.png" alt="" width="166" height="126"><img class="brand-word" src="assets/images/logo-front.png" alt="PiPizza" width="206" height="111"></span><span class="brand-place">JISTEBNÍK</span></a><div><h2>Na co máte chuť?</h2><a href="#menu">Naše pizzy</a><a href="#akce">Akce pro celou partu</a><a href="#rozvoz">Rozvoz zdarma</a><a href="#o-nas">O PiPizze</a></div><div><h2>Jsme na telefonu</h2><a class="footer-phone" href="tel:+420720400500">720 400 500</a><a href="tel:+420556400500">556 400 500</a><a href="mailto:info@pipizza.cz">info@pipizza.cz</a></div><div><h2>Stavte se. Nebo zavolejte.</h2><p>Jistebník 181, 742 82</p><p class="footer-thanks"><svg><use href="#i-heart"/></svg>Děkujeme, že vám chutná.</p></div></div><div class="footer-bottom"><span>© 2026 PiPizza Jistebník · IČO 63051192</span><span>Fotografie jídel jsou ilustrační.</span><button class="footer-info" id="payment-info">Informace k objednávce</button><span>Pečeme s <svg class="icon"><use href="#i-heart"/></svg></span></div></div></footer>
+
+  <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title"><div class="dialog-header"><div><span class="eyebrow">CO TO DNES BUDE?</span><h2 id="cart-title">Vaše objednávka</h2></div><button class="icon-button close-dialog" aria-label="Zavřít objednávku"><svg class="icon"><use href="#i-close"/></svg></button></div><div id="cart-items"></div><div id="cart-summary" hidden><div class="cart-total"><span>Celkem</span><strong id="cart-total">0 Kč</strong></div><p class="cart-help">Ještě adresu, způsob platby — a máte objednáno.</p><button type="button" class="button button-red" id="start-checkout">Pokračovat k objednávce <svg class="icon"><use href="#i-arrow"/></svg></button><p class="fine-print"><span class="demo-badge">DEMO</span> Vyzkoušejte celý nákup včetně platby kartou. Objednávka se neodesílá. Rozvoz i krabice zdarma.</p></div></dialog>
+
+  <dialog id="checkout-dialog" class="checkout-dialog" aria-labelledby="checkout-title">
+    <div class="checkout-head"><span class="checkout-brand" aria-label="PiPizza"><span class="brand-art"><img class="brand-splash" src="assets/images/logo-back.png" alt="" width="166" height="126"><img class="brand-word" src="assets/images/logo-front.png" alt="PiPizza" width="206" height="111"></span></span><span class="demo-badge">DEMO OBJEDNÁVKA</span><button type="button" class="icon-button" id="checkout-close" aria-label="Zavřít objednávání"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <ol class="checkout-steps" aria-label="Postup objednávky"><li data-checkout-step="1" aria-current="step"><span>1</span> Doručení</li><li data-checkout-step="2"><span>2</span> Platba</li><li data-checkout-step="3"><span>3</span> Hotovo</li></ol>
+    <div class="checkout-layout">
+      <form id="checkout-form" class="checkout-form" novalidate>
+        <section class="checkout-panel" data-panel="1">
+          <span class="eyebrow">UŽ JEN PÁR DROBNOSTÍ</span><h2 id="checkout-title" tabindex="-1">Kam to bude?</h2><p class="checkout-lead">Vy pečlivě vybíráte. My pečlivě pečeme.</p>
+          <fieldset class="choice-field"><legend>Způsob převzetí</legend><div class="fulfillment-options">
+            <label class="checkout-choice"><input type="radio" name="fulfillment" value="delivery" checked><span><svg class="icon"><use href="#i-truck"/></svg><span><strong>Dovézt až k vám</strong><small>Rozvoz zdarma</small></span><i></i></span></label>
+            <label class="checkout-choice"><input type="radio" name="fulfillment" value="pickup"><span><svg class="icon"><use href="#i-pin"/></svg><span><strong>Vyzvednu si</strong><small>Jistebník 181</small></span><i></i></span></label>
+          </div></fieldset>
+          <div class="checkout-fields"><label>Jméno a příjmení <span>*</span><input name="customerName" autocomplete="name" required maxlength="100" placeholder="Jan Novák"></label><label>Telefon <span>*</span><input name="phone" type="tel" autocomplete="tel" required maxlength="20" placeholder="+420 777 123 456"></label><label class="field-full">E-mail <span>*</span><input name="email" type="email" autocomplete="email" required maxlength="160" placeholder="jan@example.cz"></label></div>
+          <div id="delivery-fields">
+            <label class="address-label" for="checkout-address">Doručovací adresa <span>*</span></label>
+            <div class="address-wrap"><svg class="icon"><use href="#i-search"/></svg><input id="checkout-address" name="address" role="combobox" aria-autocomplete="list" aria-controls="address-suggestions" aria-expanded="false" aria-describedby="address-help" autocomplete="off" required maxlength="200" placeholder="Začněte psát obec, ulici nebo číslo…"><button type="button" id="address-clear" aria-label="Vymazat adresu" hidden>×</button><div id="address-suggestions" class="address-suggestions" role="listbox" aria-label="Nabídka adres" hidden></div></div>
+            <p id="address-help" class="field-help">Ukázkový našeptávač pro Jistebník a okolí. Můžete zadat i vlastní úplnou adresu.</p>
+            <div class="selected-address" id="selected-address" hidden><svg class="icon"><use href="#i-pin"/></svg><div><small>Doručíme na adresu</small><strong id="selected-address-text"></strong></div><span>Zdarma</span></div>
+          </div>
+          <div class="pickup-card" id="pickup-card" hidden><svg class="icon"><use href="#i-pin"/></svg><div><strong>PiPizza Jistebník</strong><span>Jistebník 181, 742 82</span><small>Vyzvednutí přímo u nás v pizzerii.</small></div></div>
+          <fieldset class="choice-field time-field"><legend>Kdy máte hlad?</legend><div class="time-options"><label><input type="radio" name="timing" value="asap" checked><span>Co nejdříve <small>cca 40–60 min · demo</small></span></label><label><input type="radio" name="timing" value="scheduled"><span>Vybrat čas <small>Na chvíli, která vám sedne</small></span></label></div><label id="scheduled-time-label" hidden>Požadovaný čas<input id="scheduled-time" name="scheduledTime" type="datetime-local"><small class="field-help">Čas je v této ukázce orientační.</small></label></fieldset>
+          <label class="checkout-note">Poznámka pro nás <small>nepovinné</small><textarea name="note" rows="2" maxlength="300" placeholder="Patro, jméno na zvonku nebo jiné přání…"></textarea></label>
+          <p class="checkout-error" id="checkout-error" role="alert" hidden></p>
+        </section>
+        <section class="checkout-panel" data-panel="2" hidden>
+          <span class="eyebrow">POSLEDNÍ KROK K DOBRÉ PIZZE</span><h2 id="checkout-payment-title" tabindex="-1">Jak si přejete zaplatit?</h2><p class="checkout-lead">Vyberte si, co vám vyhovuje.</p>
+          <fieldset class="payment-options choice-field"><legend class="sr-only">Způsob platby</legend>
+            <label class="checkout-choice"><input type="radio" name="payment" value="card" checked><span><svg class="icon"><use href="#i-card"/></svg><span><strong>Kartou online</strong><small>Vyzkoušejte si platbu testovací kartou</small></span><i></i></span></label>
+            <label class="checkout-choice"><input type="radio" name="payment" value="cash"><span><svg class="icon"><use href="#i-wallet"/></svg><span><strong>Hotově při převzetí</strong><small>Zaplatíte až při doručení nebo vyzvednutí</small></span><i></i></span></label>
+          </fieldset>
+          <div id="demo-card-panel" class="demo-card-panel"><div class="demo-card"><div><span>PiPizza</span><span>TESTOVACÍ KARTA</span></div><svg class="card-chip" viewBox="0 0 36 28" aria-hidden="true"><rect x="1" y="1" width="34" height="26" rx="5"/><path d="M12 1v26M24 1v26M1 10h11m12 0h11M1 18h11m12 0h11"/></svg><strong>•••• &nbsp; •••• &nbsp; •••• &nbsp; 4242</strong><div><span>DEMO ZÁKAZNÍK</span><span>12 / 30</span></div></div><p><svg class="icon"><use href="#i-check"/></svg>Testovací karta je připravená. Žádné peníze se nestrhnou.</p></div>
+          <fieldset id="checkout-tip" class="choice-field"><legend>Něco pro náš tým? <small>nepovinné</small></legend><div class="tip-options"><label><input type="radio" name="tip" value="0" checked><span>Bez spropitného</span></label><label><input type="radio" name="tip" value="10"><span>10 Kč</span></label><label><input type="radio" name="tip" value="20"><span>20 Kč</span></label><label><input type="radio" name="tip" value="50"><span>50 Kč</span></label></div></fieldset>
+          <div class="checkout-review"><div class="review-heading"><h3>Všechno sedí?</h3><button type="button" id="edit-checkout-contact">Upravit údaje</button></div><div id="checkout-contact-review"></div></div>
+          <p class="demo-explanation">Ukázka objednávání. Platba se pouze simuluje a objednávka se neposílá pizzerii.</p>
+        </section>
+        <section class="checkout-panel checkout-success" data-panel="3" hidden><span class="success-check"><svg class="icon"><use href="#i-check"/></svg></span><span class="eyebrow">TAK A JE TO!</span><h2 id="checkout-success-title" tabindex="-1">Demo objednávka<br>je odeslaná.</h2><p class="checkout-lead">Takhle snadno si vaši zákazníci objednají.</p><div class="order-reference"><small>Číslo ukázkové objednávky</small><strong id="demo-order-number"></strong></div><div id="success-payment" class="success-payment"></div><div class="demo-order-progress"><span class="active">✓ Přijato</span><i></i><span>Pečeme</span><i></i><span id="success-last-step">Rozvážíme</span></div><div id="success-details"></div><p class="demo-explanation">Toto je jen demo. Objednávka nebyla skutečně odeslána, platba neproběhla a potvrzovací e-mail se neposílá.</p></section>
+      </form>
+      <aside class="checkout-summary" aria-label="Souhrn objednávky"><div class="summary-title"><h3>Na co se těšíte</h3><span id="checkout-item-count"></span></div><div id="checkout-order-items"></div><div class="checkout-costs" id="checkout-costs"></div><div class="checkout-promise"><svg class="icon"><use href="#i-heart"/></svg><span>Poctivá pizza. Čerstvé suroviny.<br>Upečeno s radostí v Jistebníku.</span></div></aside>
+    </div>
+    <div class="checkout-foot"><button type="button" class="checkout-back" id="checkout-back">← Zpět do košíku</button><div><small>Celkem</small><strong id="checkout-foot-total"></strong></div><button type="submit" form="checkout-form" class="button button-green" id="checkout-next">Pokračovat k platbě <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+  </dialog>
+
+  <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title"><div class="dialog-header"><h2 id="info-title"></h2><button class="icon-button close-dialog" aria-label="Zavřít informace"><svg class="icon"><use href="#i-close"/></svg></button></div><div id="info-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"><svg class="icon"><use href="#i-check"/></svg><span></span></div>
+</body>
+</html>

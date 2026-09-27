@@ -1,0 +1,59 @@
+{
+  "javascript_syntax": "OK",
+  "lokalni_obrazky_a_fonty": "OK",
+  "unikatni_html_id": "OK",
+  "nabidka_pizz": 26,
+  "vyhledavani_s_diacritikou": "OK",
+  "prazdne_vysledky_a_reset": "OK",
+  "kategorie_bez_masa": 3,
+  "kategorie_napoje": 5,
+  "pocet_vsech_polozek": 34,
+  "objednavka_pridani_zmena_mnozstvi_a_smazani": "OK",
+  "kontrolni_soucet_dvou_margarit": "418 Kč",
+  "mobilni_menu": "OK",
+  "mapa_rozvozu": "OK",
+  "sirka_bez_vodorovneho_presahu": [
+    320,
+    390,
+    522,
+    1280
+  ],
+  "poznamka": "Lokální demo pro prezentaci zákazníkovi. Checkout, platba a odeslání jsou simulované. Původní data a archiv zůstávají zachované.",
+  "vsechny_pizzy_zobrazeny_po_nacteni": 26,
+  "zmenseni_hlavicky_pri_rolovani": "OK — 110 → 70 px, mobil 88 → 64 px",
+  "tip_tydne": "Boston — přidání i úprava fungují",
+  "razeni_podle_ceny": "OK",
+  "vyhledavani_bez_diakritiky": "OK — sunkova → Šunková",
+  "upravena_a_zakladni_varianta_oddelene": "OK — 2 × 238 + 209 = 685 Kč",
+  "uprava_v_objednavce_a_slouceni_shodnych_variant": "OK — 3 × 209 = 627 Kč",
+  "vlastni_pizza_prvni_tri_suroviny_zdarma": "OK — 219 Kč / čtyři suroviny 248 Kč",
+  "testy_cart_model": {
+    "proslo": 7,
+    "selhalo": 0,
+    "prikaz": "node --test tests/cart.test.cjs"
+  },
+  "konzole_prohlizece": "Bez chyb",
+  "predchozi_overeni": "2026-09-23",
+  "datum": "2026-09-27",
+  "detail_pizzy": "Samostatná stránka s URL ?pizza=01-margarita, načtení přímé adresy a návrat do nabídky OK",
+  "uprava_poznamka_a_kosik": "Odebrání oregána + šunka navíc + 2 kusy = 476 Kč; po odebrání šunky v úpravě 418 Kč. Poznámka se zachová.",
+  "prichycene_kategorie": "Desktop 63 px pod hlavičkou 70 px; mobil 56 px pod hlavičkou 64 px. Filtr Bez masa vrací 3 pizzy.",
+  "google_mapa": "Vložen oficiální Google Maps iframe pro Jistebník 181; přímý odkaz ověřen. Externí iframe v interním náhledu zůstává prázdný — vykreslení nepotvrzeno.",
+  "demo_checkout": {
+    "kontakt": "Povinná pole a telefon/e-mail validovány v UI",
+    "adresa": "Lokální demo seznam, výběr pomocí šipek/Enter a ruční úplná adresa",
+    "karta": "209 + 3,11 příplatek + 20 spropitné = 232,11 Kč; simulace a potvrzení prošly",
+    "hotovost": "Osobní vyzvednutí bez adresy, bez příplatku; potvrzení 209 Kč prošlo",
+    "dokonceni": "Souhrn zůstane v potvrzení, košík se vyprázdní, objednávka i platba pouze lokální",
+    "mobil": "390 px a 320 px bez horizontálního přesahu, formulář i platba ověřeny",
+    "data": "Bez síťových požadavků checkoutu, platebních SDK, persistování kontaktů a bez skutečného odeslání"
+  },
+  "spodni_lista_detailu": "Pevná u spodního okraje; 320 px / scrollY 928: dolní okraj lišty 800 = výška viewportu.",
+  "cele_fotografie": "object-fit: contain, poměr 1:1, vypnuté přibližování při najetí",
+  "logo_skvrna": "Červená skvrna zachovaná i ve zmenšené hlavičce (opacity 1) a v checkoutu",
+  "testy_checkout_model": {
+    "proslo": 4,
+    "selhalo": 0,
+    "prikaz": "node --test tests/checkout.test.cjs"
+  }
+}

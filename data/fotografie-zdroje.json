@@ -1,0 +1,198 @@
+[
+  {
+    "polozka": "Margarita",
+    "foto": "assets/pizza/01-margherita.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Šunková",
+    "foto": "assets/pizza/02-sunkova.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Hawai",
+    "foto": "assets/pizza/09-hawai.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Sýrová",
+    "foto": "assets/pizza/19-quattro-formaggi.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Boston",
+    "foto": "assets/pizza/12-kureci.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Los angeles",
+    "foto": "assets/pizza/13-picante.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "San francisco",
+    "foto": "assets/pizza/20-bellizzi.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Chicago",
+    "foto": "assets/pizza/10-capricciosa.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Orlando",
+    "foto": "assets/pizza/07-slaninova.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "New york",
+    "foto": "assets/pizza/17-selska.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Full house",
+    "foto": "assets/pizza/20-bellizzi.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Vegetariánská",
+    "foto": "assets/pizza/05-vegetariana.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Montana",
+    "foto": "assets/pizza/12-kureci.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Tvarůžková",
+    "foto": "assets/pizza/15-nivova.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Detroit",
+    "foto": "assets/pizza/15-nivova.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Keywest",
+    "foto": "assets/pizza/18-tunakova.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Atlanta",
+    "foto": "assets/pizza/16-kari-kureci.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Florida",
+    "foto": "assets/pizza/12-kureci.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Broccoli",
+    "foto": "assets/pizza/11-spenatova.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Oregon",
+    "foto": "assets/pizza/08-americana.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Balkán",
+    "foto": "assets/pizza/14-vegetariana-extra.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Brooklyn",
+    "foto": "assets/pizza/08-americana.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Colorado",
+    "foto": "assets/pizza/07-slaninova.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Dallas",
+    "foto": "assets/pizza/13-picante.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Moravská",
+    "foto": "assets/pizza/17-selska.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Podle vašeho přání",
+    "foto": "assets/pizza/10-capricciosa.webp",
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": "pizzabelizzi.cz/jidla-pizza-vylepsene-webp",
+    "poznamka": "Ilustrační fotografie převzatá z předchozího projektu Bellizzi podle zadání uživatele; nereprezentuje přesné složení pizzy PiPizza."
+  },
+  {
+    "polozka": "Pizza chleba",
+    "foto": null,
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": null,
+    "poznamka": "Bez fotografie."
+  },
+  {
+    "polozka": "Chilli omáčka",
+    "foto": null,
+    "zdroj_textu": "https://pipizza.cz/pizza",
+    "zdroj_fotografie": null,
+    "poznamka": "Bez fotografie."
+  }
+]
