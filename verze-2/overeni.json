@@ -1,0 +1,17 @@
+{
+  "datum": "2026-09-29",
+  "varianta": "Tmavá, samostatná /verze-2/",
+  "reference": "https://new.pipizza.cz/",
+  "zachovani_puvodni_verze": "Původní soubory webu ani sdílené obrázky nejsou změněny.",
+  "nabidka": 26,
+  "detail": "Přímá adresa, obnovení stránky, rozbalení surovin a přidání do košíku ověřeny.",
+  "checkout": "Doručení → Apple Pay → potvrzení 212,11 Kč → prázdný košík → návrat do /verze-2/.",
+  "sirka_mobilu": [
+    320,
+    390
+  ],
+  "mobil": "Bez vodorovného přesahu, funkční mobilní navigace a kontakt.",
+  "obrazky_a_fonty": "Relativní cesty jsou lokální a existují; ikony a fotografie načteny.",
+  "konzole": "Bez chyb.",
+  "puvodni_logika": "Skripty a modely se shodují s první variantou kromě relativní cesty ke sdíleným obrázkům."
+}

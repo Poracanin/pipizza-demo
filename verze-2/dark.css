@@ -1,0 +1,192 @@
+/* An independent evening palette, inspired by new.pipizza.cz. */
+:root {
+  color-scheme: dark;
+  --cream: #100c08;
+  --surface: #231d17;
+  --ink: #f3ecdf;
+  --muted: #b1a797;
+  --border: #ffffff1c;
+  --green: #29543b;
+  --green-dark: #121c14;
+  --green-soft: #223123;
+  --red: #be4939;
+  --accent: #b5cc92;
+  --panel: #1e1914;
+  --panel-raised: #292219;
+}
+html { background: #0e0905; }
+body, body.product-view { background: #0e0905; color: var(--ink); isolation: isolate; }
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background: radial-gradient(ellipse 85% 65% at 50% 0%, #b87a3525, transparent 70%),
+    linear-gradient(#0e0905e8, #0e0905f2 55%, #0e0905fa), url('assets/smoke.jpg') center / cover;
+}
+body::after {
+  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection { background: #be493970; color: #fff; }
+.eyebrow, .text-button, .brand-place, .header-phone svg { color: var(--accent); }
+.button-green { background: #31533b; color: #fff9ed; }
+.button-green:hover { background: #426749; }
+.button-red, .add-button { background: var(--red); }
+.button-red:hover, .add-button:hover { background: #d35844; }
+.icon-button:hover { background: #ffffff0f; }
+.site-header, .header-compact .site-header {
+  background: #17120deb; border-bottom: 1px solid var(--border); color: var(--ink);
+  backdrop-filter: blur(18px); box-shadow: 0 5px 25px #00000018;
+}
+.site-header .brand-word, .checkout-brand .brand-word { filter: brightness(1.14) saturate(.85); }
+.main-nav a:after, .header-compact .main-nav a:after { background: var(--accent); }
+.header-phone small { color: var(--muted); }
+.cart-toggle { border: 1px solid #90ab7340; }
+.cart-count { border-color: #17120d; }
+.menu-browser .search-box { background: #251f17b3; border-color: var(--border); color: var(--muted); }
+.search-box input::placeholder { color: #b1a797; }
+.search-box kbd { border-color: #ffffff25; }
+.search-box:focus-within { border-color: var(--accent); }
+.category { background: #282118bd; border-color: var(--border); color: var(--accent); }
+.category:hover { background: #393024; }
+.category .category-icon { background: #c1d69c14; color: var(--accent); }
+.category span, .category-copy strong { color: var(--ink); }
+.category-copy small, .category .category-count { color: var(--muted); }
+.category.active { background: linear-gradient(125deg, #38513a, #243e2d); border-color: #80976177; box-shadow: 0 6px 25px #0002; }
+.category-offer { background: #4e352538; border-color: #b9854d45; }
+.category-offer .category-icon { background: #be8f4720; color: #d4b185; }
+.category-offer .category-count { background: #a0703833; color: #e3bf87; }
+.categories-pinned .menu-browser { background: #17120df5; border-color: var(--border); box-shadow: 0 8px 30px #0003; }
+.menu-result-count { background: #b5cc9210; color: var(--accent); border-color: #b5cc9226; }
+.menu-toolbar>p, .sort-control { color: var(--muted); }
+.menu-toolbar .icon, .sort-control select { color: var(--accent); }
+.sort-control option { background: var(--panel); color: var(--ink); }
+.product-card { background: #211b15ed; border-color: var(--border); box-shadow: 0 6px 22px #00000018; }
+.product-card:hover { border-color: #b5cc9245; box-shadow: 0 12px 30px #0004; }
+.product-image-button { background: #252017; padding: 15px; }
+.product-image-button img { border-radius: 50%; }
+.product-number { background: #1b170fe8; color: #eadbc0; border-color: #c2ac814a; }
+.product-label { background: #211b15ef; color: #f39580; }
+.product-label.vegetarian-label, .vegetarian-label svg { color: #c2daa1; }
+.product-label svg { color: #f39580; }
+.product-label.vegetarian-label svg { color: #c2daa1; }
+.product-title:hover { color: var(--accent); }
+.product-description, .about-copy p { color: #c5baaa; }
+.product-allergens { color: #a39785; }
+.product-bottom { border-color: var(--border); }
+.edit-button { color: #d2dbbc; border-color: #b5cc923d; background: #ffffff03; }
+.edit-button:hover { background: #b5cc9210; border-color: #b5cc9270; }
+.simple-product-art { color: var(--accent); }
+.weekly-card { background: linear-gradient(145deg, #253d2c, #14241a); border: 1px solid #9fb68130; box-shadow: 0 12px 35px #0002; }
+.weekly-kicker { color: #c1d3a8; }
+.weekly-image>span { color: #21472c; }
+.value-card { background: #292218b3; color: #e1e4cd; border: 1px solid var(--border); }
+.value-card>svg, .brand-message { color: var(--accent); }
+.value-card p { color: #bbb09d; }
+.value-card>svg.red-icon { color: #e07660; }
+.contact-card { background: var(--panel); border-color: var(--border); }
+.contact-details .icon { color: var(--accent); }
+.contact-map { background: #241e16; border-color: var(--border); }
+.contact-map>a { background: #211b15f2; color: var(--ink); border-color: #635544; }
+.contact-map>a>svg:first-child { color: var(--accent); }
+.site-footer { background: #13120fdb; border-top: 1px solid var(--border); }
+.footer-grid a:not(.brand), .footer-grid p, .footer-bottom { color: #c1b7a6; }
+.footer-grid h2 { color: #f3ecdf; }
+.toast { background: #314b34; color: #fff8e8; border: 1px solid #b5cc9245; }
+/* Product detail, including the fixed order bar. */
+.detail-breadcrumb, .detail-description { color: #c1b7a6; }
+.detail-breadcrumb>a, .detail-title-row>strong, .detail-order-summary strong { color: var(--accent); }
+.detail-intro, .ingredient-group { background: #211b15ed; border-color: var(--border); }
+.detail-intro .eyebrow { color: var(--accent); }
+.detail-hero-photo { background: var(--panel); }
+.detail-hero-photo figcaption { background: #211b15e8; color: var(--muted); }
+.photo-pizza-number { background: #211b15ed; color: var(--ink); }
+.detail-allergens-line, .customization-heading p, .group-title small, .ingredient-row small,
+.product-note>small, .detail-note, .detail-order-summary>small, .detail-order-summary>p { color: var(--muted); }
+.ingredient-group summary:hover { background: #ffffff05; }
+.group-icon, .group-selection { background: #b5cc9214; color: var(--accent); }
+.ingredient-group summary>.icon, .ingredient-row.selected strong { color: var(--accent); }
+.ingredient-rows, .ingredient-row { border-color: var(--border); }
+.ingredient-toggle, .detail-quantity>button { background: #2b241b; border-color: #b5cc9230; color: var(--accent); }
+.ingredient-toggle:hover, .detail-quantity>button:hover { background: #394730; border-color: #a6bc7877; }
+.ingredient-toggle[aria-pressed=true] { background: #415c3c; border-color: #b5cc9290; color: #fff8e9; }
+.product-note textarea { background: #211b15; border-color: var(--border); color: var(--ink); }
+.product-note textarea::placeholder { color: #a39785; }
+.detail-order-bar { background: #1c1711fa; border-top: 1px solid #b5cc9230; box-shadow: 0 -5px 30px #0005; backdrop-filter: blur(16px); }
+/* Dark ordering surfaces retain the existing, simulated payment workflow. */
+dialog, .cart-dialog .dialog-header { background: #1c1712; color: var(--ink); }
+dialog::backdrop { background: #090704bf; }
+.cart-total strong, .cart-empty>svg, .quantity-controls .cart-edit { color: var(--accent); }
+.cart-modification { color: var(--muted); }
+.checkout-dialog { background: #17130f; }
+.checkout-head, .checkout-steps, .checkout-foot { background: #211b15; border-color: var(--border); }
+.checkout-head-caption, .checkout-lead, .field-help, .checkout-note>small,
+.choice-field legend>small, .checkout-fields label>span, .address-label>span,
+.checkout-preview-notice, .checkout-foot>div small { color: #b7aa96; }
+.checkout-head .icon-button { background: #ffffff09; }
+.checkout-steps li { color: #9e937f; }
+.checkout-steps li>span { background: #342c21; color: #b7aa96; }
+.checkout-steps li[aria-current], .checkout-steps li.done { color: #d8e4bc; }
+.checkout-steps li[aria-current]>span, .checkout-steps li.done>span { background: #42573a; }
+.checkout-steps li:not(:last-child):after { background: #63554166; }
+.checkout-panel>.eyebrow { color: #c1b390; }
+.checkout-choice>span, .time-options span, .tip-options span,
+.checkout-summary, .checkout-review, .order-reference { background: #272017; border-color: #65564066; }
+.checkout-choice strong { color: #f3ecdf; }
+.checkout-choice small, .time-options small, .payment-method-copy small { color: #b8ad99; }
+.checkout-choice>span>.icon, .checkout-back, .checkout-foot>div strong,
+.checkout-costs .free, .summary-grand-total strong, .review-heading button,
+.checkout-promise .icon, #checkout-contact-review .icon, #success-details .icon { color: var(--accent); }
+.checkout-choice input:checked+span, .time-options input:checked+span { background: #2a3925; border-color: #a1b77e; box-shadow: 0 0 0 1px #a1b77e; color: var(--ink); }
+.checkout-choice i { border-color: #a59780; }
+.checkout-choice input:checked+span i { border-color: #b5cc92; background: #1c2819; }
+.checkout-form input:not([type=radio]), .checkout-form textarea { background: #241d16; border-color: #65564088; color: var(--ink); }
+.checkout-form input::placeholder, .checkout-form textarea::placeholder { color: #ae9f88; }
+.checkout-form input:focus, .checkout-form textarea:focus { border-color: #aac38b; box-shadow: 0 0 0 3px #aac38b16; }
+.address-wrap>svg, #address-clear { color: #bac99c; }
+.address-suggestions { background: #2c241b; border-color: #655640; box-shadow: 0 12px 30px #0005; }
+.address-suggestions button { border-color: var(--border); }
+.address-suggestions button:hover, .address-suggestions button[aria-selected=true] { background: #3d492f; }
+.address-suggestions svg { color: var(--accent); }
+.address-suggestions small, .address-suggestions>p { color: #b7aa96; }
+.selected-address, .pickup-card { background: #293523; border-color: #b5cc9230; }
+.selected-address .icon, .pickup-card .icon, .selected-address>span { color: var(--accent); }
+.selected-address small, .pickup-card small { color: #c1c8ae; }
+.summary-title, #checkout-order-items article, .checkout-costs .summary-grand-total,
+#success-details { border-color: var(--border); }
+.summary-title>span { background: #37472e; color: #d6e6b7; }
+.checkout-costs>div, #checkout-order-items small, .checkout-promise { color: #b7aa96; }
+.checkout-costs .summary-grand-total { color: var(--ink); }
+.payment-group-caption { color: #d4c5a9; }
+.payment-caption-line { background: var(--border); }
+.payment-group-caption>small { color: #b7aa96; }
+.payment-options .checkout-choice:hover>span { border-color: #a9b587; }
+.payment-method-icon { background: #b5cc9214; color: var(--accent); }
+.accepted-cards img { color-scheme: light; }
+/* Wallet brand marks stay on their neutral white surface. */
+.payment-options .payment-wallet>span { background: #f3eee4; border-color: #ddd5c6; }
+.payment-wallet .payment-method-copy small { color: #645e53; }
+.payment-wallet i { border-color: #8f927d; }
+.payment-options .payment-wallet input:checked+span { background: #e2e8d5; border-color: #b5cc92; }
+.payment-wallet input:checked+span i { background: #f1f4e9; border-color: #315039; }
+.payment-receipt .payment-method-icon { background: transparent; }
+.tip-options input:checked+span { background: #415b39; border-color: #a2b980; }
+#checkout-contact-review span, #success-details span { color: #d3c7b4; }
+#checkout-contact-review small, #success-details small { color: #b7aa96; }
+.checkout-error { background: #5c251f; color: #ffe1cf; }
+.checkout-form input[aria-invalid=true] { border-color: #e78570; }
+.order-reference { border-color: #9e886366; }
+.order-reference small { color: #b7aa96; }
+.order-reference strong, .success-payment { color: #d1dfb2; }
+.success-check { background: #415b39; box-shadow: 0 0 0 9px #b5cc9210; }
+.demo-order-progress { color: #b7aa96; }
+.demo-order-progress i { background: #635541; }
+.demo-order-progress .active { color: #d1dfb2; }
+@media(max-width:850px) {
+  .main-nav { background: #201a14; border-color: var(--border); }
+}
+@media(max-width:650px) {
+  .product-image-button { padding: 9px; }
+  .detail-hero-photo figcaption { background: #211b15e8; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .site-header, .categories-pinned .menu-browser, .detail-order-bar { backdrop-filter: none; }
+}
