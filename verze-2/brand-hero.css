@@ -1,5 +1,5 @@
 /* One brand-led welcome, with decorative ingredients around the supplied logo. */
-:root { --opening-strip-height:34px; --scroll-nav-top:8px; --scroll-nav-width:min(1344px,calc(var(--viewport-width,100vw) - 24px)); }
+:root { --opening-strip-height:34px; --scroll-nav-top:0px; --scroll-nav-width:var(--viewport-width,100vw); }
 body {
   --hero-edge:#91ab58;
   --status-fill:#79b43e;
@@ -96,7 +96,7 @@ body:not(.product-view):not(.header-scrolled) .site-header .cart-toggle>span:fir
 body:not(.product-view):not(.header-scrolled) .site-header .cart-count { position:absolute; top:-12px; right:-13px; min-width:19px; height:19px; font-size:10px; }
 body:not(.product-view):not(.header-scrolled) .site-header .cart-icon { gap:0; }
 
-/* The compact header and pinned categories share one rounded brown frame. */
+/* The compact header and categories sit flush with the viewport, rounded below. */
 .header-scrolled .site-header {
   padding-top:var(--scroll-nav-top);
   background:transparent;
@@ -109,14 +109,15 @@ body:not(.product-view):not(.header-scrolled) .site-header .cart-icon { gap:0; }
   width:var(--scroll-nav-width);
   padding-inline:20px;
   border:1px solid #bfa17b38;
-  border-radius:22px;
+  border-width:0 0 1px;
+  border-radius:0 0 22px 22px;
   background:radial-gradient(ellipse at 30% 0%,#bc874414,transparent 65%),#241c15;
   box-shadow:0 8px 24px #0003,inset 0 1px #efd2a509;
   pointer-events:auto;
 }
 .categories-pinned .site-header .header-inner {
   border-bottom-color:#bfa17b20;
-  border-radius:22px 22px 0 0;
+  border-radius:0;
   box-shadow:inset 0 1px #efd2a509;
 }
 .menu-browser .category-list,
@@ -142,12 +143,12 @@ body:not(.product-view):not(.header-scrolled) .site-header .cart-icon { gap:0; }
 .menu-browser .category::after,
 .categories-pinned .menu-browser .category::after { bottom:2px; }
 .categories-pinned .menu-browser {
-  inset:var(--site-header-height,78px) auto auto 50%;
+  inset:var(--site-header-height,70px) auto auto 50%;
   transform:translateX(-50%);
   width:var(--scroll-nav-width);
   padding:4px 8px 6px;
   border:1px solid #bfa17b38;
-  border-top:0;
+  border-width:0 0 1px;
   border-radius:0 0 22px 22px;
   background:linear-gradient(#241c15,#1e1812);
   box-shadow:0 12px 24px #0004;
@@ -159,7 +160,7 @@ body:not(.product-view):not(.header-scrolled) .site-header .cart-icon { gap:0; }
   border-radius:0;
   background:transparent;
 }
-html:has(body.categories-pinned) { scroll-padding-top:calc(var(--site-header-height,78px) + 60px); }
+html:has(body.categories-pinned) { scroll-padding-top:calc(var(--site-header-height,70px) + 60px); }
 
 @media(max-width:700px) {
   .header-scrolled .site-header .header-inner { padding-inline:10px; }
