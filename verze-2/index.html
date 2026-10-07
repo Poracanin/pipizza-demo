@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="brand-green.css?v=4">
   <link rel="stylesheet" href="brand-hero.css?v=8">
   <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="legal.css?v=2">
+  <link rel="stylesheet" href="legal.css?v=3">
   <link rel="stylesheet" href="checkout-refinement.css?v=1">
   <script src="privacy.js?v=1" defer></script>
 
@@ -154,7 +154,31 @@
 
   <main id="product-page" class="product-page container" hidden aria-labelledby="detail-title"></main>
 
-  <footer class="site-footer"><div class="container"><div class="footer-grid"><a class="brand footer-brand" href="#" aria-label="PiPizza, zpět nahoru"><img class="brand-full" src="../assets/images/logo-full.png" alt="PiPizza — Cestou, necestou" width="1400" height="636"></a><div class="footer-information"><h2>Informace pro vás</h2><nav aria-label="Právní informace"><a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">Ochrana osobních údajů</a><a href="alergeny.html" target="_blank" rel="noopener">Alergeny</a><a href="obchodni-podminky.html" target="_blank" rel="noopener">Obchodní podmínky</a><a href="ochrana-osobnich-udaju.html#nastaveni-cookies" target="_blank" rel="noopener">Nastavení cookies</a></nav></div><div><h2>Jsme na telefonu</h2><a class="footer-phone" href="tel:+420720400500">720 400 500</a><a href="tel:+420556400500">556 400 500</a><a href="mailto:info@pipizza.cz">info@pipizza.cz</a></div><div><h2>Stavte se. Nebo zavolejte</h2><p>Jistebník 181, 742 82</p></div></div><p class="footer-price-note">Cena za pizzu je konečná, bez skrytých poplatků za krabici, dovoz nebo špatné počasí.</p><div class="footer-bottom"><span>© 2026 PiPizza Jistebník · IČO 63051192</span><span>Fotografie jídel jsou ilustrační.</span><a class="footer-info" href="admin.html">Administrace · ukázka</a><button class="footer-info" id="payment-info">Informace k objednávce</button><a class="footer-info" href="assets/vendor/twemoji/README.md" target="_blank" rel="noopener">Ikony: Twemoji</a><span>Pečeme s <svg class="icon"><use href="#i-heart"/></svg></span></div></div></footer>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <a class="brand footer-brand" href="#" aria-label="PiPizza, zpět nahoru"><img class="brand-full" src="../assets/images/logo-full.png" alt="PiPizza — Cestou, necestou" width="1400" height="636"></a>
+        <div class="footer-contact">
+          <h2>Jsme na telefonu</h2>
+          <a class="footer-phone" href="tel:+420720400500">720 400 500</a>
+          <a href="tel:+420556400500">556 400 500</a>
+          <a href="mailto:info@pipizza.cz">info@pipizza.cz</a>
+          <div class="footer-address"><h3>Stavte se u nás</h3><p>Jistebník 181, 742 82</p></div>
+        </div>
+        <div class="footer-information">
+          <h2>Informace pro vás</h2>
+          <nav aria-label="Právní informace">
+            <a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">Ochrana osobních údajů</a>
+            <a href="alergeny.html" target="_blank" rel="noopener">Alergeny</a>
+            <a href="obchodni-podminky.html" target="_blank" rel="noopener">Obchodní podmínky</a>
+            <a href="ochrana-osobnich-udaju.html#nastaveni-cookies" target="_blank" rel="noopener">Nastavení cookies</a>
+          </nav>
+        </div>
+      </div>
+      <p class="footer-price-note">Cena za pizzu je konečná, bez skrytých poplatků za krabici, dovoz nebo špatné počasí.</p>
+      <div class="footer-bottom"><span>© 2026 PiPizza Jistebník · IČO 63051192</span><span>Fotografie jídel jsou ilustrační.</span><a class="footer-info" href="admin.html">Administrace · ukázka</a><button class="footer-info" id="payment-info">Informace k objednávce</button><a class="footer-info" href="assets/vendor/twemoji/README.md" target="_blank" rel="noopener">Ikony: Twemoji</a><span>Pečeme s <svg class="icon"><use href="#i-heart"/></svg></span></div>
+    </div>
+  </footer>
 
   <button type="button" id="floating-cart" class="floating-cart" hidden><span class="floating-cart-icon"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><b data-floating-count>0</b></span><span class="floating-cart-label">Zobrazit košík<small>Vaše objednávka</small></span><strong data-floating-total>0 Kč</strong><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
   <button type="button" id="back-to-top" class="back-to-top" aria-label="Zpět nahoru" hidden><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
