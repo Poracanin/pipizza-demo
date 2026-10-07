@@ -72,10 +72,15 @@
 .legal-footer small { grid-column:1/-1; border-top:1px solid #efe9dc15; padding-top:20px; font-size:10px; color:#a79e8e; }
 .legal-skip { position:fixed; top:10px; left:10px; z-index:10; transform:translateY(-150%); padding:10px; background:#17230d; color:#fff; }
 .legal-skip:focus { transform:none; }
+/* Information links live in the main footer, beside the logo. */
+.site-footer .footer-information nav { display:grid; gap:7px; }
+.site-footer .footer-information nav a { font-size:12px; line-height:1.6; padding:3px 0; overflow-wrap:anywhere; }
+.site-footer .footer-information nav a:focus-visible { outline:2px solid var(--brand-green); outline-offset:4px; }
+@media(max-width:650px) {
+ .site-footer .footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .site-footer .footer-brand { width:100%; max-width:190px; }
+}
 /* Added to the storefront without loading its application into these pages. */
-.footer-legal { display:flex; flex-wrap:wrap; gap:8px 24px; padding:18px 0; margin-top:20px; border-top:1px solid #b5cc9226; }
-.footer-legal a { display:inline-flex; align-items:center; min-height:36px; font:500 12px/1.4 var(--sans); color:#c5ccb6; text-decoration:none; }
-.footer-legal a:hover { color:var(--brand-green); text-decoration:underline; text-underline-offset:4px; }
 #kontakt .contact-map { min-height:240px; }
 .contact-map .map-privacy-placeholder { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:18px 24px 64px; background:radial-gradient(ellipse at top,#344628,#211c15 75%); text-align:center; }
 .contact-map .map-privacy-placeholder[hidden] { display:none; }
@@ -104,8 +109,6 @@
  .legal-footer>.legal-wrap { grid-template-columns:1fr 1fr; }
  .legal-footer nav { grid-column:1/-1; grid-template-columns:repeat(3,1fr); gap:12px; font-size:11px; }
  .legal-page th,.legal-page td { padding:9px; }
- .footer-legal { gap:4px 18px; }
- .footer-legal a { font-size:11px; }
 }
 @media print {
  .legal-page { color:#000; background:#fff; }

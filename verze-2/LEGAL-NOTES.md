@@ -1,6 +1,6 @@
 # Právní stránky — podklady a rozsah, 7. 10. 2026
 
-Stránky `ochrana-osobnich-udaju.html`, `alergeny.html` a `obchodni-podminky.html` jsou psané pro aktuální prezentační verzi. Neprohlašují, že demo přijímá objednávky, provádí platby nebo má zapojené reklamní měření. Provozní údaje a postupy dosud provozovatel výslovně nepotvrdil; před ostrým nasazením je nutné texty, smluvní proces a níže uvedené body ověřit s provozovatelem a právním poradcem. Samotné vytvoření textů není právním auditem provozu.
+Uživatel 7. 10. 2026 výslovně požádal o zákaznické texty pro připravovaný ostrý provoz, bez označení zkušební nebo demo. Stránky `ochrana-osobnich-udaju.html`, `alergeny.html` a `obchodni-podminky.html` tomu odpovídají. Podmínky popisují požadovaný smluvní proces internetových i telefonických objednávek; při zapojení backendu je nutné tento proces skutečně zajistit. Níže uvedené neověřené provozní parametry je třeba sladit s provozovatelem a právním poradcem. Samotné vytvoření textů není právním auditem provozu.
 
 ## Ověřené skutečnosti
 
@@ -11,15 +11,15 @@ Stránky `ochrana-osobnich-udaju.html`, `alergeny.html` a `obchodni-podminky.htm
 
 ## Co bylo technicky doplněno
 
-- Tři samostatné statické HTML stránky mají vlastní titulky, čitelnou typografii, navigaci mezi dokumenty, obsah a tiskové styly. Odkazy v patičce a checkoutu otevírají novou kartu, takže nezahodí rozpracovaný košík v paměti původní stránky.
+- Tři samostatné statické HTML stránky mají vlastní titulky, čitelnou typografii, navigaci mezi dokumenty, obsah a tiskové styly. Odkazy jsou v hlavním informačním sloupci patičky vedle loga, místo původních odkazů na sekce webu; původní duplicitní řádek byl odstraněn. Odkazy v patičce a checkoutu otevírají novou kartu, takže nezahodí rozpracovaný košík v paměti původní stránky.
 - Google iframe má pouze `data-consent-src`; atribut `src` získá až po výslovném povolení. Souhlas jde odmítnout/odvolat na stránce soukromí, také z jiné karty. Odvolání odpojí iframe. Již uložené cizí cookies může odstranit uživatel v prohlížeči.
 - `pipizza-map-consent-v1` obsahuje pouze verzi, boolean a čas, platí 180 dní. Expirace, jiná verze, poškozená hodnota nebo nedostupné úložiště mapu samy neaktivují. Při blokovaném úložišti je výslovná volba jen v paměti otevřené stránky.
 - Nepoužívané intro ve verzi 2 má `data-intro-disabled`: sdílený `experience.js` pro něj nečte ani nezapisuje starý `pipizza-intro-last-shown`. Světlá varianta zůstává se svým dosavadním chováním.
-- Google Analytics / Ads / Meta jsou v textu jasně označené jako plánované a neaktivní. Nevkládáme žádné reklamní ID ani měřicí skript a nevybíráme souhlas s neexistujícím měřením.
+- Google Analytics / Ads / Meta jsou v textu pravdivě označené jako aktuálně nenačítané; nejde o označení webu jako dema. Nevkládáme žádné reklamní ID ani měřicí skript a nevybíráme souhlas s neexistujícím měřením.
 
 ## Před skutečným provozem
 
-1. Potvrdit prodávajícího/správce, sídlo, provozovnu, kontakt a že hostování náhledu spravuje oprávněná osoba. Ověřit pravidla skutečných objednávek, doručení, plateb, potvrzení smlouvy na trvalém nosiči a přijetí reklamace. Webové potvrzovací tlačítko musí jednoznačně vyjadřovat platební povinnost, až se z dema stane skutečný checkout.
+1. Potvrdit prodávajícího/správce, sídlo, provozovnu, kontakt a že hostování náhledu spravuje oprávněná osoba. Ověřit pravidla skutečných objednávek, doručení, plateb, potvrzení smlouvy na trvalém nosiči a přijetí reklamace. Při aktivaci ostrého checkoutu musí všechny finální platební varianty jednoznačně vyjadřovat povinnost zaplatit. Backend musí odlišit doručení a přijetí objednávky a zaslat e-mailové potvrzení se shrnutím a zněním podmínek, jak zákaznický text stanoví. Do zapojení ponechává checkout své upozornění na simulované platby.
 2. Ověřit alergeny všech receptur, základů, přídavků, omáček a nápojů podle dodavatelských specifikací. Seznam 14 skupin je pouze legenda. Zajistit aktuální informace i při úpravě/půlení a při doručení. Přehled ani obecná věta o stopách nenahrazuje kontrolu konkrétního složení.
 3. Potvrdit skutečné zpracovatele, příjemce, lhůty uchování, oprávněné zájmy a smluvní záruky u hostingu, objednávek, rozvozu, účetnictví a plateb. Aktualizovat informace, pokud se hosting nebo ukládání údajů změní.
 4. Při nasazení Google/Meta doplnit skutečný seznam cookies, dobu uchování událostí, zapojené funkce, případné společné správcovství Meta, přenosy a záruky. Teprve pak implementovat odpovídající oddělené souhlasy, odmítnutí ve stejné vrstvě a blokování požadavků před souhlasem. Zkontrolovat skutečný provoz, nestačí pouze „denied“ v Consent Mode.
