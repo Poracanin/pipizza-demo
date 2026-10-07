@@ -378,7 +378,15 @@
 
   document.querySelector('.category-list').addEventListener('click', event => {
     const button = event.target.closest('[data-category]');
-    if (button) {selectCategory(button.dataset.category); if (document.body.classList.contains('categories-pinned')) document.querySelector('#menu').scrollIntoView({behavior:'instant'});}
+    if (button) {
+      const pinned = document.body.classList.contains('categories-pinned');
+      selectCategory(button.dataset.category);
+      if (pinned) {
+        // Keep both navigation rows joined when a filter returns to the first product.
+        window.scrollTo({top:pinThreshold + 1, behavior:'instant'});
+        updateHeader();
+      }
+    }
   });
   document.querySelector('#reset-search').addEventListener('click', () => selectCategory('pizza'));
 
@@ -438,7 +446,8 @@
     document.body.classList.remove('categories-pinned');
     categorySlot.style.height = '';
     categoryHeight = categorySlot.getBoundingClientRect().height;
-    const compactHeight = matchMedia('(max-width:700px)').matches ? 64 : 70;
+    const navTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--scroll-nav-top')) || 0;
+    const compactHeight = (matchMedia('(max-width:700px)').matches ? 64 : 70) + navTop;
     pinThreshold = categorySlot.getBoundingClientRect().top + scrollY + 0 - compactHeight;
     updateHeader();
   }
