@@ -1,16 +1,12 @@
 /* One brand-led welcome, with decorative ingredients around the supplied logo. */
 :root { --opening-strip-height:34px; }
 body {
-  --hero-base:#103c29;
-  --hero-spot:#438a3b;
-  --hero-flare:#9caa43;
+  --hero-edge:#91ab58;
   --status-fill:#79b43e;
   --status-ink:#17230d;
 }
 body[data-opening-state="closed"] {
-  --hero-base:#49161b;
-  --hero-spot:#a73332;
-  --hero-flare:#e47646;
+  --hero-edge:#bc6550;
   --status-fill:#b92329;
   --status-ink:#fff4e9;
 }
@@ -37,30 +33,41 @@ body.product-view { padding-top:calc(var(--hero-header-space) + var(--opening-st
   padding:calc(12px + var(--opening-strip-height)) 24px 12px;
   color:#fff5e1;
   background:
-    radial-gradient(ellipse at 2% 4%,color-mix(in srgb,var(--hero-flare) 55%,transparent),transparent 48%),
-    radial-gradient(ellipse at 88% 95%,color-mix(in srgb,var(--hero-spot) 70%,transparent),transparent 55%),
-    radial-gradient(ellipse at 50% 42%,var(--hero-spot),transparent 69%),
-    linear-gradient(125deg,#080d1220,transparent 42%,#080d1260),var(--hero-base);
+    radial-gradient(ellipse at 50% 30%,#bc874431,transparent 64%),
+    radial-gradient(ellipse at 0% 30%,color-mix(in srgb,var(--hero-edge) 12%,transparent),transparent 48%),
+    radial-gradient(ellipse at 100% 30%,color-mix(in srgb,var(--hero-edge) 10%,transparent),transparent 48%),
+    linear-gradient(180deg,#2b2119 0%,#241b13e8 42%,#1b130b9c 76%,#0e090500 100%);
 }
 .brand-hero::before {
   content:"";
   position:absolute;
   inset:0;
   z-index:-1;
-  background:repeating-linear-gradient(125deg,transparent 0 115px,#fff6d903 116px 117px,transparent 118px 230px),radial-gradient(#ffedb30a .6px,transparent .8px);
-  background-size:auto,4px 4px;
+  background:url('assets/smoke.jpg') center 42% / cover;
+  opacity:.12;
+  mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(180deg,transparent,black 16%,black 55%,transparent);
+  mask-image:linear-gradient(180deg,transparent,black 16%,black 55%,transparent);
   pointer-events:none;
 }
-.brand-hero::after { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(ellipse at 50% 44%,transparent 35%,#050b152b 100%); pointer-events:none; }
+.brand-hero::after {
+  content:""; position:absolute; inset:calc(var(--opening-strip-height) + 8px) 12px 0;
+  z-index:-1; border:1px solid #bfa17b38; border-bottom:0; border-radius:22px 22px 0 0;
+  box-shadow:inset 0 1px #efd2a509;
+  -webkit-mask-image:linear-gradient(180deg,black,black 22%,transparent 95%);
+  mask-image:linear-gradient(180deg,black,black 22%,transparent 95%);
+  pointer-events:none;
+}
 .hero-atmosphere { position:absolute; inset:var(--opening-strip-height) 0 0; overflow:clip; z-index:-1; pointer-events:none; }
-.hero-orbit { position:absolute; width:min(860px,135vw); aspect-ratio:1; left:50%; top:48%; border:1px solid #f8e9bd17; border-radius:50%; transform:translate(-50%,-50%) rotate(-22deg) scaleY(.8); }
-.orbit-outer { box-shadow:0 0 0 28px #ffffff03,0 0 0 80px #ffffff02; }
-.orbit-inner { width:min(630px,98vw); border-color:#f8e9bd0d; transform:translate(-50%,-50%) rotate(18deg) scaleY(1.15); }
-.hero-speckles { position:absolute; top:19%; left:19%; width:3px; height:3px; border-radius:50%; background:#ead09e70; box-shadow:70px 37px #ead09e35,220px -26px #ead09e65,380px 80px #ead09e50,12px 225px #ead09e70,510px 215px #ead09e45,275px 330px #ead09e45,160px 260px #ead09e40,-27px 140px #ead09e50; }
+.hero-atmosphere::after { content:""; position:absolute; bottom:0; left:8%; right:8%; height:1px; background:linear-gradient(90deg,transparent,#cda47845,transparent); }
+.hero-orbit { position:absolute; width:min(900px,135vw); aspect-ratio:1; left:50%; top:48%; border:1px solid #c5a07514; border-radius:50%; transform:translate(-50%,-50%) rotate(-22deg) scaleY(.8); }
+.orbit-outer { box-shadow:0 0 0 28px #cfa16903,0 0 0 80px #cfa16902; }
+.orbit-inner { width:min(660px,108vw); border-color:#f8e9bd08; transform:translate(-50%,-50%) rotate(18deg) scaleY(1.15); }
+.hero-speckles { position:absolute; top:19%; left:19%; width:2px; height:2px; border-radius:50%; background:#ead09e45; box-shadow:70px 37px #ead09e25,220px -26px #ead09e40,380px 80px #ead09e25,12px 225px #ead09e30,510px 215px #ead09e25,275px 330px #ead09e25,160px 260px #ead09e20,-27px 140px #ead09e25; }
 .brand-hero-content { position:relative; z-index:1; display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; max-width:760px; text-align:center; }
 .brand-hero-kicker { margin:0 0 8px; color:#e7c596; font:600 11px/1.4 var(--sans); letter-spacing:.38em; text-transform:uppercase; }
 .brand-hero-logo { width:min(310px,64vw); margin:0 0 10px; line-height:0; }
-.brand-hero-logo img { display:block; width:100%; height:auto; filter:drop-shadow(0 16px 22px #0b211c40); }
+.brand-hero-logo img { display:block; width:100%; height:auto; filter:drop-shadow(0 12px 20px #10090465); }
 .brand-hero-phone { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:10px 22px; border:1px solid #ef514a; border-radius:999px; background:var(--brand-red); color:#fff; font:400 22px/1 var(--display); letter-spacing:.5px; box-shadow:0 10px 32px #30150a30,inset 0 1px #ffffff1a; transition:background .2s,transform .2s; }
 .brand-hero-phone:hover { background:var(--brand-red-hover); transform:translateY(-2px); }
 .brand-hero-phone .icon { width:18px; height:18px; }
@@ -69,7 +76,7 @@ body.product-view { padding-top:calc(var(--hero-header-space) + var(--opening-st
 .brand-hero-menu:hover { color:#fff; text-decoration:underline; text-underline-offset:4px; }
 .brand-hero-phone:focus-visible,.brand-hero-menu:focus-visible { outline:2px solid #fff5e1; outline-offset:5px; }
 .brand-hero-ingredients { position:absolute; inset:var(--opening-strip-height) 0 0; width:min(960px,100%); margin:auto; pointer-events:none; user-select:none; }
-.hero-ingredient { position:absolute; display:block; width:clamp(24px,4.2vw,44px); height:auto; aspect-ratio:1; object-fit:contain; filter:drop-shadow(0 9px 10px #09221830); animation:pi-ingredient-float 7s ease-in-out infinite alternate; }
+.hero-ingredient { position:absolute; display:block; width:clamp(24px,4.2vw,44px); height:auto; aspect-ratio:1; object-fit:contain; filter:saturate(.8) drop-shadow(0 7px 9px #10090465); opacity:.82; animation:pi-ingredient-float 7s ease-in-out infinite alternate; }
 .ingredient-olive { left:21%; top:11%; --tilt:-20deg; animation-delay:-2s; }
 .ingredient-pepper { right:25%; top:9%; --tilt:12deg; animation-delay:-4s; }
 .ingredient-cheese { right:7%; top:38%; --tilt:16deg; animation-delay:-1s; }
