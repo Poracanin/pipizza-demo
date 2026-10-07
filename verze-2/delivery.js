@@ -28,7 +28,7 @@
         const rows = await loadAddresses();
         if (request !== revision) return;
         matches = searchAddresses(rows, input.value);
-        results.innerHTML = matches.map((item,index) => `<button type="button" role="option" aria-selected="false" id="${results.id}-${index}" data-address-index="${index}"><span>${escape(item.label)}<small>${escape(item.town)} · rozvoz zdarma</small></span><span aria-hidden="true">↗</span></button>`).join('');
+        results.innerHTML = matches.map((item,index) => `<button type="button" role="option" aria-selected="false" id="${results.id}-${index}" data-address-index="${index}"><span>${escape(item.label)}<small>${escape(item.town)} · rozvoz zdarma</small></span><svg class="icon icon-diagonal" aria-hidden="true"><use href="#i-arrow"/></svg></button>`).join('');
         results.hidden = !matches.length; input.setAttribute('aria-expanded',String(!!matches.length));
         status.textContent = matches.length ? 'Vyberte přesnou adresu z nabídky.' : 'Adresu jsme v oblasti rozvozu nenašli. Zkuste obec a číslo domu, případně zavolejte 720 400 500.';
       } catch (_) { if (request === revision) status.textContent = 'Adresář se nepodařilo načíst. Zkuste psát znovu nebo zavolejte 720 400 500.'; }
@@ -73,7 +73,7 @@
     if (state.marker) {state.marker.remove(); state.marker = null;}
     if (!address?.point) {container.hidden = true;return;}
     const label = document.createElement('span'); label.textContent = address.label;
-    state.marker = L.marker(address.point,{icon:L.divIcon({className:'house-pin',html:'<span aria-hidden="true">⌂</span>',iconSize:[36,44],iconAnchor:[18,44]}),title:address.label}).addTo(state.map).bindPopup(label);
+    state.marker = L.marker(address.point,{icon:L.divIcon({className:'house-pin',html:'<span aria-hidden="true"><img src="assets/vendor/twemoji/svg/1f3e0.svg" alt="" width="22" height="22"></span>',iconSize:[36,44],iconAnchor:[18,44]}),title:address.label}).addTo(state.map).bindPopup(label);
     state.map.invalidateSize();state.map.setView(address.point,18,{animate:false});state.marker.openPopup();
     container.dataset.addressId = address.id;
   }
@@ -93,7 +93,7 @@
         const popup=document.createElement('div');popup.className='coverage-popup';popup.innerHTML=`<strong>${escape(feature.properties.name)}</strong><span>Rozvoz z Jistebníku · zdarma</span>`;layer.bindPopup(popup);
         layer.on('mouseover',()=>layer.setStyle({fillOpacity:.4,weight:2}));layer.on('mouseout',()=>layer.setStyle({fillOpacity:.2,weight:1.5}));
       }}).addTo(state.map);
-      L.marker([49.7534022,18.1287856],{icon:L.divIcon({className:'pizzeria-pin',html:'<span>π</span>',iconSize:[34,34]}),title:'PiPizza · Jistebník 181'}).addTo(state.map).bindTooltip('PiPizza Jistebník',{permanent:true,direction:'bottom'});
+      L.marker([49.7534022,18.1287856],{icon:L.divIcon({className:'pizzeria-pin',html:'<span aria-hidden="true"><img src="assets/vendor/twemoji/svg/1f355.svg" alt="" width="22" height="22"></span>',iconSize:[34,34]}),title:'PiPizza · Jistebník 181'}).addTo(state.map).bindTooltip('PiPizza Jistebník',{permanent:true,direction:'bottom'});
       state.bounds=areas.getBounds();
       state.map.fitBounds(state.bounds,{padding:[18,18]});
       coverage={...state,areas};return coverage;
@@ -117,7 +117,7 @@
   fullscreen.addEventListener('click',async()=>{
     await initCoverage(); const shell=document.querySelector('.coverage-shell');
     if (modal?.open) {modal.close();return;}
-    if(!modal){modal=document.createElement('dialog');modal.className='coverage-modal';modal.setAttribute('aria-label','Mapa rozvozu');document.body.append(modal);modal.addEventListener('close',()=>{placeholder.replaceWith(shell);fullscreen.textContent='Zvětšit ↗';fullscreen.setAttribute('aria-label','Zvětšit mapu na celou obrazovku');fullscreen.focus({preventScroll:true});});}
-    placeholder=document.createElement('div');shell.replaceWith(placeholder);modal.append(shell);modal.showModal();fullscreen.textContent='Zavřít ×';fullscreen.setAttribute('aria-label','Zavřít mapu');fullscreen.focus();
+    if(!modal){modal=document.createElement('dialog');modal.className='coverage-modal';modal.setAttribute('aria-label','Mapa rozvozu');document.body.append(modal);modal.addEventListener('close',()=>{placeholder.replaceWith(shell);fullscreen.innerHTML='Zvětšit <svg class="icon icon-diagonal" aria-hidden="true"><use href="#i-arrow"/></svg>';fullscreen.setAttribute('aria-label','Zvětšit mapu na celou obrazovku');fullscreen.focus({preventScroll:true});});}
+    placeholder=document.createElement('div');shell.replaceWith(placeholder);modal.append(shell);modal.showModal();fullscreen.innerHTML='Zavřít <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>';fullscreen.setAttribute('aria-label','Zavřít mapu');fullscreen.focus();
   });
 })(window);

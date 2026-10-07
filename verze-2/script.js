@@ -224,7 +224,7 @@
   }
   function baseOptions(name, selected) {
     const descriptions = {tomato:'Klasika z rajčat', cream:'Jemný a krémový', mustard:'Výraznější chuť'};
-    return `<div class="pizza-base-options">${Object.entries(BASES).map(([value, label]) => `<label><input type="radio" name="${name}" value="${value}" ${selected === value ? 'checked' : ''}><span><i class="base-swatch base-${value}" aria-hidden="true"></i><strong>${label}</strong><small>${descriptions[value]}</small><b class="base-check" aria-hidden="true">✓</b></span></label>`).join('')}</div>`;
+    return `<div class="pizza-base-options">${Object.entries(BASES).map(([value, label]) => `<label><input type="radio" name="${name}" value="${value}" ${selected === value ? 'checked' : ''}><span><i class="base-swatch base-${value}" aria-hidden="true"></i><strong>${label}</strong><small>${descriptions[value]}</small><b class="base-check" aria-hidden="true">${icon('check')}</b></span></label>`).join('')}</div>`;
   }
   function halfBaseOptions() {
     return editor.halfProductId ? `<fieldset class="pizza-base-field"><legend>Základ druhé poloviny · ${escape(find(editor.halfProductId).name)}</legend>${baseOptions('halfBase', editor.halfBase)}</fieldset>` : '';

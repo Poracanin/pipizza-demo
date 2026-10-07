@@ -66,3 +66,11 @@ Horní proužek ukazuje „Máme otevřeno / Máme zavřeno“ a odpočet do nej
 Odsazení kategorií a detailu zahrnuje výšku nového proužku. Čtečka oznamuje změnu stavu, ne každou sekundu odpočtu. Přidáno 5 testů hranic otevírací doby, víkendu, půlnoci, konce roku a obou změn letního času; celkem 54 testů prošlo. Ověřeno na 320 a 1280 px a obě barevné varianty. Statický náhled zavřeného stavu je pouze QA soubor v `docs/qa-20261007/closed-hero-preview.html`, živý web vždy používá skutečný čas.
 
 Proužek se při rolování skryje a zobrazí se znovu po návratu nahoru. Desktop od 1024 px má čtyři produkty vedle sebe; mobil zůstává se dvěma sloupci.
+
+## Místní SVG ikony a vycentrované odkazy v hero
+
+Systémové emoji v hero a mapových značkách nahrazují stejné SVG obrázky pro všechny prohlížeče. Kompletní knihovna [Twemoji 17.0.3](https://github.com/jdecked/twemoji/tree/v17.0.3), 4 009 původních SVG souborů, je v `assets/vendor/twemoji/` včetně licencí a původu. Grafika je pod CC BY 4.0, odkaz na autorství je v patičce. Na stránku se načítají pouze použité obrázky. Šipky a zaškrtnutí používají místní SVG symboly místo znaků závislých na fontu.
+
+Odstraněna dekorace „Dobrá pizza. Dobrý den.“ vedle hodnot a věta „Jsme rádi, že vám chutná.“ v patičce. Tři karty hodnot nyní využívají celou šířku. Telefon v kompaktním hero je vždy uprostřed a „Vybrat pizzu“ je pod ním bez ohledu na šířku obrazovky.
+
+Ověřeno: 54 testů, syntaxe upravených JavaScriptů, všechny SVG soubory a lokální odkazy. V prohlížeči ověřeno vystředění na 320 / 509 / 1280 px bez vodorovného přetečení, načtení obrázků, odstranění textů, SVG zaškrtnutí v editoru a otevření/zavření velké mapy. Náhled: `../docs/qa-20261007/svg-icons-centered-hero.jpg`.

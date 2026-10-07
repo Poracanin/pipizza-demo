@@ -89,7 +89,7 @@
           const current=Number(item.dataset.checkoutStep);item.classList.toggle('done',current<next);item.classList.toggle('active',current===next);
           if(current===next)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');
         });
-        $('#checkout-back').hidden=next===3;$('#checkout-back').textContent=next===1?'← Zpět do košíku':'← Zpět k údajům';
+        $('#checkout-back').hidden=next===3;$('#checkout-back').innerHTML=icon('arrow')+(next===1?' Zpět do košíku':' Zpět k údajům');
         if(next===2)$('#checkout-contact-review').innerHTML=contactText();
         if(next===3){$('#checkout-next').dataset.payment='';$('#checkout-next').setAttribute('aria-label','Zpět na nabídku');$('#checkout-next').innerHTML=`Zpět na nabídku ${icon('arrow')}`;$('#checkout-foot-total').textContent=money(snapshot.prices.total);}
         else renderSummary();

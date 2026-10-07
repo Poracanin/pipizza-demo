@@ -1,5 +1,19 @@
 /* Version 2: compact storefront, independent half recipes and address maps. */
 body { overflow-x: clip; }
+/* All decorative symbols are fixed SVG artwork, independent of system fonts. */
+.values-layout { grid-template-columns:minmax(0,1fr); }
+.icon-back { transform:rotate(180deg); }
+.icon-diagonal { transform:rotate(-45deg); }
+.base-check>.icon { width:14px; height:14px; }
+img.checkout-heart { display:inline-block; width:18px; height:18px; }
+.demo-order-progress>span { display:inline-flex; align-items:center; gap:4px; }
+.demo-order-progress .icon { width:13px; height:13px; }
+.checkout-dialog .checkout-back,#coverage-fullscreen { display:inline-flex; align-items:center; justify-content:center; gap:6px; }
+.checkout-dialog .checkout-back[hidden] { display:none; }
+.checkout-back>.icon { width:16px; height:16px; transform:rotate(180deg); }
+#coverage-fullscreen>.icon,.coverage-address-wrap .address-suggestions button>.icon { width:15px; height:15px; }
+.house-pin span img { width:22px; height:22px; transform:rotate(45deg); }
+.pizzeria-pin span img { width:22px; height:22px; }
 @media(min-width:1024px) {
   #product-grid { grid-template-columns:repeat(4,minmax(0,1fr)); column-gap:22px; }
 }
