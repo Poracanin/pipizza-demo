@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  const intro = document.getElementById('brand-intro');
+  const intro = document.querySelector('#brand-intro:not([data-intro-disabled])');
   const storageKey = 'pipizza-intro-last-shown';
   const interval = 24 * 60 * 60 * 1000;
   const now = Date.now();
@@ -8,8 +8,8 @@
   // If browser storage is unavailable, skip the intro instead of repeating it.
   let showIntro = false;
   try {
-    const last = Number(localStorage.getItem(storageKey)) || 0;
-    showIntro = now - last >= interval && !new URLSearchParams(location.search).has('pizza') && !location.hash && !reducedMotion.matches;
+    const last = intro ? Number(localStorage.getItem(storageKey)) || 0 : now;
+    showIntro = !!intro && now - last >= interval && !new URLSearchParams(location.search).has('pizza') && !location.hash && !reducedMotion.matches;
     if (showIntro) localStorage.setItem(storageKey, String(now));
   } catch (_) { /* The shop remains usable without storage. */ }
   if (intro && showIntro) {

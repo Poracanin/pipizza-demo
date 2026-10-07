@@ -80,3 +80,9 @@ Ověřeno: 54 testů, syntaxe upravených JavaScriptů, všechny SVG soubory a l
 Lišta editoru má na 481px displeji výšku přibližně 78 px místo 155 px. Celková cena zůstává výrazná, písmo se zmenšilo na 32 px; odstraněn samostatný rozpis „Pizza … · krabice v ceně“. Informace o příplatcích a výměnách zůstává. Do šířky 420 px je tlačítko přes celou šířku pod cenou a počtem, ovládací prvky mají výšku 44 px. Zelený posuvník používá barvu loga a CSS pro moderní prohlížeče i starší Safari.
 
 Ověřeno v prohlížeči na 320 / 421 / 481 / 768 / 1280 px bez přetečení. Dvě Šunkové se přepočítají na 438 Kč, s přidanou nivou na 496 Kč; po vrácení voleb je cena opět 219 Kč. Syntaxe JavaScriptu a `git diff --check` bez chyb. Náhled: `../docs/qa-20261007/compact-order-green-scrollbar.jpg`.
+
+## Soukromí, alergeny a obchodní podmínky
+
+Tři samostatné stránky mají odkazy v patičce, obsah, společný vzhled a tiskové styly. Ochrana soukromí popisuje aktuální demo a odlišuje zatím neaktivní Analytics, Google Ads a Meta. Google mapa se načte až po souhlasu; ten lze odvolat i z jiné otevřené karty a po 180 dnech zaniká. Seznam alergenů obsahuje všech 14 skupin a upozorňuje na úpravy receptur. Podmínky odlišují čerstvé jídlo od zboží s právem na odstoupení a uvádějí aktuální kontakt ADR.
+
+Podklady, ověření ARES a body nutné potvrdit před skutečným provozem jsou v [LEGAL-NOTES.md](LEGAL-NOTES.md). Celkem 60 testů prošlo, stránky ověřeny na 320 a 1280 px, souhlas s mapou také na 481 px. Náhled: `../docs/qa-20261007/legal-pages.jpg`.
