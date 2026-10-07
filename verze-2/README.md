@@ -74,3 +74,9 @@ Systémové emoji v hero a mapových značkách nahrazují stejné SVG obrázky 
 Odstraněna dekorace „Dobrá pizza. Dobrý den.“ vedle hodnot a věta „Jsme rádi, že vám chutná.“ v patičce. Tři karty hodnot nyní využívají celou šířku. Telefon v kompaktním hero je vždy uprostřed a „Vybrat pizzu“ je pod ním bez ohledu na šířku obrazovky.
 
 Ověřeno: 54 testů, syntaxe upravených JavaScriptů, všechny SVG soubory a lokální odkazy. V prohlížeči ověřeno vystředění na 320 / 509 / 1280 px bez vodorovného přetečení, načtení obrázků, odstranění textů, SVG zaškrtnutí v editoru a otevření/zavření velké mapy. Náhled: `../docs/qa-20261007/svg-icons-centered-hero.jpg`.
+
+## Nižší objednávková lišta a zelené posuvníky
+
+Lišta editoru má na 481px displeji výšku přibližně 78 px místo 155 px. Celková cena zůstává výrazná, písmo se zmenšilo na 32 px; odstraněn samostatný rozpis „Pizza … · krabice v ceně“. Informace o příplatcích a výměnách zůstává. Do šířky 420 px je tlačítko přes celou šířku pod cenou a počtem, ovládací prvky mají výšku 44 px. Zelený posuvník používá barvu loga a CSS pro moderní prohlížeče i starší Safari.
+
+Ověřeno v prohlížeči na 320 / 421 / 481 / 768 / 1280 px bez přetečení. Dvě Šunkové se přepočítají na 438 Kč, s přidanou nivou na 496 Kč; po vrácení voleb je cena opět 219 Kč. Syntaxe JavaScriptu a `git diff --check` bez chyb. Náhled: `../docs/qa-20261007/compact-order-green-scrollbar.jpg`.

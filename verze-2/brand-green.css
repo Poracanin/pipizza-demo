@@ -13,6 +13,18 @@
   --green-soft: #28341d;
 }
 
+/* Shared by the page and scrollable panels, with a fallback for older Safari. */
+html { scrollbar-color:var(--brand-green) #1a1711; scrollbar-width:thin; }
+*::-webkit-scrollbar { width:10px; height:10px; }
+*::-webkit-scrollbar-track { background:#1a1711; }
+*::-webkit-scrollbar-thumb { background:var(--brand-green); border:2px solid #1a1711; border-radius:10px; }
+*::-webkit-scrollbar-thumb:hover { background:var(--brand-green-hover); }
+@media(forced-colors:active) {
+  html { scrollbar-color:auto; }
+  *::-webkit-scrollbar-track { background:Canvas; }
+  *::-webkit-scrollbar-thumb { background:ButtonText; border-color:Canvas; }
+}
+
 /* Use the logo fill for solid green controls; dark lettering keeps them legible. */
 .button-green,
 .site-header .header-actions .cart-toggle,
