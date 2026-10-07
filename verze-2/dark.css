@@ -190,3 +190,12 @@ dialog::backdrop { background: #090704bf; }
 @media(prefers-reduced-motion:reduce) {
   .site-header, .categories-pinned .menu-browser, .detail-order-bar { backdrop-filter: none; }
 }
+/* October recipe controls. */
+.pizza-recipe-options { background: #211b15ed; border-color: var(--border); }
+.pizza-base-options label, #pizza-half { background: #2b241b; color: var(--ink); border-color: #b5cc9235; }
+.pizza-base-options label:has(input:checked) { background: #b5cc9217; color: var(--accent); border-color: #b5cc9280; }
+.pizza-base-options input { accent-color: #799b62; }
+.pizza-base-field > small, .pizza-half-label span, .pizza-half-rule, .ingredient-scope-note, .premium-ingredients > p { color: var(--muted); }
+#half-base-options:not(:empty) { border-color: var(--border); }
+.ingredient-swap-rule { color: #c1b7a6; background: #b5cc920c; border-color: #809761; }
+.premium-ingredients > h3 span { color: var(--accent); background: #b5cc9214; }

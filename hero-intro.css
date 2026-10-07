@@ -1,0 +1,128 @@
+/* The two offers use the existing PiPizza palette and ordering actions. */
+.hero-carousel {
+  margin: 16px 0 24px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--green-dark);
+}
+.hero-slides { position: relative; height: 276px; }
+.hero-slide {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(210px, .8fr);
+  align-items: center;
+  height: 100%;
+  min-height: 0;
+  padding: 23px 40px;
+  gap: 24px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #faf9f6;
+  background: var(--green-dark);
+  animation: pi-hero-arrive .3s ease both;
+}
+.hero-slide::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 82% 35%, var(--green), transparent 64%); opacity: .6; }
+.hero-copy { position: relative; z-index: 1; min-width: 0; }
+.hero-kicker { display: block; margin-bottom: 8px; color: #faf9f6; opacity: .72; font-size: 10px; font-weight: 600; letter-spacing: .14em; line-height: 1.4; }
+.hero-copy h2 { margin: 0; font: 600 48px/1.03 var(--display, 'Oswald', sans-serif); text-transform: uppercase; letter-spacing: .3px; }
+.hero-offer h2 > span { display: block; margin-top: 8px; font-size: 23px; font-weight: 400; line-height: 1.15; }
+.hero-offer h2 strong { font-weight: 600; }
+.hero-copy > p { max-width: 420px; margin: 12px 0 16px; color: #faf9f6; opacity: .82; font-size: 12px; line-height: 1.65; }
+.hero-carousel .hero-cta { min-height: 42px; padding: 10px 17px; border-radius: 5px; font: 500 19px/1.15 var(--display, 'Oswald', sans-serif); letter-spacing: .25px; text-transform: uppercase; gap: 10px; }
+.hero-carousel .hero-cta .icon { width: 18px; height: 18px; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 17px; }
+.hero-edit { padding: 8px 0; background: none; color: #faf9f6; font: 400 11px/1.4 var(--sans); text-decoration: underline; text-underline-offset: 4px; }
+.hero-weekly h2 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px 24px; }
+.hero-price { font: 500 28px/1.15 var(--display, 'Oswald', sans-serif); color: #faf9f6; white-space: nowrap; }
+.hero-image { display: block; justify-self: center; width: min(100%, 230px); aspect-ratio: 1; height: auto; max-height: 230px; object-fit: contain; border-radius: 50%; filter: drop-shadow(0 12px 22px #0005); }
+.hero-controls { position: relative; display: flex; align-items: center; justify-content: center; min-height: 39px; padding: 4px 16px; gap: 4px; border-top: 1px solid var(--border); background: var(--surface); color: var(--ink); }
+.hero-controls > button:not(.hero-pause) { display: grid; place-items: center; width: 32px; height: 30px; min-height: 30px; border-radius: 5px; padding: 0; color: var(--ink); background: transparent; font-size: 19px; }
+.hero-controls > button:not(.hero-pause):hover { background: var(--border); }
+.hero-dots { display: flex; align-items: center; gap: 0; }
+.hero-dots button { display: grid; place-items: center; min-width: 32px; height: 30px; padding: 0 5px; background: transparent; border-radius: 5px; }
+.hero-dots button::before { content: ''; display: block; width: 7px; height: 7px; border-radius: 7px; background: var(--muted); opacity: .5; transition: width .2s, opacity .2s; }
+.hero-dots button[aria-pressed="true"]::before { width: 21px; background: var(--accent, var(--green)); opacity: 1; }
+.hero-pause { position: absolute; right: 16px; min-height: 30px; padding: 4px 6px; background: transparent; color: var(--muted); font-size: 10px; text-decoration: underline; text-underline-offset: 3px; }
+.hero-controls button:focus-visible { outline: 2px solid var(--accent, var(--green)); outline-offset: -2px; }
+.hero-copy a:focus-visible, .hero-copy button:focus-visible { outline: 2px solid #faf9f6; outline-offset: 3px; }
+@keyframes pi-hero-arrive { from { opacity: .4; transform: translateX(8px); } to { opacity: 1; transform: none; } }
+
+/* Show the complete supplied logo, zoom through it, then uncover the shop. */
+body.intro-playing { overflow: hidden; }
+.brand-intro {
+  overflow: hidden;
+  background: var(--green-dark);
+  color: #faf9f6;
+  animation: pi-intro-reveal 2.1s linear both;
+}
+.brand-intro .intro-brand {
+  width: min(440px, 78vw);
+  flex: none;
+  text-align: center;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  animation: pi-intro-zoom 2.1s cubic-bezier(.55, .02, .75, .7) both;
+}
+.brand-intro .intro-brand .brand-full { display: block; width: 100%; height: auto; max-width: none; object-fit: contain; }
+.brand-intro > p { position: relative; font-size: 13px; margin-top: 28px; animation: pi-intro-caption 2.1s linear both; color: #faf9f6; }
+.brand-intro > button { z-index: 2; bottom: max(25px, env(safe-area-inset-bottom)); color: #faf9f6; border: 1px solid #faf9f64d; border-radius: 5px; padding: 10px 14px; background: var(--green-dark); }
+.brand-intro > button:focus-visible { outline: 2px solid #faf9f6; outline-offset: 4px; }
+@keyframes pi-intro-zoom {
+  0% { opacity: 0; transform: scale(.8); }
+  19% { opacity: 1; transform: scale(1); }
+  41% { opacity: 1; transform: scale(1); }
+  93% { opacity: 1; transform: scale(var(--intro-scale, 10)); }
+  100% { opacity: 0; transform: scale(var(--intro-scale, 10)); }
+}
+@keyframes pi-intro-reveal {
+  0%, 78% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes pi-intro-caption {
+  0% { opacity: 0; }
+  20%, 40% { opacity: 1; }
+  55%, 100% { opacity: 0; }
+}
+
+@media (max-width: 800px) {
+  .hero-slides { height: 250px; }
+  .hero-slide { padding: 21px 26px; grid-template-columns: minmax(0, 1.3fr) minmax(150px, .7fr); gap: 18px; }
+  .hero-image { max-height: 195px; }
+  .hero-copy h2 { font-size: 43px; }
+  .hero-offer h2 > span { font-size: 21px; }
+  .hero-actions { gap: 5px 14px; }
+}
+@media (max-width: 560px) {
+  .hero-carousel { margin: 12px 0 20px; border-radius: 7px; }
+  .hero-slides { height: 260px; }
+  .hero-slide { grid-template-columns: minmax(0, 1fr) 118px; padding: 18px 16px; gap: 9px; }
+  .hero-kicker { max-width: 180px; font-size: 8px; letter-spacing: .11em; margin-bottom: 7px; }
+  .hero-copy h2 { font-size: 39px; }
+  .hero-offer h2 > span { font-size: 19px; line-height: 1.2; margin-top: 5px; }
+  .hero-copy > p { margin: 9px 0 13px; font-size: 10px; line-height: 1.6; }
+  .hero-image { width: 118px; max-height: 118px; }
+  .hero-carousel .hero-cta { min-height: 40px; max-width: 100%; padding: 9px 11px; font-size: 16px; gap: 6px; white-space: normal; }
+  .hero-carousel .hero-cta .icon { width: 15px; height: 15px; }
+  .hero-weekly h2 { flex-wrap: wrap; gap: 9px; font-size: 36px; }
+  .hero-price { font-size: 22px; }
+  .hero-edit { padding-block: 2px; font-size: 9px; }
+  .hero-controls { padding: 4px 10px; }
+  .hero-pause { position: static; margin-left: 10px; padding-inline: 5px; font-size: 9px; }
+  .brand-intro > p { font-size: 11px; }
+}
+@media (max-width: 360px) {
+  .hero-slides { height: 270px; }
+  .hero-slide { grid-template-columns: minmax(0, 1fr) 95px; padding-inline: 13px; gap: 7px; }
+  .hero-image { width: 95px; max-height: 95px; }
+  .hero-copy h2 { font-size: 35px; }
+  .hero-weekly h2 { flex-wrap: wrap; font-size: 33px; gap: 5px; }
+  .hero-price { display: block; width: 100%; font-size: 21px; }
+  .hero-offer h2 > span { font-size: 18px; }
+  .hero-carousel .hero-cta { font-size: 15px; padding-inline: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide, .brand-intro, .brand-intro .intro-brand, .brand-intro > p { animation: none; }
+  .hero-dots button::before { transition: none; }
+  .brand-intro { display: none; }
+}

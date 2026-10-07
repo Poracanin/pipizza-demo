@@ -1,32 +1,51 @@
-# PiPizza — redesign
+# PiPizza — návrh webu
 
-Statická responzivní stránka podle dodaných vizuálních referencí s kompletním demo objednávkovým postupem inspirovaným lokálním projektem Bellizzi. Lokálně spusťte `python3 -m http.server 8765 --bind 127.0.0.1` a přejděte na `http://127.0.0.1:8765/`.
+Statický responzivní návrh se světlou a tmavou variantou a kompletní demo objednávkou. Lokální spuštění: `python3 -m http.server 8765 --bind 127.0.0.1`.
 
-- Původní logo PiPizza z archivu, jeho zelená je ztmavená pomocí CSS; obrazové soubory zůstávají zachované.
-- Krémová, tmavě zelená a červená; lokálně uložené fonty Libre Franklin a Oswald (licence OFL v `assets/fonts/`). Libre Franklin odpovídá referenci Turbo Pizza, Oswald tvoří podobný úzký styl objednávkových tlačítek.
-- Fotografie pizz z předchozího projektu Bellizzi, podle zadání. Jsou ilustrační, přesné složení vychází z PiPizza. Vazby jsou v `data/fotografie-zdroje.json`.
-- Kompletní nabídka 26 pizz, doplňky a nápoje ze stažených podkladů.
-- Všech 26 pizz se zobrazí rovnou. Kategorie mají počty položek, nabídku lze prohledávat bez diakritiky a řadit podle čísla, ceny nebo názvu.
-- Při rolování se pevná hlavička zmenší a původní logo dostane světlou variantu pomocí CSS; červená skvrna zůstává viditelná. Kategorie se změní na nízkou lištu pod hlavičkou, vyhledávání se skryje. Zelený panel obsahuje tip týdne s přidáním a úpravou pizzy.
-- Tlačítko „Upravit“ otevírá samostatnou stránku s adresou `?pizza=01-margarita`, velkou fotografií a rozbalovacími skupinami surovin podle reference Turbo Pizza. Mobil má fotografii nahoře. Lze přidat poznámku k pizze. Odebrání je bez změny ceny, ingredience navíc stojí 29 Kč. Pizza „Podle vašeho přání“ má první tři v ceně.
-- Různé varianty pizzy se v objednávce vedou odděleně; stejné se sloučí. Poznámka je součástí varianty. V objednávce lze měnit suroviny i počet kusů. Cena se přepočítává okamžitě.
-- Karty mají přirozenou výšku podle délky složení a stejně velká tlačítka „Upravit“ a košík. Pizzy jsou v obrázcích vidět celé, bez ořezu i bez přibližování při najetí. Detail má při úpravách trvale přichycenou spodní lištu s cenou a přidáním do košíku.
-- Kontakt obsahuje oficiální Google Maps iframe pro adresu Jistebník 181 (Google zde uvádí Restauraci Na Obci Jistebník) a odkaz na otevření mapy. V interním prohlížeči zůstává externí iframe prázdný; jeho vykreslení není ověřené, odkaz na Google Mapy funguje.
-- Demo checkout: doručení nebo osobní vyzvednutí, kontaktní údaje, lokální našeptávač ukázkových adres (s ručním zadáním), čas, poznámka, karta online, Apple Pay, Google Pay, hotovost nebo karta při převzetí, volitelné spropitné a závěrečné potvrzení s číslem objednávky.
-- Platební metody mají vlastní ikonky a odpovídající potvrzovací tlačítka. Skutečné údaje o kartě se nezadávají; všechny online platby se simulují a objednávka se nikam neposílá. Kontakty ani objednávky se neukládají, všechny údaje zůstávají v paměti stránky. Po demo dokončení se košík vyprázdní.
-- Karta online, Apple Pay, Google Pay i karta při převzetí počítají příplatek 1,49 % podle původních podkladů; částky se zaokrouhlují na haléře. Spropitné je dostupné pouze u online metod. Hotovost nepřebírá příplatek ani spropitné. Na simulaci upozorňuje nenápadná informace v patičce objednávkového okna. Ikonky plateb pocházejí z dodaného lokálního projektu Bellizzi.
-- Ceník akce 3 + 1 je prezentovaný podle původního webu. Cena akce se ve výběru automaticky nepřepočítává; upřesňuje se po telefonu.
-- Doplňkové fotografie přípravy těsta a surovin vytvořené nástrojem imagegen. [Zdroje a zadání fotografií](assets/README.md).
+- Světlý návrh: http://127.0.0.1:8765/
+- Tmavý návrh: http://127.0.0.1:8765/verze-2/
+- Administrace: http://127.0.0.1:8765/admin.html (také pod `/verze-2/admin.html`)
 
-Původní stažené podklady jsou zachované lokálně ve složce `podklady/`; do veřejného repozitáře se nenahrávají. Aktuální menu pro prohlížeč je `menu-data.js`, chování `script.js`, výpočet variant a cen `cart-model.js`, vzhled `styles.css`, `menu.css`, `refinements.css` a `checkout.css`. Demo checkout je v `checkout.js`, lokální našeptávač a výpočty v `checkout-model.js`. Veřejný náhled je publikovaný pomocí GitHub Pages.
+## Připomínky z 5. 10. 2026
 
-Testy cen, úprav a slučování variant: `node --test tests/*.test.cjs`.
+Obě varianty používají stejná pravidla. Původní ceny 209 Kč se změnily na 219 Kč a původní 219 Kč na 229 Kč. Platba kartou je bez poplatku, krabice je v ceně pizzy a rozvoz zdarma. Přesný text o konečné ceně je v nabídce i checkoutu. Dobrovolné spropitné je oddělené a dostupné u online plateb.
+
+Konfigurátor nabízí rajčatový, smetanový a hořčicový základ. Výchozí je rajčatový, Brokolice má smetanový a Oregon hořčicový. Pizza napůl stojí cenu dražší poloviny + 12 Kč; obě poloviny mohou mít samostatný základ. Úpravy surovin se vztahují na celou pizzu. Košík rozlišuje základy, poloviny, suroviny i poznámky a umožňuje jejich další úpravu.
+
+Požadované extra sýry a maso jsou v sekci „Prémiové suroviny“, vše +29 Kč. Doplněná zelenina a chilli omáčka stojí také +29 Kč. Pravidlo výměn v návrhu: odebrané klasické maso/sýr lze vyměnit 1:1 za klasickou surovinu (mozzarella, niva, šunka, kuře, anglická slanina). Zelenina nevytváří ani nečerpá výměnu; prémiové přídavky jsou placené. Stávající pizza „Podle vašeho přání“ si zachovává 3 jakékoliv suroviny v ceně, také při půlení (jednou za pizzu).
+
+Checkout nabízí online kartu, Apple Pay, Google Pay a při převzetí hotovost, kartu či QR kód. Zmiňuje QR kód na účtence; funkční platební QR není generován bez skutečného účtu a napojení plateb. Potvrzení obsahuje „Jsme rádi, že vám chutná.“ s červeným srdcem.
+
+Radar i checkout používají `window.PiDelivery`: 1 čtvereček = cca 40–60 minut, 2 = cca 1 hodina 25 minut. Ukázkové vytížení lze přepnout v radaru. „Doručení na čas“ nabízí 15minutové sloty v otevírací době, nejméně 75 minut předem, na následujících 7 dní v pásmu Europe/Prague. Platnost se kontroluje i těsně před potvrzením.
+
+Dodané kompletní logo `assets/images/logo-full.png` je použité bez přebarvování v navigaci, patičce, objednávce a úvodní animaci. Obsahuje slogan „CESTOU – NECESTOU“; v navigaci se proporcionálně zmenšuje. Úvodní animace se zobrazuje nejvýše jednou za 24 hodin v daném prohlížeči, společně pro obě varianty. Pamatuje si pouze čas zobrazení v `localStorage`; při omezeném pohybu, blokovaném úložišti nebo přímém odkazu na detail/sekci se vynechá.
+
+## Vzhled podle Pizza Visi
+
+Na přání uživatele je rozložení nabídky, detailu pizzy a košíku inspirované projektem Pizza Visi: kompaktní kategorie, velké fotografie přesahující karty, výrazné názvy a tlačítka, skupiny surovin s přepínači, boční košík s nabídkou nápojů a přehledná objednávka. Světlá i tmavá varianta zachovávají vlastní barvy PiPizza. Ceny, nabídka, příplatky, základy, půlení, doručení a platební pravidla se touto vizuální úpravou nemění.
+
+Společné styly jsou v `catalog-view.css`, `customizer-view.css`, `order-view.css` a `brand-layout.css`. `cart-view.js` doplňuje zobrazení počtu kusů a nápoje ze stávajícího menu; výpočty zajišťují původní modely PiPizza.
+
+Podle následných komentářů je vpravo v mobilní hlavičce pouze košík. Pět kategorií bez čísel se vejde do jedné řady bez horizontálního posouvání; delší názvy kategorií se na úzkém mobilu zalomí uvnitř svého tlačítka. Kategorie „Pro celou partu“ byla odebraná. Nad nabídkou se střídají bannery akce 3 + 1 (čtvrtá pizza za 129 Kč) a tipu týdne Boston. Karusel lze ručně přepnout a pozastavit, při omezeném pohybu se automaticky nestřídá.
+
+Karty jsou nižší, číslo pizzy je u fotografie, názvy se vejdou na jeden řádek a červené tlačítko má i na mobilu text „Přidat do košíku“. Alergeny jsou v detailu, nikoli na kartě. H1 nadpisy se píší bez závěrečné tečky. Úvodní animace zvětší dodané kompletní logo přes obrazovku a odkryje web; limit jednou za 24 hodin zůstává. Hero a animaci obsluhují `hero-intro.css` a `experience.js`.
+
+## Radar a administrace
+
+Radar zobrazuje označené ukázkové cíle Klimkovice, Polanka nad Odrou a Studénka. Offline mapa vychází z dodaných podkladů ČÚZK RÚIAN / DATA50 z 30. 9. 2026. Nejde o živé GPS polohy ani o potvrzení provozního pokrytí všech zobrazených hranic. Mapu lze znovu sestavit pomocí `python3 tools/build-delivery-map.py`, pokud jsou přítomné místní zdrojové soubory ve složce `RUUAN Mpy databaze/`; pro zobrazení webu tyto soubory nejsou potřeba.
+
+Samostatná administrace obsahuje denní tržbu, součet vybraného a předchozího dne, měsíční tržbu do vybraného dne, krátký denní přehled, inkaso podle metod, dluhy a denní uzávěrku s porovnáním hotovosti. Používá označená syntetická data bez zákaznických údajů. Úhrady a uzávěrky se ukládají jen lokálně jako demo stav; obnovením ukázky se resetují. Nejde o zabezpečenou produkční administraci ani účetní systém.
+
+Objednávky a platby se pouze simulují. Kontakty a košík zůstávají v paměti stránky, objednávky se neodesílají pizzerii. Skutečný provoz vyžaduje backend, napojení plateb/účtenek, rozvozu a chráněnou administraci. Akce 3 + 1 je prezentovaná podle původního návrhu, v košíku se automaticky nepřepočítává.
+
+## Soubory a kontrola
+
+Menu pro prohlížeč je `menu-data.js`, chování `script.js`, pravidla variant a cen `cart-model.js`, checkout `checkout.js` a `checkout-model.js`. Druhá varianta má vlastní kopie těchto souborů. Společné doplňky vzhledu, logo/intro a radar jsou v `updates.css` a `experience.js`. Administrace sdílí `admin.css`, `admin.js` a `admin-model.js`.
+
+Testy: `node --test tests/*.test.cjs`. Ověřují ceny, výměny, půlené pizzy, košík, platební metody, termíny včetně změn letního času a výpočty administrace. Původní archiv a `data/pizza.json` zachovávají historická data; aktuální prohlížeč je nepoužívá.
+
+Původní logo, červená skvrna a mapa z archivu jsou zachované jako podklady. Nové kompletní logo dodal uživatel 5. 10. 2026. Fotografie pizz jsou ilustrační z projektu Bellizzi, vazby v `data/fotografie-zdroje.json`. Doprovodné fotografie jsou generované; původ a licence fontů viz `assets/README.md` a `assets/fonts/`.
 
 ## Publikování
 
-- Náhled: https://poracanin.github.io/pipizza-demo/
-- Repozitář: https://github.com/Poracanin/pipizza-demo
-- GitHub Pages: větev `main`, složka `/(root)`. `index.html` je přímo v kořeni; žádný build ani instalace závislostí nejsou potřeba.
-- `.nojekyll` zapíná přímé publikování statických souborů. Relativní cesty podporují i umístění pod `/pipizza-demo/`.
-- Každý push do `main` aktualizuje veřejný náhled.
-- Demo má nastaveno `noindex` a `robots.txt`, aby se nepletlo s ostrým webem ve vyhledávačích.
+Repozitář: https://github.com/Poracanin/pipizza-demo. GitHub Pages používá větev `main` a kořen repozitáře; žádný build není potřeba. Veřejný náhled po publikování: https://poracanin.github.io/pipizza-demo/ a `/verze-2/`. Push do `main` aktualizuje veřejný náhled. Samotná místní editace nic nepublikuje. Návrh má nastaveno `noindex`.

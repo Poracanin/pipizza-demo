@@ -1,0 +1,81 @@
+/* Pizza Visi typography, scoped by loading this file only in version 2.
+   The PiPizza palette, content and ordering rules remain unchanged. */
+:root {
+  --sans: 'Work Sans', Arial, sans-serif;
+  --serif: var(--sans);
+  --display: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  --card-title-size: 34px;
+}
+body { font: 400 15px/1.65 var(--sans); }
+button, input, select, textarea { font-family: var(--sans); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; }
+.button, .outline-button { font: 400 18px/1.2 var(--display); letter-spacing: 1px; }
+.site-header .main-nav a { font: 400 17px/1.4 var(--display); letter-spacing: 1px; }
+.header-actions .cart-toggle { font: 400 18px/1.15 var(--display); letter-spacing: .5px; }
+.header-compact .header-actions .cart-toggle { font-size: 16px; }
+.menu-browser-caption > span:last-child,
+.section-heading h1 { font: 400 clamp(46px, 5vw, 72px)/1.02 var(--display); letter-spacing: .3px; }
+.menu-browser .category-copy strong,
+.categories-pinned .menu-browser .category-copy strong { font: 400 23px/1.1 var(--display); letter-spacing: .5px; }
+.menu-toolbar, .sort-control, .sort-control select,
+.menu-result-count { font: 500 12px/1.4 var(--sans); }
+.hero-copy h2, .hero-weekly h2 { font: 400 clamp(42px, 4vw, 52px)/.98 var(--display); letter-spacing: .4px; }
+.hero-kicker { font: 400 12px/1.3 var(--display); letter-spacing: 1.3px; }
+.hero-copy > p { font: 400 12px/1.55 var(--sans); }
+.hero-offer h2 > span { font-family: var(--display); font-weight: 400; }
+.hero-offer h2 strong, .hero-price { font-family: var(--display); font-weight: 400; }
+.hero-carousel .hero-cta { font: 400 16px/1.2 var(--display); letter-spacing: .6px; }
+.hero-edit { font: 500 11px/1.4 var(--sans); }
+.product-card .product-title {
+  font: 400 var(--card-title-size)/1.05 var(--display);
+  /* Keep the earlier one-line requirement for unusually long PiPizza names. */
+  font-size: min(var(--card-title-size), calc(190cqi / var(--title-length)));
+  letter-spacing: .4px; white-space: nowrap;
+}
+.product-card .product-description { font: 400 12px/1.6 var(--sans); }
+.product-card .product-price { font: 400 30px/1 var(--display); }
+.product-card .product-number { font-family: var(--display); font-weight: 400; }
+.product-card .add-button { font: 400 19px/1.1 var(--display); letter-spacing: .6px; }
+.product-card .add-button span { font-weight: 400; }
+.product-card .edit-button { font: 500 11px/1.4 var(--sans); }
+.product-card-drinks .product-title { --card-title-size: 26px; line-height: 1.1; }
+.product-card-drinks .product-price { font-size: 27px; }
+.product-card-drinks .add-button { font-size: 18px; line-height: 1.15; }
+.story-content h2, .about-copy h2, .contact-details h2,
+.radar-heading h2, .value-card h2 { font-family: var(--display); font-weight: 400; letter-spacing: .3px; }
+.promotion-price { font-family: var(--display); font-weight: 400; font-style: normal; }
+.brand-message > span:first-child { font-family: var(--display); font-weight: 400; }
+@media (max-width: 1000px) {
+  :root { --card-title-size: 29px; }
+}
+@media (max-width: 700px) {
+  :root { --card-title-size: 25px; }
+  .menu-browser-caption > span:last-child, .section-heading h1 { font-size: 48px; }
+  .menu-browser .category-copy strong,
+  .categories-pinned .menu-browser .category-copy strong { font-size: 20px; }
+  .menu-toolbar, .sort-control, .sort-control select, .menu-result-count { font-size: 11px; }
+  .hero-copy h2, .hero-weekly h2 { font-size: clamp(31px, 7.5vw, 40px); line-height: 1; }
+  .hero-kicker { font-size: 10px; letter-spacing: 1px; }
+  .hero-copy > p { font-size: 11px; line-height: 1.5; }
+  .hero-carousel .hero-cta { font-size: 15px; }
+  .product-card .product-title { line-height: .98; }
+  .product-card .product-description { font-size: 10px; line-height: 1.5; }
+  .product-card .product-price { font-size: 25px; }
+  .product-card .add-button { font-size: 17px; letter-spacing: .2px; }
+  .product-card .edit-button { font-size: 10px; }
+  .product-card-drinks .product-title { --card-title-size: 22px; }
+  .product-card-drinks .product-price { font-size: 25px; }
+  .product-card-drinks .add-button { font-size: 16px; }
+}
+@media (max-width: 370px) {
+  :root { --card-title-size: 20px; }
+  .menu-browser .category, .categories-pinned .menu-browser .category { padding-inline: 0; }
+  .hero-copy h2, .hero-weekly h2 { font-size: 31px; }
+  .menu-browser .category-copy strong,
+  .categories-pinned .menu-browser .category-copy strong { font-size: 18px; }
+  .menu-toolbar, .sort-control, .sort-control select, .menu-result-count { font-size: 10px; }
+  .product-card .product-price { font-size: 22px; }
+  .product-card .add-button { font-size: 15px; }
+  .product-card-drinks .product-title { --card-title-size: 20px; }
+  .product-card-drinks .add-button { font-size: 14px; }
+}

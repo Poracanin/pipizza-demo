@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>PiPizza — přehled provozu · ukázka</title>
+  <link rel="stylesheet" href="../admin.css">
+  <script src="../admin-model.js" defer></script>
+  <script src="../admin.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Přejít na přehled</a>
+  <header class="admin-header"><div class="shell header-inner"><a class="admin-brand" href="index.html" aria-label="PiPizza — zpět na nabídku"><span class="logo-art"><img src="../assets/images/logo-back.png" alt="" class="logo-splash"><img src="../assets/images/logo-front.png" alt="PiPizza" class="logo-word"></span><span class="logo-caption">CESTOU, NECESTOU</span></a><span class="header-label">Přehled provozu</span><a class="back-link" href="index.html">Zpět na web <span aria-hidden="true">↗</span></a></div></header>
+  <main class="shell" id="main">
+    <div class="demo-notice"><span class="demo-dot" aria-hidden="true"></span><div><strong>Ukázková administrace</strong><p>Všechna data jsou smyšlená. Úhrady a uzávěrky se ukládají jen do tohoto prohlížeče; nejde o skutečnou účetní operaci.</p></div><button class="link-button" id="reset-demo" type="button">Obnovit ukázku</button></div>
+    <div class="page-heading"><div><p class="eyebrow">PIPIZZA · DEN POD KONTROLOU</p><h1>Jak se nám daří?</h1><p class="lead">Tržby, platby a vše důležité na jednom místě.</p></div><label class="date-field">Vybraný den<input type="date" id="report-date" value="2026-10-05" min="2026-09-01" max="2026-10-05" aria-describedby="date-help"><span id="date-help">Ukázka: 1. 9. – 5. 10. 2026</span></label></div>
+    <nav class="section-nav" aria-label="Sekce administrace"><a href="#revenue">Tržby</a><a href="#daily">Denní přehled</a><a href="#debts">Dluhy <span id="debt-nav-count">3</span></a><a href="#closure">Denní uzávěrka</a></nav>
+    <p id="admin-status" class="status-message" role="status" hidden></p>
+    <section id="revenue" aria-label="Přehled tržeb"><div class="kpi-grid" id="revenue-cards"></div><p class="section-footnote">Tržba = hodnota dokončených objednávek včetně dosud neuhrazených. Storna se nezapočítávají. Dvoudenní přehled zahrnuje vybraný a předchozí den; měsíční období končí vybraným dnem.</p></section>
+    <div class="overview-grid">
+      <section class="panel daily-panel" id="daily" aria-labelledby="daily-title"><div class="panel-heading"><div><p class="eyebrow">KRÁTKÝ DENNÍ PŘEHLED</p><h2 id="daily-title">Každá pizza se počítá.</h2></div><span class="date-badge" id="daily-date"></span></div><div class="daily-metrics" id="daily-metrics"></div><div class="fulfillment" id="fulfillment"></div><div class="orders-heading"><h3>Poslední objednávky</h3><span>Ukázkové záznamy</span></div><div class="table-wrap"><table><caption class="sr-only">Poslední objednávky vybraného dne</caption><thead><tr><th>Objednávka</th><th>Stav</th><th class="align-right">Částka</th></tr></thead><tbody id="recent-orders"></tbody></table></div></section>
+      <section class="panel payments-panel" aria-labelledby="payments-title"><div class="panel-heading"><div><p class="eyebrow">PŘIJATÉ PLATBY</p><h2 id="payments-title">Co už máme doma.</h2></div></div><p class="received-total" id="received-total"></p><p class="muted small">Inkaso ve vybraný den</p><div class="payment-list" id="payment-list"></div><div class="payment-note" id="payment-note"></div></section>
+    </div>
+    <section class="panel debts-panel" id="debts" aria-labelledby="debts-title"><div class="panel-heading"><div><p class="eyebrow">ZBÝVÁ DOŘEŠIT</p><h2 id="debts-title">Dluhy</h2></div><strong class="debt-total" id="debt-total"></strong></div><p class="muted section-intro">Neuhrazené dokončené objednávky k vybranému dni. Úhrada se zapíše k tomuto dni do ukázkového inkasa.</p><div id="debt-list" class="debt-list"></div></section>
+    <section class="panel closure-panel" id="closure" aria-labelledby="closure-title"><div class="closure-intro"><p class="eyebrow">DOBŘE UZAVŘENÝ DEN</p><h2 id="closure-title">Denní uzávěrka</h2><p>Ověřte přijaté platby a hotovost z dnešních objednávek. Pak uzávěrku uložte v této ukázce.</p><span class="closure-tag" id="closure-tag">Čeká na uzavření</span><p class="closure-fine">Hotovost nezahrnuje počáteční vklad ani provozní výdaje. Uzavřený den už v ukázce nelze měnit.</p></div><div class="closure-content"><dl class="closure-summary" id="closure-summary"></dl><form id="closure-form"><label class="cash-label" for="counted-cash">Skutečně přijatá hotovost <span>Kč</span></label><input id="counted-cash" name="countedCash" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Zadejte spočítanou částku" required aria-describedby="cash-help"><p id="cash-help" class="small muted">Zadejte hotovost z plateb uvedených v přehledu.</p><p id="cash-difference" class="cash-difference" aria-live="polite"></p><button type="submit" class="button button-green" id="prepare-closure">Zkontrolovat uzávěrku <span aria-hidden="true">→</span></button></form><div id="saved-closure" hidden></div></div></section>
+    <footer class="admin-footer"><span>PiPizza · Cestou, necestou</span><span>Návrh administrace · ukázková data</span></footer>
+    <noscript><p class="demo-notice">Pro přehled a místní ukázkové operace povolte JavaScript.</p></noscript>
+  </main>
+  <dialog id="action-dialog" aria-labelledby="action-title"><form method="dialog"><button class="dialog-close" aria-label="Zavřít okno" value="cancel">×</button></form><p class="eyebrow">POUZE V TÉTO UKÁZCE</p><h2 id="action-title"></h2><div id="action-body"></div><div class="dialog-actions"><button class="button button-outline" type="button" id="action-cancel">Zpět</button><button class="button button-green" type="button" id="action-confirm">Potvrdit</button></div></dialog>
+</body>
+</html>

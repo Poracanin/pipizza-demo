@@ -1,0 +1,117 @@
+/* The light letter fill sampled from assets/images/logo-full.png. */
+:root {
+  --brand-green: #79b43e;
+  --brand-green-hover: #8bc74c;
+  --brand-green-ink: #17230d;
+  --brand-green-border: #79b43e70;
+  --brand-red: #d92b27;
+  --brand-red-hover: #c82220;
+  --brand-red-ink: #ffffff;
+  --green: var(--brand-green);
+  --accent: var(--brand-green);
+  --green-dark: #1c2b12;
+  --green-soft: #28341d;
+}
+
+/* Use the logo fill for solid green controls; dark lettering keeps them legible. */
+.button-green,
+.site-header .header-actions .cart-toggle,
+.floating-cart,
+#product-page .detail-buy,
+#cart-dialog .cart-upsell-add {
+  background: var(--brand-green);
+  color: var(--brand-green-ink);
+  border-color: #a0ce6c;
+  box-shadow: inset 0 1px 0 #ffffff1a;
+}
+.button-green:hover,
+.site-header .header-actions .cart-toggle:hover,
+.floating-cart:hover,
+#product-page .detail-buy:hover,
+#cart-dialog .cart-upsell-add:hover { background:var(--brand-green-hover); color:var(--brand-green-ink); }
+
+/* The catalog action uses the same solid treatment in a warm red. */
+.product-card .add-button {
+  background:var(--brand-red);
+  color:var(--brand-red-ink);
+  border-color:#ef514a;
+  border-radius:7px;
+  box-shadow:inset 0 1px 0 #ffffff1a;
+}
+.product-card .add-button:hover {
+  background:var(--brand-red-hover);
+  color:var(--brand-red-ink);
+  border-color:#ef514a;
+}
+
+.site-header .cart-count, .floating-cart-icon b { background:#edf5e1; color:var(--brand-green-ink); }
+.floating-cart-label small { color:#293c15; }
+#product-page .pizza-base-options label:has(input:checked) { background:var(--brand-green); border-color:#a0ce6c; color:var(--brand-green-ink); box-shadow:none; }
+#product-page .pizza-base-options label:has(input:checked) small, .base-check { color:#293c15; }
+#product-page .pizza-base-options input { accent-color:var(--brand-green); }
+#product-page .ingredient-row[aria-pressed=true] { background:var(--green-soft); border-color:var(--brand-green); }
+#product-page .ingredient-row[aria-pressed=true] .ingredient-indicator { background:var(--brand-green); border-color:var(--brand-green); color:var(--brand-green-ink); }
+#product-page .ingredient-row:hover, .half-picker:hover { border-color:var(--brand-green); }
+#product-page .ingredient-free small, #product-page .ingredient-scope-note { color:var(--brand-green); }
+#product-page .ingredient-free[aria-pressed=true] small { background:#79b43e1f; color:#a9d37b; }
+#product-page .ingredient-exchange-status { color:#b4dc89; background:#79b43e12; border-color:var(--brand-green); }
+#product-page .detail-order-bar { border-color:var(--brand-green-border); }
+#product-page #editor-extra-summary { color:#a9cb86; }
+#product-page .pizza-base-field legend>span, .recipe-label>span, .half-choice b, .half-choice>.icon { color:var(--brand-green); }
+.half-choice[aria-pressed=true], .half-whole[aria-pressed=true] { background:var(--green-soft); border-color:var(--brand-green); color:var(--ink); }
+.half-choice:hover { background:#79b43e15; border-color:var(--brand-green); }
+.half-ingredients-heading { background:var(--green-soft); border-color:var(--brand-green-border); }
+.half-ingredients-heading small { color:#b4d095; }
+.half-ingredients-heading>span { color:var(--brand-green); }
+.menu-browser .category::after, .categories-pinned .menu-browser .category::after { background:var(--brand-green); }
+.product-card .product-number, .product-label.vegetarian-label, .vegetarian-label svg { color:var(--brand-green); }
+.menu-result-count { color:var(--brand-green); background:#79b43e0d; border-color:#79b43e26; }
+.cart-flight { border-color:var(--brand-green-border); }
+.toast { background:var(--brand-green); border-color:#a0ce6c; color:var(--brand-green-ink); }
+#kontakt .hours { background:var(--green-soft); border-color:var(--brand-green-border); }
+#kontakt .hours h3 { color:var(--brand-green); }
+.promo-banners .hero-offer { background:linear-gradient(110deg,#202e15,#496e26); }
+.promo-banners .hero-offer::before { background:radial-gradient(ellipse at 76% 90%,#79b43e40,transparent 58%),repeating-linear-gradient(125deg,transparent 0 100px,#ffffff05 101px 102px); }
+.promo-banners .hero-offer .hero-cta { color:#304a18; }
+
+/* Matching selected states throughout the ordering flow. */
+.checkout-dialog .checkout-steps li[aria-current]>span, .checkout-dialog .checkout-steps li.done>span,
+.checkout-dialog .tip-options input:checked+span, .success-check { background:var(--brand-green); color:var(--brand-green-ink); }
+.checkout-dialog .checkout-choice input:checked+span, .checkout-dialog .time-options input:checked+span { background:var(--green-soft); border-color:var(--brand-green); }
+.checkout-dialog .checkout-choice input:checked+span i { border-color:var(--brand-green); }
+.checkout-dialog .checkout-form input:focus, .checkout-dialog .checkout-form textarea:focus { border-color:var(--brand-green); box-shadow:0 0 0 2px #79b43e25; }
+.checkout-dialog .address-suggestions button:hover, .checkout-dialog .address-suggestions button[aria-selected=true] { background:var(--green-soft); }
+.checkout-dialog .summary-title>span { color:var(--brand-green); }
+/* Dark green is reserved for text over the light delivery map panel. */
+.coverage-toolbar i, .pizzeria-pin span { background:var(--brand-green); }
+.pizzeria-pin span { color:var(--brand-green-ink); }
+.coverage-address-wrap>.icon, .coverage-toolbar button { color:#476d23; }
+.coverage-address-wrap .address-suggestions button:hover, .coverage-address-wrap .address-suggestions button[aria-selected=true] { background:#edf4e3; }
+
+/* Make the half-pizza invitation read as a heading. */
+.half-picker strong { font:400 27px/1.1 var(--display); letter-spacing:.25px; }
+.half-picker small { font-size:11px; line-height:1.4; margin-top:6px; }
+.half-picker { border-color:#79b43e40; }
+
+/* The sticky overview always reflects the selected pair. */
+#product-page .detail-hero-photo { position:relative; }
+#product-page .detail-overview.is-split .detail-hero-photo>img { position:absolute; inset:0; width:100%; height:100%; }
+#product-page .detail-overview.is-split .detail-hero-photo>img:first-child { clip-path:inset(0 50% 0 0); }
+#product-page .detail-overview.is-split .detail-hero-photo>img+img { clip-path:inset(0 0 0 50%); }
+#product-page .detail-overview.is-split .detail-title-row { align-items:center; }
+#product-page .detail-overview.is-split #detail-title { display:flex; flex-wrap:wrap; gap:3px 14px; }
+.detail-half-name { display:inline-flex; align-items:baseline; gap:5px; }
+.detail-half-name small { font:400 .7em/1 var(--display); color:var(--brand-green); }
+@media(max-width:700px) {
+  .half-picker strong { font-size:25px; }
+  .half-picker small { font-size:10px; }
+  #product-page .detail-overview.is-split { grid-template-columns:52px minmax(0,1fr) auto; }
+  #product-page .detail-overview.is-split .detail-hero-photo { width:52px; height:52px; }
+  #product-page .detail-overview.is-split #detail-title { font-size:24px; gap:2px 10px; }
+}
+@media(max-width:380px) {
+  .half-picker strong { font-size:23px; }
+  #product-page .detail-overview.is-split { grid-template-columns:40px minmax(0,1fr) auto; }
+  #product-page .detail-overview.is-split .detail-hero-photo { width:40px; height:40px; }
+  #product-page .detail-overview.is-split #detail-title { font-size:21px; }
+}

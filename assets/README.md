@@ -2,7 +2,9 @@
 
 ## Logo a mapa
 
-`images/logo-front.png`, `images/logo-back.png`, `images/favicon.gif` a `images/rozvoz.png` pocházejí z archivu původního webu PiPizza. Logo se skládá pomocí CSS ze dvou původních, nezměněných obrázků.
+`images/logo-front.png`, `images/logo-back.png`, `images/favicon.gif` a `images/rozvoz.png` pocházejí z archivu původního webu PiPizza. Původní složené logo zůstává mezi podklady.
+
+`images/logo-full.png` dodal uživatel 5. 10. 2026 jako `logo-full (1).png`. Soubor je zkopírovaný beze změn (1400 × 636 px, RGBA) a obsahuje zelené logo, červenou skvrnu a bílý slogan „CESTOU – NECESTOU“. Obě varianty webu jej používají v navigaci, patičce, objednávce a úvodní animaci.
 
 ## Pizzy
 
@@ -26,3 +28,7 @@ Finální zadání pro suroviny:
 ## Fonty
 
 Lokální fonty Inter a Source Serif jsou převzaté z existujících lokálních WordPress motivů projektu Bellizzi. Licenční informace jsou ve složce `fonts/`.
+
+## Radar rozvozu (5. 10. 2026)
+
+`images/delivery-map.svg` je vektorový podklad sestavený z uživatelem dodaných geometrií RÚIAN / DATA50 (ČÚZK), stažených 30. 9. 2026. Skript `../tools/build-delivery-map.py` zjednodušuje hranice a kreslí mapu bez externího mapového API. Zelené cíle a přerušované spojnice představují **ukázkový rozvoz**, nikoli skutečné polohy řidičů, navigační trasy nebo garantované pokrytí. Zdrojové soubory zůstávají ve složce místních podkladů.

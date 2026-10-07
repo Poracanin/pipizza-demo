@@ -1,0 +1,37 @@
+{
+  "datum": "2026-10-05",
+  "varianty": [
+    "/",
+    "/verze-2/"
+  ],
+  "testy": {
+    "prikaz": "node --test tests/*.test.cjs",
+    "proslo": 40,
+    "selhalo": 0
+  },
+  "kontroly": [
+    "JavaScript syntaxe",
+    "Bez duplicit HTML id",
+    "Lokální HTML odkazy a soubory existují",
+    "git diff --check"
+  ],
+  "prohlizec": {
+    "konfigurator": "Obě varianty: půlení za 241 Kč, příplatek +29, standardní výměna zdarma, editace košíku zachovává základy a poznámky.",
+    "checkout": "Dokončená QR demo objednávka 219 Kč na čas a půlená pizza 241 Kč; bez poplatku, košík po dokončení prázdný.",
+    "doruceni": "Přepnutí radaru na 2 čtverečky se promítlo do checkoutu jako cca 1 hodina 25 minut. Nabídka termínů v Praze ověřena.",
+    "logo_intro": "Úvodní animace zobrazena, při následném reloadu se neopakovala; slogan zůstává viditelný i ve zmenšené navigaci.",
+    "mobil": [
+      390,
+      320
+    ],
+    "mobilni_prehled": "Nabídka, konfigurátor, platby a mapa bez vodorovného přetékání.",
+    "administrace": "Změna dne, QR úhrada dluhu, inkaso, uzávěrka, persistence po reloadu a reset; desktop 390/320 bez přetékání.",
+    "konzole": "Bez zachycených JS chyb."
+  },
+  "omezeni": [
+    "Radar používá ukázkové cíle, nemá živé GPS.",
+    "Administrace má syntetická lokální data.",
+    "Platby a objednávky jsou simulované; skutečný platební QR a účtenka vyžadují produkční napojení.",
+    "Změny nejsou publikované na GitHub Pages."
+  ]
+}

@@ -1,0 +1,282 @@
+/* Pizza Visi typography mapped onto PiPizza's existing order components.
+   This file is loaded only by verze-2; it does not change layout, colors or rules. */
+#product-page,
+#cart-dialog,
+#checkout-dialog {
+  font-family: var(--sans);
+  font-synthesis: none;
+}
+
+/* Pizza detail and ingredient editor. */
+#product-page .detail-intro .eyebrow {
+  font: 400 14px/1.2 var(--display);
+  letter-spacing: 1.3px;
+}
+#product-page #detail-title {
+  font: 400 clamp(36px, 3.6vw, 48px)/1 var(--display);
+  letter-spacing: .3px;
+}
+#product-page .detail-title-row > strong {
+  font: 400 30px/1 var(--display);
+  letter-spacing: 0;
+}
+#product-page .detail-description {
+  font: 400 13px/1.6 var(--sans);
+  letter-spacing: 0;
+}
+#product-page .detail-back {
+  font: 600 12px/1.2 var(--sans);
+  letter-spacing: 0;
+}
+#product-page .customization-heading h2,
+#product-page .group-title,
+#product-page .premium-ingredients .group-title,
+#product-page .premium-ingredients > h3 {
+  font: 400 23px/1.1 var(--display);
+  letter-spacing: .4px;
+}
+#product-page .ingredient-removal .group-title {
+  font: 400 22px/1 var(--display);
+  letter-spacing: .4px;
+}
+#product-page .ingredient-row strong,
+#product-page .ingredient-row.selected strong {
+  font: 400 12px/1.35 var(--sans);
+  letter-spacing: 0;
+}
+#product-page .ingredient-row small,
+#product-page .premium-ingredients > h3 span {
+  font: 500 11px/1.35 var(--sans);
+  letter-spacing: 0;
+}
+#product-page .pizza-base-field legend,
+#product-page .pizza-half-label {
+  font: 500 11px/1.4 var(--sans);
+  letter-spacing: .5px;
+}
+#product-page .pizza-base-options label,
+#product-page #pizza-half {
+  font: 400 12px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#product-page .customization-heading p,
+#product-page .ingredient-swap-rule,
+#product-page .ingredient-scope-note,
+#product-page .pizza-half-rule,
+#product-page .premium-ingredients > p,
+#product-page .detail-note,
+#product-page .detail-price-promise {
+  font: 400 11px/1.6 var(--sans);
+  letter-spacing: 0;
+}
+#product-page .product-note > span {
+  font: 500 12px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#product-page .product-note textarea {
+  font: 400 12px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#product-page .detail-buy {
+  font: 400 20px/1.2 var(--display);
+  letter-spacing: .5px;
+}
+#product-page .detail-order-summary strong {
+  font: 400 22px/1 var(--display);
+  letter-spacing: 0;
+}
+#product-page .detail-quantity > span {
+  font: 500 14px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+
+/* Cart drawer. */
+#cart-dialog .dialog-header h2 {
+  font: 400 30px/1 var(--display);
+  letter-spacing: .2px;
+}
+#cart-dialog .cart-heading-count {
+  font: 400 12px/1 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-row h3 {
+  font: 400 27px/1.05 var(--display);
+  letter-spacing: .2px;
+}
+#cart-dialog .cart-line-meta,
+#cart-dialog .cart-edit {
+  font: 400 12px/1.3 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-modification {
+  font: 400 12px/1.45 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-line-note {
+  font: 400 11px/1.45 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-line-purchase > strong {
+  font: 400 29px/1 var(--display);
+  letter-spacing: .2px;
+}
+#cart-dialog .quantity-controls > span {
+  font: 500 14px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-price-lines {
+  font: 400 13px/1.45 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-price-lines strong { font-weight: 500; }
+#cart-dialog .cart-total {
+  font: 400 16px/1.2 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-total strong {
+  font: 400 34px/1 var(--display);
+  letter-spacing: .2px;
+}
+#cart-dialog #start-checkout {
+  font: 400 19px/1.2 var(--display);
+  letter-spacing: .35px;
+}
+#cart-dialog .cart-continue {
+  font: 400 12px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-upsell h3 {
+  font: 400 25px/1.1 var(--display);
+  letter-spacing: .2px;
+}
+#cart-dialog .cart-upsell-name {
+  font: 500 13px/1.3 var(--sans);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-upsell-card > strong {
+  font: 400 24px/1 var(--display);
+  letter-spacing: 0;
+}
+#cart-dialog .cart-empty h3 {
+  font: 400 30px/1.2 var(--display);
+  letter-spacing: .2px;
+}
+#cart-dialog .cart-empty .button {
+  font: 400 20px/1.2 var(--display);
+  letter-spacing: .5px;
+}
+
+/* Checkout and confirmation. */
+#checkout-dialog .checkout-panel h2 {
+  font: 400 48px/1 var(--display);
+  letter-spacing: .4px;
+}
+#checkout-dialog .choice-field legend {
+  font: 400 23px/1.1 var(--display);
+  letter-spacing: .4px;
+}
+#checkout-dialog .choice-field legend > small {
+  font: 400 10px/1.5 var(--sans);
+  letter-spacing: 0;
+}
+#checkout-dialog .checkout-fields label,
+#checkout-dialog .address-label,
+#checkout-dialog .checkout-note,
+#checkout-dialog #scheduled-time-label {
+  font: 400 12px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#checkout-dialog .checkout-form input:not([type=radio]),
+#checkout-dialog .checkout-form textarea,
+#checkout-dialog .checkout-form select {
+  font: 400 13px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#checkout-dialog .payment-options .checkout-choice strong {
+  font: 400 11px/1.3 var(--sans);
+  letter-spacing: 0;
+}
+#checkout-dialog .payment-options .checkout-choice small {
+  font: 400 8px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#checkout-dialog .summary-title h3 {
+  font: 400 29px/1.05 var(--display);
+  letter-spacing: .3px;
+}
+#checkout-dialog #checkout-order-items strong {
+  font: 500 11px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#checkout-dialog #checkout-order-items small {
+  font: 400 9px/1.45 var(--sans);
+  letter-spacing: 0;
+}
+#checkout-dialog .summary-grand-total strong {
+  font: 400 31px/1 var(--display);
+  letter-spacing: .3px;
+}
+#checkout-dialog .checkout-foot > div strong {
+  font: 400 28px/1.1 var(--display);
+  letter-spacing: .2px;
+}
+#checkout-dialog .checkout-foot .button {
+  font: 400 21px/1.15 var(--display);
+  letter-spacing: .5px;
+}
+#checkout-dialog .checkout-back {
+  font: 400 13px/1.4 var(--sans);
+  letter-spacing: 0;
+}
+#checkout-dialog .review-heading h3 {
+  font: 400 23px/1.1 var(--display);
+  letter-spacing: .4px;
+}
+#checkout-dialog .checkout-success h2 {
+  font: 400 58px/1.02 var(--display);
+  letter-spacing: .4px;
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  #product-page .customization-heading h2,
+  #product-page .group-title,
+  #product-page .premium-ingredients .group-title,
+  #product-page .premium-ingredients > h3,
+  #checkout-dialog .choice-field legend { font-size: 21px; }
+  #product-page .ingredient-removal .group-title { font-size: 22px; }
+  #checkout-dialog .checkout-panel h2 { font-size: 42px; }
+  #checkout-dialog .checkout-success h2 { font-size: 58px; }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  #product-page .ingredient-row strong,
+  #product-page .ingredient-row.selected strong { font-size: 13px; }
+  #product-page .ingredient-row small { font-size: 12px; }
+}
+@media (max-width: 900px) {
+  #checkout-dialog .checkout-form input:not([type=radio]),
+  #checkout-dialog .checkout-form textarea,
+  #checkout-dialog .checkout-form select { font-size: 16px; }
+}
+@media (max-width: 600px) {
+  #product-page .detail-intro .eyebrow { font-size: 12px; letter-spacing: .8px; }
+  #product-page #detail-title { font-size: clamp(28px, 6.4vw, 38px); line-height: 1.02; }
+  #product-page .detail-description { font-size: 12px; }
+  #product-page .detail-back { font-size: 11px; }
+  #product-page .product-note > span { font-size: 13px; }
+  #product-page .product-note textarea { font-size: 16px; }
+  #product-page .detail-buy { font-size: 18px; letter-spacing: .2px; }
+  #product-page .detail-order-summary strong { font-size: 20px; }
+  #checkout-dialog .checkout-panel h2 { font-size: 45px; }
+  #checkout-dialog .payment-options .checkout-choice strong { font-size: 12px; }
+  #checkout-dialog .payment-options .checkout-choice small { font-size: 10px; }
+  #checkout-dialog .checkout-success h2 { font-size: 45px; }
+}
+@media (max-width: 370px) {
+  #product-page .pizza-base-options label,
+  #product-page #pizza-half { font-size: 11px; }
+}
+@media (max-width: 360px) {
+  #cart-dialog .cart-row h3 { font-size: 24px; }
+  #cart-dialog .cart-line-purchase > strong { font-size: 27px; }
+  #cart-dialog .cart-upsell h3 { font-size: 22px; }
+}

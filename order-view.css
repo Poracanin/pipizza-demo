@@ -1,0 +1,274 @@
+/* Shared order presentation. PiPizza prices, payment and delivery rules stay in their models. */
+.cart-dialog {
+  width: 500px;
+  max-width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  margin: 0 0 0 auto;
+  padding: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--cream);
+}
+.cart-dialog[open] { display: flex; flex-direction: column; }
+.cart-dialog .dialog-header {
+  position: static;
+  flex: none;
+  min-height: 58px;
+  margin: 0;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+  gap: 12px;
+}
+.cart-dialog .dialog-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  color: var(--ink);
+  font: 500 30px/1.1 var(--display, 'Oswald', sans-serif);
+  text-transform: uppercase;
+  letter-spacing: .2px;
+}
+.cart-dialog .dialog-header h2:focus { outline: none; }
+.cart-heading-count {
+  display: grid;
+  place-items: center;
+  min-width: 23px;
+  height: 23px;
+  padding-inline: 4px;
+  border-radius: 50%;
+  color: var(--accent, var(--green));
+  background: var(--surface);
+  font: 600 12px/1 var(--sans);
+}
+.cart-dialog .dialog-header .close-dialog {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  background: var(--surface);
+}
+.cart-dialog .dialog-header .close-dialog .icon { width: 20px; height: 20px; }
+.cart-dialog button:focus-visible { outline: 2px solid var(--accent, var(--green)); outline-offset: -3px; }
+.cart-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.cart-body { padding: 12px 18px 0; }
+.cart-branch { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 1.4; }
+.cart-branch .icon { width: 16px; height: 18px; color: var(--accent, var(--green)); }
+.cart-next-step-note { margin: 4px 0 0 24px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.cart-dialog #cart-items { margin-top: 10px; }
+.cart-dialog .cart-row { display: grid; grid-template-columns: 66px minmax(0, 1fr); gap: 12px; padding: 12px 0; align-items: start; }
+.cart-dialog .cart-row > img,
+.cart-dialog .cart-row > .simple-product-art { width: 66px; height: 66px; min-height: 0; margin-top: 3px; border-radius: 6px; object-fit: contain; }
+.cart-dialog .cart-row > img { border-radius: 50%; }
+.cart-dialog .cart-row > .simple-product-art { display: grid; place-items: center; background: var(--surface); color: var(--accent, var(--green)); }
+.cart-dialog .cart-row > .simple-product-art .icon { width: 34px; height: 34px; }
+.cart-line-copy { min-width: 0; }
+.cart-line-title { display: flex; align-items: center; gap: 8px; min-height: 28px; }
+.cart-dialog .cart-row h3 { font: 500 27px/1.08 var(--display, 'Oswald', sans-serif); text-transform: uppercase; letter-spacing: .2px; overflow-wrap: anywhere; }
+.cart-dialog .cart-remove { flex: none; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; margin: -3px -4px -3px auto; border-radius: 50%; color: var(--muted); }
+.cart-dialog .cart-remove .icon { width: 18px; height: 18px; }
+.cart-dialog .cart-remove:hover { background: var(--surface); }
+.cart-line-meta { display: flex; align-items: center; min-height: 26px; }
+.cart-line-meta:empty { display: none; }
+.cart-dialog .cart-edit { padding: 4px 0; color: var(--accent, var(--green)); background: transparent; font-size: 12px; line-height: 1.4; text-decoration: underline; text-underline-offset: 3px; }
+.cart-dialog .cart-modification { font-size: 11px; line-height: 1.5; margin-top: 3px; color: var(--muted); overflow-wrap: anywhere; }
+.cart-line-purchase { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 7px; }
+.cart-line-purchase > strong { font: 500 29px/1 var(--display, 'Oswald', sans-serif); color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: .2px; }
+.cart-dialog .quantity-controls { display: flex; align-items: center; gap: 0; margin: 0; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; background: var(--surface); }
+.cart-dialog .quantity-controls button { width: 36px; height: 36px; min-height: 36px; border: 0; border-radius: 0; background: transparent; }
+.cart-dialog .quantity-controls button:hover { background: var(--border); }
+.cart-dialog .quantity-controls > span { min-width: 26px; text-align: center; font-size: 14px; font-weight: 500; }
+.cart-dialog .quantity-controls .icon { width: 16px; height: 16px; }
+.cart-upsell { padding: 14px 0 18px; }
+.cart-upsell-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 9px; }
+.cart-upsell h3 { font: 500 25px/1.1 var(--display, 'Oswald', sans-serif); text-transform: uppercase; letter-spacing: .2px; }
+.cart-upsell-nav { display: flex; gap: 5px; }
+.cart-upsell-nav button { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: var(--accent, var(--green)); background: var(--surface); font-size: 20px; }
+.cart-upsell-grid { display: flex; gap: 9px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--border) transparent; padding-bottom: 6px; }
+.cart-upsell-card { display: grid; grid-template-columns: 52px minmax(0, 1fr); grid-template-rows: 1fr auto; column-gap: 7px; row-gap: 5px; flex: 0 0 200px; width: 200px; min-height: 106px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--ink); text-align: left; scroll-snap-align: start; }
+.cart-upsell-card:hover { border-color: var(--accent, var(--green)); }
+.cart-upsell-photo { display: flex; align-items: center; justify-content: center; grid-column: 1; grid-row: 1 / 3; width: 52px; height: 80px; margin: 0; color: var(--accent, var(--green)); }
+.cart-upsell-photo img { width: 52px; height: 80px; object-fit: contain; }
+.cart-upsell-photo > .icon { width: 43px; height: 56px; stroke-width: 1.3; }
+.cart-upsell-name { align-self: center; font-size: 13px; font-weight: 600; line-height: 1.3; }
+.cart-upsell-name small { display: block; font-size: 10px; font-weight: 400; margin-top: 4px; color: var(--muted); }
+.cart-upsell-card > strong { display: flex; justify-content: space-between; align-items: center; gap: 8px; font: 500 24px/1 var(--display, 'Oswald', sans-serif); }
+.cart-upsell-add { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--green); color: #fff; }
+.cart-upsell-add .icon { width: 16px; height: 16px; }
+.cart-dialog #cart-summary { flex: none; padding: 10px 18px calc(6px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); background: var(--cream); }
+.cart-price-lines { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; font-size: 12px; line-height: 1.5; }
+.cart-price-lines strong { text-align: right; color: var(--accent, var(--green)); font-weight: 500; }
+.cart-dialog .cart-total { margin: 8px 0 0; padding-top: 9px; border-top: 1px solid var(--border); font-size: 15px; line-height: 1.2; }
+.cart-dialog .cart-total strong { color: var(--ink); font: 500 34px/1 var(--display, 'Oswald', sans-serif); letter-spacing: .2px; }
+.cart-dialog #start-checkout { min-height: 46px; padding: 10px 16px; margin-top: 10px; border-radius: 6px; font: 500 19px/1.2 var(--display, 'Oswald', sans-serif); text-transform: uppercase; letter-spacing: .35px; }
+.cart-dialog .cart-continue { display: block; min-height: 30px; padding: 4px 8px; margin: 2px auto 0; background: transparent; color: var(--muted); font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+.cart-dialog .fine-print { margin: 0; color: var(--muted); text-align: center; font-size: 9px; line-height: 1.4; }
+.cart-dialog .cart-empty { padding: 55px 10px; }
+.cart-dialog .cart-empty h3 { font: 500 30px/1.2 var(--display, 'Oswald', sans-serif); text-transform: uppercase; letter-spacing: .2px; }
+.cart-dialog .cart-empty .button { border-radius: 6px; font: 500 20px/1.2 var(--display, 'Oswald', sans-serif); text-transform: uppercase; }
+
+/* Full-page checkout with a compact form, summary and persistent next action. */
+.checkout-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  border-radius: 0;
+  padding: 0 0 115px;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-padding: 20px 0 130px;
+}
+.checkout-dialog .checkout-head { min-height: 70px; padding: 8px max(24px, calc((100% - 1100px) / 2)); background: var(--cream); border-color: var(--border); }
+.checkout-dialog .checkout-head-caption { color: var(--muted); font-size: 11px; }
+.checkout-dialog .checkout-head .icon-button { width: 36px; height: 36px; background: var(--surface); }
+.checkout-dialog .checkout-steps { width: min(1100px, calc(100% - 48px)); margin: 0 auto; justify-content: flex-start; gap: 55px; padding: 18px 0; background: var(--cream); border-color: var(--border); }
+.checkout-dialog .checkout-steps li { color: var(--muted); font-size: 11px; }
+.checkout-dialog .checkout-steps li[aria-current], .checkout-dialog .checkout-steps li.done { color: var(--accent, var(--green)); }
+.checkout-dialog .checkout-steps li > span { width: 23px; height: 23px; background: var(--surface); color: var(--muted); }
+.checkout-dialog .checkout-steps li[aria-current] > span, .checkout-dialog .checkout-steps li.done > span { background: var(--green); color: #fff; }
+.checkout-dialog .checkout-steps li:not(:last-child)::after { background: var(--border); }
+.checkout-dialog .checkout-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(300px, 1fr); width: min(1100px, calc(100% - 48px)); margin: 0 auto; padding: 24px 0 30px; gap: 30px; align-items: start; }
+.checkout-dialog .checkout-panel > .eyebrow { color: var(--accent, var(--green)); font-size: 9px; }
+.checkout-dialog .checkout-panel h2 { margin-top: 6px; color: var(--ink); font: 500 46px/1.1 var(--display, 'Oswald', sans-serif); letter-spacing: .4px; text-transform: uppercase; }
+.checkout-dialog .checkout-lead { margin: 10px 0 22px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.checkout-dialog .choice-field { margin-bottom: 20px; }
+.checkout-dialog .choice-field legend { margin-bottom: 10px; color: var(--ink); font: 500 23px/1.15 var(--display, 'Oswald', sans-serif); letter-spacing: .3px; text-transform: uppercase; }
+.checkout-dialog .choice-field legend > small { font: 400 10px/1.4 var(--sans); color: var(--muted); text-transform: none; letter-spacing: 0; }
+.checkout-dialog .fulfillment-options { grid-template-columns: 1fr 1fr; gap: 10px; }
+.checkout-dialog .checkout-choice > span { min-height: 61px; padding: 10px 12px; gap: 9px; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); box-shadow: none; }
+.checkout-dialog .checkout-choice input:checked + span { border-color: var(--accent, var(--green)); background: var(--green-soft); box-shadow: none; }
+.checkout-dialog .checkout-choice strong { font-size: 12px; }
+.checkout-dialog .checkout-choice small { color: var(--muted); font-size: 9px; line-height: 1.45; margin-top: 3px; }
+.checkout-dialog .checkout-choice i { width: 14px; height: 14px; border-color: var(--border); }
+.checkout-dialog .checkout-choice input:checked + span i { border-color: var(--accent, var(--green)); background: var(--cream); }
+.checkout-dialog .checkout-fields { grid-template-columns: 1fr 1fr; gap: 14px 13px; margin-bottom: 18px; }
+.checkout-dialog .field-full { grid-column: 1 / -1; }
+.checkout-dialog .checkout-fields label, .checkout-dialog .address-label, .checkout-dialog .checkout-note, .checkout-dialog #scheduled-time-label { color: var(--ink); font-size: 12px; font-weight: 500; }
+.checkout-dialog .checkout-form input:not([type=radio]), .checkout-dialog .checkout-form textarea, .checkout-dialog .checkout-form select { min-height: 41px; padding: 10px 12px; margin-top: 6px; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); color: var(--ink); font: 400 13px/1.4 var(--sans); }
+.checkout-dialog .checkout-form input:focus, .checkout-dialog .checkout-form textarea:focus, .checkout-dialog .checkout-form select:focus { border-color: var(--accent, var(--green)); box-shadow: 0 0 0 2px var(--green-soft); }
+.checkout-dialog .checkout-form input[aria-invalid=true], .checkout-dialog .checkout-form select[aria-invalid=true] { border-color: var(--red); }
+.checkout-dialog .address-wrap { margin-top: 6px; }
+.checkout-dialog .address-wrap #checkout-address { margin: 0; padding-left: 39px; padding-right: 35px; }
+.checkout-dialog .address-wrap > svg { top: 12px; color: var(--accent, var(--green)); }
+.checkout-dialog #address-clear { top: 6px; color: var(--muted); }
+.checkout-dialog .address-suggestions { border-color: var(--border); border-radius: 5px; background: var(--cream); }
+.checkout-dialog .address-suggestions button { border-color: var(--border); }
+.checkout-dialog .address-suggestions button:hover, .checkout-dialog .address-suggestions button[aria-selected=true] { background: var(--surface); }
+.checkout-dialog .field-help { color: var(--muted); font-size: 10px; }
+.checkout-dialog .selected-address, .checkout-dialog .pickup-card { padding: 12px; border-color: var(--border); border-radius: 5px; background: var(--green-soft); }
+.checkout-dialog .time-field { margin-top: 20px; }
+.checkout-dialog .checkout-delivery-estimate { padding: 10px 12px; border-radius: 5px; background: var(--green-soft); }
+.checkout-dialog .checkout-delivery-estimate small { color: var(--muted); }
+.checkout-dialog .time-options { grid-template-columns: 1fr 1fr; gap: 10px; }
+.checkout-dialog .time-options span { padding: 10px 12px; border-color: var(--border); border-radius: 5px; background: var(--surface); font-size: 11px; }
+.checkout-dialog .time-options small { color: var(--muted); font-size: 9px; }
+.checkout-dialog .time-options input:checked + span { border-color: var(--accent, var(--green)); background: var(--green-soft); }
+.checkout-dialog .checkout-summary { position: sticky; top: 20px; padding: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+.checkout-dialog .summary-title { padding-bottom: 14px; border-color: var(--border); }
+.checkout-dialog .summary-title h3 { font: 500 29px/1.08 var(--display, 'Oswald', sans-serif); text-transform: uppercase; letter-spacing: .3px; }
+.checkout-dialog .summary-title > span { background: var(--cream); color: var(--accent, var(--green)); }
+.checkout-dialog #checkout-order-items { max-height: none; overflow: visible; }
+.checkout-dialog #checkout-order-items article { padding: 13px 0; border-color: var(--border); }
+.checkout-dialog #checkout-order-items article > img { width: 46px; height: 46px; }
+.checkout-dialog #checkout-order-items small { color: var(--muted); }
+.checkout-dialog .checkout-costs { padding-top: 10px; }
+.checkout-dialog .checkout-costs > div { color: var(--muted); font-size: 11px; padding: 4px 0; }
+.checkout-dialog .checkout-costs .summary-grand-total { padding-top: 12px; margin-top: 9px; border-color: var(--border); color: var(--ink); font-size: 14px; }
+.checkout-dialog .summary-grand-total strong { color: var(--ink); font: 500 31px/1 var(--display, 'Oswald', sans-serif); letter-spacing: .3px; }
+.checkout-dialog .checkout-price-note { padding-top: 12px; margin-top: 14px; border-color: var(--border); color: var(--muted); font-size: 10px; }
+.checkout-dialog .checkout-promise { margin-top: 15px; color: var(--muted); }
+.checkout-dialog .checkout-foot { position: fixed; inset: auto 0 0; width: 100%; padding: 13px max(24px, calc((100% - 1100px) / 2)) max(10px, env(safe-area-inset-bottom)); display: flex; flex-wrap: wrap; align-items: center; column-gap: 24px; row-gap: 7px; background: var(--cream); border-color: var(--border); }
+.checkout-dialog .checkout-back { padding: 10px 13px; margin-right: auto; color: var(--ink); font-size: 12px; font-weight: 400; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); }
+.checkout-dialog .checkout-foot > div small { color: var(--muted); font-size: 10px; }
+.checkout-dialog .checkout-foot > div strong { color: var(--ink); font: 500 28px/1.1 var(--display, 'Oswald', sans-serif); letter-spacing: .2px; }
+.checkout-dialog .checkout-foot .button { min-width: 230px; min-height: 48px; padding: 10px 20px; border-radius: 5px; font: 500 20px/1.2 var(--display, 'Oswald', sans-serif); text-transform: uppercase; letter-spacing: .35px; }
+.checkout-dialog .checkout-preview-notice { flex-basis: 100%; font-size: 9px; line-height: 1.4; color: var(--muted); }
+.checkout-dialog .payment-options { gap: 10px; }
+.checkout-dialog .payment-group-caption { color: var(--ink); }
+.checkout-dialog .payment-group-caption > small { color: var(--muted); }
+.checkout-dialog .payment-caption-line { background: var(--border); }
+.checkout-dialog .payment-options .checkout-choice > span { min-height: 72px; padding: 12px; border-radius: 5px; }
+.checkout-dialog .payment-options .checkout-choice:hover > span { border-color: var(--accent, var(--green)); }
+.checkout-dialog .wallet-methods, .checkout-dialog .receipt-methods { gap: 10px; }
+.checkout-dialog .payment-options .payment-wallet > span { min-height: 87px; background: var(--surface); }
+.checkout-dialog .payment-options .payment-wallet input:checked + span { background: var(--green-soft); }
+.checkout-dialog .payment-wallet .wallet-logo { width: 82px; height: 36px; }
+.checkout-dialog .payment-method-icon { border-radius: 5px; background: var(--green-soft); color: var(--accent, var(--green)); }
+.checkout-dialog .payment-method-copy small { color: var(--muted); }
+.checkout-dialog .tip-options span { border-color: var(--border); border-radius: 5px; background: var(--surface); }
+.checkout-dialog .tip-options input:checked + span { background: var(--green); color: #fff; border-color: var(--accent, var(--green)); }
+.checkout-dialog .checkout-review { border-color: var(--border); border-radius: 5px; background: var(--surface); }
+.checkout-dialog .review-heading h3 { font: 500 22px/1.1 var(--display, 'Oswald', sans-serif); text-transform: uppercase; letter-spacing: .2px; }
+.checkout-dialog .checkout-success h2 { font-size: 48px; }
+.checkout-dialog .order-reference { background: var(--surface); border-color: var(--border); border-radius: 5px; }
+.checkout-dialog .checkout-heart { color: var(--red); }
+.checkout-dialog[data-step="3"] .checkout-layout { grid-template-columns: minmax(0, 670px); justify-content: center; }
+.checkout-dialog[data-step="3"] .checkout-summary { display: none; }
+
+/* Retain PiPizza's existing neutral wallet brand surfaces in the evening palette. */
+.dark-theme .checkout-dialog .payment-options .payment-wallet > span { background: #f3eee4; border-color: #ddd5c6; }
+.dark-theme .checkout-dialog .payment-options .payment-wallet input:checked + span { background: #e2e8d5; border-color: var(--accent); }
+.dark-theme .checkout-dialog .payment-wallet .payment-method-copy small { color: #645e53; }
+.dark-theme .checkout-dialog .payment-wallet i { border-color: #8f927d; }
+.dark-theme .checkout-dialog .payment-wallet input:checked + span i { background: #f1f4e9; border-color: var(--green); }
+.checkout-dialog .checkout-delivery-estimate { color: var(--accent, var(--green)); }
+.checkout-dialog .checkout-delivery-estimate .delivery-squares i { background: var(--accent, var(--green)); }
+.checkout-dialog #checkout-order-items article > .icon,
+.checkout-dialog .checkout-choice > span > .icon,
+.checkout-dialog .address-suggestions svg,
+.checkout-dialog .checkout-costs .free,
+.checkout-dialog .checkout-promise .icon { color: var(--accent, var(--green)); }
+
+@media (max-width: 900px) {
+  .checkout-dialog .checkout-layout { grid-template-columns: minmax(0, 1fr) minmax(260px, .8fr); gap: 23px; }
+  .checkout-dialog .checkout-summary { padding: 18px; }
+  .checkout-dialog .checkout-panel h2 { font-size: 40px; }
+  .checkout-dialog .fulfillment-options .checkout-choice > span > .icon { display: none; }
+}
+@media (max-width: 700px) {
+  .checkout-dialog { padding-bottom: 145px; scroll-padding-bottom: 160px; }
+  .checkout-dialog .checkout-head { min-height: 65px; padding-inline: 16px; }
+  .checkout-dialog .checkout-steps { width: calc(100% - 32px); padding-block: 15px; gap: 38px; }
+  .checkout-dialog .checkout-steps li { font-size: 10px; gap: 6px; }
+  .checkout-dialog .checkout-layout { width: calc(100% - 32px); grid-template-columns: minmax(0, 1fr); padding-top: 22px; gap: 25px; }
+  .checkout-dialog .checkout-panel h2 { font-size: 42px; }
+  .checkout-dialog .checkout-fields { grid-template-columns: 1fr 1fr; gap: 14px 10px; }
+  .checkout-dialog .checkout-form input:not([type=radio]), .checkout-dialog .checkout-form textarea, .checkout-dialog .checkout-form select { min-height: 47px; font-size: 16px; padding: 12px; }
+  .checkout-dialog .address-wrap > svg { top: 15px; }
+  .checkout-dialog #address-clear { top: 9px; }
+  .checkout-dialog .checkout-choice > span { padding: 10px; }
+  .checkout-dialog .checkout-choice strong { font-size: 11px; }
+  .checkout-dialog .checkout-choice small { font-size: 9px; }
+  .checkout-dialog .checkout-summary { position: static; padding: 20px; }
+  .checkout-dialog .checkout-foot { display: grid; grid-template-columns: 1fr auto; gap: 8px 10px; padding: 10px 16px max(10px, env(safe-area-inset-bottom)); }
+  .checkout-dialog .checkout-back { grid-row: 1; grid-column: 1; padding: 7px 10px; font-size: 10px; }
+  .checkout-dialog .checkout-foot > div { grid-row: 1; grid-column: 2; text-align: right; }
+  .checkout-dialog .checkout-foot > div small { display: inline; margin-right: 5px; }
+  .checkout-dialog .checkout-foot > div strong { font-size: 25px; }
+  .checkout-dialog .checkout-foot .button { grid-row: 2; grid-column: 1 / -1; width: 100%; min-width: 0; min-height: 48px; font-size: 20px; }
+  .checkout-dialog .checkout-preview-notice { grid-row: 3; grid-column: 1 / -1; text-align: center; font-size: 8px; }
+  .checkout-dialog .checkout-success h2 { font-size: 42px; }
+}
+@media (max-width: 380px) {
+  .cart-dialog .dialog-header, .cart-dialog #cart-summary { padding-inline: 12px; }
+  .cart-body { padding-inline: 12px; }
+  .cart-dialog .dialog-header h2 { font-size: 27px; }
+  .cart-dialog .cart-row { grid-template-columns: 48px minmax(0, 1fr); gap: 9px; }
+  .cart-dialog .cart-row > img, .cart-dialog .cart-row > .simple-product-art { width: 48px; height: 48px; }
+  .cart-dialog .cart-row h3 { font-size: 24px; }
+  .cart-line-purchase > strong { font-size: 27px; }
+  .checkout-dialog .checkout-steps { gap: 28px; }
+  .checkout-dialog .checkout-fields { grid-template-columns: 1fr; }
+  .checkout-dialog .checkout-panel h2 { font-size: 37px; }
+  .checkout-dialog .time-options span { padding: 10px; font-size: 10px; }
+  .checkout-dialog .payment-options .checkout-choice > span { padding: 10px; }
+  .checkout-dialog .payment-options .payment-receipt > span { gap: 6px; }
+}

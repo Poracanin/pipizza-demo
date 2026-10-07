@@ -1,0 +1,28 @@
+{
+  "datum": "2026-10-05",
+  "reference": "https://poracanin.github.io/pizza-visi/",
+  "rozsah": "Pouze vzhled nabídky, konfigurátoru, košíku a objednávky; vlastní logo a barvy PiPizza.",
+  "logo": "assets/images/logo-full.png, dodáno uživatelem, beze změny",
+  "automaticke_testy": {
+    "proslo": 40,
+    "selhalo": 0
+  },
+  "kontroly": [
+    "Syntaxe JavaScriptu a git diff --check bez chyby",
+    "Obě HTML bez duplicitních ID a chybějících lokálních souborů",
+    "Šest souborů modelů a menu má shodný SHA-256 se stavem před vizuální úpravou",
+    "Vizuální kontrola tmavé i světlé varianty",
+    "Mobilní šířky 320 a 390 px, tablet 760 px a desktop 1440 px bez horizontálního přetečení",
+    "Mobilní editor: název vedle fotografie, volby surovin, spodní objednávací lišta",
+    "Půlená Margarita / Oregon: 241 Kč + Eidam 29 Kč + chilli omáčka 29 Kč = 299 Kč; 2 kusy = 598 Kč",
+    "Úprava položky zachovala obě poloviny, základy, příplatky a poznámku",
+    "Ukázková objednávka s QR při převzetí dokončena, poplatky 0 Kč, košík vyprázdněn",
+    "Nápoje v košíku z menu PiPizza; vyprázdněný košík skryje doplňky a souhrn",
+    "Finální tmavá varianta bez chyb JavaScriptu v konzoli"
+  ],
+  "screenshoty": [
+    "docs/visi-vzhled-2026-10-05.jpg",
+    "docs/visi-kosik-2026-10-05.jpg"
+  ],
+  "publikovano": false
+}

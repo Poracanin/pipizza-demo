@@ -51,9 +51,9 @@
 .checkout-fields label,.address-label,.checkout-note,#scheduled-time-label{display:block;font-size:11px;font-weight:600;line-height:1.5}
 .checkout-fields label>span,.address-label>span{color:#89947b;font-size:11px}
 .field-full{grid-column:1/-1}
-.checkout-form input:not([type=radio]),.checkout-form textarea{display:block;width:100%;min-width:0;font:12px/1.5 var(--sans);color:var(--ink);background:#fffefa;border:1px solid #dce2d3;border-radius:8px;padding:12px 13px;margin-top:7px;min-height:44px;outline:none}
-.checkout-form input:focus,.checkout-form textarea:focus{border-color:#4c7c60;box-shadow:0 0 0 3px #06462d0c}
-.checkout-form input[aria-invalid=true]{border-color:#bf2635;box-shadow:0 0 0 2px #bf263518}
+.checkout-form input:not([type=radio]),.checkout-form textarea,.checkout-form select{display:block;width:100%;min-width:0;font:12px/1.5 var(--sans);color:var(--ink);background:#fffefa;border:1px solid #dce2d3;border-radius:8px;padding:12px 13px;margin-top:7px;min-height:44px;outline:none}
+.checkout-form input:focus,.checkout-form textarea:focus,.checkout-form select:focus{border-color:#4c7c60;box-shadow:0 0 0 3px #06462d0c}
+.checkout-form input[aria-invalid=true],.checkout-form select[aria-invalid=true]{border-color:#bf2635;box-shadow:0 0 0 2px #bf263518}
 .checkout-form textarea{resize:vertical}
 .checkout-form input::placeholder,.checkout-form textarea::placeholder{color:#9ba18f}
 .address-wrap{position:relative;margin-top:7px}
@@ -77,6 +77,12 @@
 .pickup-card span{display:block;font-size:12px;margin-top:6px}
 .pickup-card small{display:block;font-size:10px;color:#7f8b70;margin-top:8px}
 .time-field{margin-top:22px}
+.checkout-delivery-estimate{display:flex;align-items:center;gap:11px;padding:12px 14px;margin-bottom:12px;border-radius:8px;background:#eaf1e3;color:var(--green)}
+.checkout-delivery-estimate[hidden]{display:none}
+.checkout-delivery-estimate strong{display:block;font-size:11px;line-height:1.6}
+.checkout-delivery-estimate small{display:block;font-size:9px;line-height:1.5;color:#647658;margin-top:3px}
+.delivery-squares{display:flex;gap:4px;flex-shrink:0}
+.delivery-squares i{display:block;width:12px;height:12px;border-radius:2px;background:var(--green)}
 .time-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .time-options label,.tip-options label{position:relative;cursor:pointer}
 .time-options span{display:block;padding:12px 14px;border:1px solid #dce3d3;border-radius:8px;background:#fffefa;font-size:11px;font-weight:600}
@@ -102,6 +108,7 @@
 .checkout-costs strong{font-weight:600;color:var(--ink);white-space:nowrap}
 .checkout-costs .free{color:var(--green)}
 .checkout-costs small{font-size:9px}
+.checkout-price-note{font-size:10px;line-height:1.7;color:#647658;margin-top:15px;padding-top:13px;border-top:1px solid #e2e8d8}
 .checkout-costs .summary-grand-total{font-size:15px;font-weight:600;color:var(--ink);border-top:1px solid #e2e8d8;margin-top:11px;padding-top:16px}
 .summary-grand-total strong{font-size:21px;color:var(--green);letter-spacing:-.035em}
 .checkout-promise{display:flex;align-items:center;gap:8px;font-size:9px;line-height:1.6;color:#8b957e;margin-top:20px}
@@ -133,6 +140,7 @@
 .payment-card-online .accepted-cards{margin-left:0}
 .payment-card-online i{margin-left:4px}
 .wallet-methods,.receipt-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:0}
+.receipt-methods .checkout-choice:has([value="qr-on-delivery"]){grid-column:1/-1}
 .payment-options .payment-wallet>span{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;min-height:106px;align-content:center;background:#fffefa}
 .payment-wallet .wallet-logo{width:88px;height:44px;object-fit:contain;object-position:left center;grid-column:1;grid-row:1;margin-left:-7px}
 .payment-wallet .payment-method-copy{grid-column:1/-1;grid-row:2}
@@ -174,6 +182,7 @@
 .success-check .icon{width:34px;height:34px;stroke-width:1.8}
 .checkout-success>.eyebrow{display:block}
 .checkout-success h2{font-size:32px;line-height:1.25;margin-top:13px}
+.checkout-heart{color:#cf263b;font-size:18px;vertical-align:middle;margin-left:4px}
 .order-reference{background:#fffefa;border:1px dashed #cbdaba;border-radius:10px;padding:14px;margin:20px 0}
 .order-reference small{display:block;color:#8c987d;font-size:10px}
 .order-reference strong{display:block;font-size:21px;font-weight:600;color:var(--green);letter-spacing:.03em;margin-top:7px}

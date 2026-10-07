@@ -1,0 +1,116 @@
+/* Visual adaptation from Pizza Visi; PiPizza keeps its existing palette and content. */
+.site-header .brand, .header-compact .site-header .brand {
+  display: block; width: 166px; flex: 0 0 166px; padding: 8px;
+  border-radius: 8px; background: var(--green-dark);
+}
+.brand-full { display: block; width: 100%; height: auto; object-fit: contain; filter: none; }
+.site-header .brand-full { width: 150px; height: auto; }
+.dark-theme .site-header .brand { background: transparent; }
+.header-compact .site-header .brand { width: 122px; flex-basis: 122px; padding: 3px; }
+.header-compact .site-header .brand-full { width: 116px; }
+.site-header .main-nav a { font-family: var(--display); font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: .02em; }
+.header-actions .cart-toggle { font-family: var(--display); font-size: 17px; font-weight: 600; text-transform: uppercase; border-radius: 7px; min-height: 46px; height: 46px; }
+.header-actions { margin-left: auto; }
+.footer-brand { width: 186px; }
+.checkout-head .checkout-brand { display: block; width: 113px; height: auto; padding: 6px; border-radius: 6px; background: var(--green-dark); }
+.checkout-head .checkout-brand .brand-full { width: 101px; height: auto; }
+.dark-theme .checkout-head .checkout-brand { background: transparent; }
+.brand-intro { background: var(--green-dark); color: #f7f5e9; }
+.brand-intro .intro-brand { width: min(440px, 80vw); }
+.brand-intro > p, .brand-intro > button { color: #f7f5e9; }
+/* Keep the menu categories compact like the reference's text tabs. */
+.menu-browser { margin: 30px 0 24px; padding: 0; background: transparent; border: 0; box-shadow: none; }
+.menu-browser-top { padding: 0 0 20px; margin: 0; }
+.menu-browser-caption > span:last-child { font-family: var(--display); font-size: 36px; line-height: 1.15; font-weight: 600; text-transform: uppercase; letter-spacing: 0; }
+.menu-browser .search-box { border-radius: 6px; max-width: 355px; min-height: 42px; }
+.menu-browser .category-list { display: flex; gap: 0; padding: 0 16px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface); overflow-x: auto; scrollbar-width: thin; }
+.menu-browser .category { flex: 1 0 auto; flex-direction: row; justify-content: center; min-width: 0; min-height: 62px; height: 62px; padding: 12px 15px; gap: 9px; border: 0; border-radius: 0; background: transparent; color: var(--muted); box-shadow: none; }
+.menu-browser .category:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.menu-browser .category::after { display: none; }
+.menu-browser .category .category-icon { width: 21px; height: 23px; background: none; padding: 0; border-radius: 0; color: inherit; }
+.menu-browser .category svg { width: 21px; height: 21px; }
+.menu-browser .category-copy strong { font-family: var(--display); font-size: 20px; font-weight: 600; line-height: 1.2; text-transform: uppercase; color: inherit; }
+.menu-browser .category .category-copy { color: inherit; }
+.menu-browser .category-copy small { display: none; }
+.menu-browser .category .category-count { position: static; font-size: 9px; padding: 0; border-radius: 0; background: none; color: inherit; align-self: center; }
+.menu-browser .category.active { color: var(--red); background: none; box-shadow: inset 0 -3px var(--red); }
+.menu-browser .category.active .category-count { background: none; }
+.menu-browser .category-offer { color: var(--muted); }
+.categories-pinned .menu-browser { padding: 0; border-bottom: 1px solid var(--border); }
+.categories-pinned .menu-browser .category-list { border-width: 0; border-radius: 0; padding: 0 12px; background: transparent; }
+.categories-pinned .menu-browser .category { height: 50px; min-height: 50px; padding: 8px 13px; }
+.categories-pinned .menu-browser .category-copy strong { font-size: 17px; }
+.categories-pinned .menu-browser .category .category-count { padding: 0; background: none; }
+.price-promise { border-radius: 6px; padding: 11px 15px; font-size: 11px; margin-bottom: 27px; }
+.section-heading h1 { font-family: var(--display); font-size: 42px; line-height: 1.15; font-weight: 600; text-transform: uppercase; letter-spacing: 0; }
+.value-card { border: 1px solid var(--border); border-radius: 10px; text-align: center; }
+.value-card > svg { margin-inline: auto; }
+.value-card h2 { font-family: var(--display); font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0; }
+.value-card p { margin-inline: auto; }
+.story-card { border-radius: 10px; }
+.story-content h2, .about-copy h2, .contact-details h2, .radar-heading h2 { font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: 0; }
+.story-content h2 { font-size: 34px; }
+.story-content .outline-button { border-radius: 5px; min-height: 42px; }
+@media (max-width: 1000px) {
+  .menu-browser .category { padding-inline: 12px; }
+  .menu-browser .category-copy strong { font-size: 18px; }
+  .menu-browser .category .category-icon { display: none; }
+  .header-inner { height: 100px; }
+}
+@media (max-width: 650px) {
+  .site-header .brand { width: 139px; flex-basis: 139px; padding: 5px; }
+  .site-header .brand-full { width: 129px; }
+  .header-compact .site-header .brand { width: 117px; flex-basis: 117px; padding: 3px; }
+  .header-compact .site-header .brand-full { width: 111px; }
+  .header-inner { height: 88px; }
+  .header-actions .cart-toggle { width: 42px; height: 42px; min-height: 42px; }
+  .menu-browser { margin-top: 23px; margin-bottom: 19px; }
+  .menu-browser-top { padding-bottom: 16px; gap: 15px; }
+  .menu-browser-caption > span:last-child { font-size: 29px; }
+  .menu-browser .search-box { max-width: none; width: 100%; }
+  .menu-browser .category-list { padding: 0 8px; margin-inline: 0; gap: 0; }
+  .menu-browser .category { min-height: 52px; height: 52px; padding: 10px 12px; gap: 6px; }
+  .menu-browser .category-copy strong { font-size: 17px; }
+  .menu-browser .category .category-count { font-size: 8px; }
+  .categories-pinned .menu-browser .category-list { width: 100%; padding-inline: 8px; }
+  .categories-pinned .menu-browser .category { min-height: 48px; height: 48px; padding: 8px 12px; }
+  .categories-pinned .menu-browser .category-copy strong { font-size: 16px; }
+  .price-promise { padding: 10px 12px; font-size: 10px; }
+  .section-heading h1 { font-size: 33px; }
+  .value-card h2 { font-size: 19px; }
+  .story-content h2 { font-size: 28px; }
+}
+@media (max-width: 360px) {
+  .menu-browser-caption > span:last-child { font-size: 26px; }
+  .section-heading h1 { font-size: 29px; }
+}
+
+/* All five categories stay visible, including in the pinned mobile bar. */
+.menu-browser .category-list,
+.categories-pinned .menu-browser .category-list {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0; padding: 0; overflow: visible;
+}
+.menu-browser .category,
+.categories-pinned .menu-browser .category {
+  width: 100%; min-width: 0; padding-inline: 6px;
+}
+.menu-browser .category-copy,
+.categories-pinned .menu-browser .category-copy { min-width: 0; }
+.menu-browser .category-copy strong,
+.categories-pinned .menu-browser .category-copy strong {
+  white-space: normal; text-align: center; line-height: 1.15;
+}
+@media (max-width: 700px) {
+  .menu-browser .category .category-icon { display: none; }
+  .menu-browser .category,
+  .categories-pinned .menu-browser .category {
+    height: 52px; min-height: 52px; padding: 6px 3px;
+  }
+  .menu-browser .category-copy strong,
+  .categories-pinned .menu-browser .category-copy strong { font-size: 16px; }
+}
+@media (max-width: 360px) {
+  .menu-browser .category-copy strong,
+  .categories-pinned .menu-browser .category-copy strong { font-size: 14px; }
+}

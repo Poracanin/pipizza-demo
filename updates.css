@@ -1,0 +1,105 @@
+/* October client revisions, shared by both design variants. */
+.site-header .brand { width: 145px; flex: 0 0 145px; }
+.site-header .brand-art { width: 142px; height: 66px; }
+.site-header .brand-word { width: 124px; filter: hue-rotate(42deg) saturate(1.35) brightness(.78); mix-blend-mode: normal; }
+.site-header .brand-splash { width: 95px; left: 60px; top: 0; }
+.site-header .brand-place { margin: 3px 0 0; width: 142px; text-align: center; font-size: 9px; letter-spacing: .09em; color: #39764a; text-transform: none; }
+.header-compact .site-header .brand { width: 119px; flex-basis: 119px; }
+.header-compact .site-header .brand-art { width: 116px; height: 52px; }
+.header-compact .site-header .brand-word { width: 99px; filter: hue-rotate(42deg) saturate(1.25) brightness(1.25); mix-blend-mode: normal; }
+.header-compact .site-header .brand-splash { width: 77px; left: 49px; }
+.header-compact .site-header .brand-place { width: 116px; margin: 1px 0 0; font-size: 8px; letter-spacing: .07em; color: #a7ce8e; }
+.footer-brand .brand-place { margin-left: 0; text-align: center; width: 100%; letter-spacing: .09em; text-transform: none; }
+.footer-thanks > svg, .footer-bottom .icon { color: #e64c40; fill: #e64c40; }
+.price-promise { display: flex; align-items: center; gap: 11px; padding: 14px 18px; margin: 0 0 28px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; color: var(--ink); font-size: 12px; line-height: 1.6; }
+.price-promise > svg { color: #578452; flex-shrink: 0; width: 19px; }
+.price-promise p { flex: 1; }
+.price-promise a { white-space: nowrap; font-weight: 600; }
+.price-promise a span { margin-left: 7px; }
+.brand-intro { position: fixed; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100; background: #f7f5ec; color: #265238; animation: intro-out .35s ease 1.55s both; }
+.brand-intro[hidden] { display: none; }
+.intro-brand { width: 320px; text-align: center; animation: intro-in .65s ease both; }
+.intro-brand .brand-art { width: 300px; height: 150px; margin: 0 auto; }
+.intro-brand .brand-word { width: 263px; filter: hue-rotate(42deg) saturate(1.35) brightness(.68); }
+.intro-brand .brand-splash { width: 202px; left: 135px; top: -2px; }
+.intro-brand .brand-place { display: block; margin: 15px 0 0; color: #265238; font-size: 17px; letter-spacing: .1em; text-transform: none; }
+.brand-intro > p { font-size: 13px; margin-top: 30px; }
+.brand-intro > button { position: absolute; bottom: 36px; background: transparent; color: #265238; font-size: 12px; padding: 12px; }
+.brand-intro > button span { margin-left: 10px; }
+@keyframes intro-in { from { opacity: 0; transform: translateY(12px) scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes intro-out { to { opacity: 0; visibility: hidden; } }
+.delivery-radar { margin: 55px 0; scroll-margin-top: 0; }
+.radar-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 23px; }
+.radar-heading h2 { font-size: 34px; margin-top: 10px; }
+.radar-heading .demo-badge { background: transparent; flex-shrink: 0; border: 1px solid var(--border); color: var(--muted); font-size: 10px; padding: 8px 11px; border-radius: 20px; }
+.radar-layout { display: grid; grid-template-columns: .85fr 1.15fr; border: 1px solid var(--border); background: var(--surface); border-radius: 15px; overflow: hidden; }
+.radar-copy { padding: 34px; min-width: 0; }
+.radar-status { display: flex; gap: 18px; align-items: center; }
+.radar-status .eyebrow { font-size: 8px; letter-spacing: .1em; }
+.radar-status strong { display: block; font-size: clamp(21px, 2.2vw, 29px); letter-spacing: -.04em; margin-top: 7px; }
+.radar-orbit { width: 60px; height: 60px; flex-shrink: 0; border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 9px, #76925a55 10px 11px); border: 1px solid #76925a66; display: grid; place-items: center; position: relative; overflow: hidden; }
+.radar-orbit::before { content: ''; position: absolute; inset: 0; background: conic-gradient(from 0deg, transparent 45%, #608a443d); animation: radar-turn 5s linear infinite; }
+.radar-orbit i { width: 7px; height: 7px; border-radius: 50%; background: #67954b; box-shadow: 0 0 12px #67954b; }
+@keyframes radar-turn { to { transform: rotate(360deg); } }
+.radar-load { display: flex; align-items: center; gap: 4px; margin-top: 11px; }
+.radar-load i { width: 9px; height: 9px; border: 1px solid #689153; border-radius: 1px; }
+.radar-load i.filled { background: #689153; }
+.radar-load span { font-size: 10px; color: var(--muted); margin-left: 5px; }
+.radar-intro { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 25px 0; }
+.radar-copy h3 { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 14px; margin: 24px 0 12px; }
+.radar-copy h3 > span { color: var(--muted); font-size: 9px; font-weight: 400; letter-spacing: 0; }
+.radar-destinations { list-style: none; padding: 0; }
+.radar-destinations li { display: flex; align-items: center; gap: 9px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+.route-dot, .map-dot { width: 7px; height: 7px; border-radius: 50%; background: #668c51; display: inline-block; }
+.radar-destinations li > span:last-child { margin-left: auto; color: var(--muted); font-size: 10px; }
+.radar-time-note { display: flex; gap: 11px; font-size: 11px; line-height: 1.7; margin: 22px 0 20px; color: var(--muted); }
+.radar-time-note .icon { flex-shrink: 0; width: 20px; height: 20px; }
+.radar-time-note strong { color: var(--ink); }
+.radar-demo-controls { font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 17px; }
+.radar-demo-controls summary { cursor: pointer; }
+.radar-demo-controls > div { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.radar-demo-controls button { background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--ink); padding: 10px; font-size: 10px; }
+.radar-demo-controls button[aria-pressed=true] { border-color: #70985b; background: #729b5318; }
+.radar-demo-controls button span { color: #7b9c64; margin-right: 5px; }
+.radar-demo-controls p { font-size: 10px; margin-top: 10px; }
+.radar-map { margin: 0; display: flex; flex-direction: column; background: #e9e8dc; min-width: 0; }
+.radar-map > img { display: block; width: 100%; height: 100%; min-height: 410px; object-fit: cover; flex: 1; }
+.radar-map figcaption { display: flex; align-items: center; gap: 18px; padding: 15px 19px; font-size: 10px; color: #38533e; background: #f2f0e5; flex-wrap: wrap; }
+.radar-map figcaption span { display: inline-flex; align-items: center; gap: 6px; }
+.radar-map figcaption a { margin-left: auto; text-decoration: underline; text-underline-offset: 3px; }
+.map-dot.base { background: #b83829; }
+.radar-disclaimer { font-size: 10px; color: var(--muted); line-height: 1.7; margin-top: 12px; }
+@media (max-width: 850px) {
+  .radar-layout { grid-template-columns: 1fr 1fr; }
+  .radar-copy { padding: 24px; }
+  .radar-status { gap: 11px; }
+  .radar-orbit { width: 42px; height: 42px; }
+  .radar-map > img { object-fit: contain; }
+  .radar-copy h3 { flex-wrap: wrap; }
+}
+@media (max-width: 650px) {
+  .site-header .brand, .header-compact .site-header .brand { width: 115px; flex-basis: 115px; }
+  .site-header .brand-art, .header-compact .site-header .brand-art { width: 112px; height: 51px; }
+  .site-header .brand-word, .header-compact .site-header .brand-word { width: 97px; }
+  .site-header .brand-splash, .header-compact .site-header .brand-splash { width: 76px; left: 47px; }
+  .site-header .brand-place, .header-compact .site-header .brand-place { width: 112px; font-size: 8px; margin: 3px 0 0; }
+  .price-promise { align-items: flex-start; padding: 12px; font-size: 10px; gap: 8px; margin: 4px 0 22px; }
+  .price-promise a { display: none; }
+  .radar-layout { grid-template-columns: 1fr; }
+  .delivery-radar { margin: 35px 0; }
+  .radar-heading h2 { font-size: 28px; }
+  .radar-heading .eyebrow { font-size: 8px; }
+  .demo-badge { font-size: 8px; padding: 7px 9px; }
+  .radar-copy { padding: 24px; }
+  .radar-status strong { font-size: 26px; }
+  .radar-map > img { min-height: 0; height: auto; object-fit: contain; }
+  .radar-map figcaption { font-size: 9px; gap: 13px; padding: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-intro { display: none; }
+  .radar-orbit::before { animation: none; }
+}
+
+.header-compact .site-header .brand-place { height: auto; opacity: 1; }
+.dark-theme .site-header .brand-place { color: #a7ce8e; }
+.dark-theme .site-header .brand-word, .dark-theme.header-compact .site-header .brand-word { filter: hue-rotate(42deg) saturate(1.25) brightness(.95); mix-blend-mode: normal; }

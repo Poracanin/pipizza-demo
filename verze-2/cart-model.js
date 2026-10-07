@@ -1,27 +1,73 @@
 (function (root) {
   'use strict';
   const EXTRA_PRICE = 29;
-  const EXTRAS = ['Mozzarella', 'Šunka', 'Kuře', 'Žampiony', 'Kukuřice', 'Olivy', 'Niva', 'Červená cibule', 'Anglická slanina', 'Feferony', 'Česnek', 'Čerstvá rajčata'];
+  const HALF_PRICE = 12;
+  const BASES = {tomato:'Rajčatový', cream:'Smetanový', mustard:'Hořčicový'};
+  const SWAP_INGREDIENTS = ['Mozzarella','Niva','Šunka','Kuře','Anglická slanina'];
+  const EXTRA_GROUPS = [
+    {title:'Klasické suroviny', icon:'sliders', items:SWAP_INGREDIENTS},
+    {title:'Sýry', icon:'cheese', premium:true, items:['Eidam','Uzený sýr','Balkánský sýr','Camembert','Tvarůžky']},
+    {title:'Maso', icon:'meat', premium:true, items:['Vysočina','Poličan','Uzené maso','Klobása','Paprikáš','Mořské plody']},
+    {title:'Zelenina navíc', icon:'leaf', items:['Žampiony','Kukuřice','Olivy','Červená cibule','Čerstvá rajčata','Čerstvá paprika','Brokolice','Pórek','Kysané zelí','Beraní rohy','Jalapeños']},
+    {title:'Něco ostřejšího', icon:'pepper', items:['Feferony','Česnek','Chilli omáčka']}
+  ];
+  const EXTRAS = EXTRA_GROUPS.flatMap(group => group.items);
+  const defaultBase = product => product.type === 'pizza' ? product.base || (product.number === 19 ? 'cream' : product.number === 20 ? 'mustard' : 'tomato') : null;
+  const findProduct = (products, id) => products instanceof Map ? products.get(id) : products.find(product => product.id === id);
 
   function ingredients(product) {
     if (product.type !== 'pizza' || product.number === 26) return [];
-    return [...new Set(product.description.split(/,\s*|\.\s+(?=Mozzarella)/i).map(value => value.trim().replace(/\.$/, '')).filter(Boolean))];
+    return [...new Set(product.description.replace(/^(?:Rajčatový|Smetanový|Hořčicový) základ\.\s*/i, '').split(/,\s*/).map(value => value.trim().replace(/\.$/, '')).filter(Boolean))];
   }
 
-  function configuration(product, changes = {}) {
-    const allowedRemoved = ingredients(product);
+  function configuration(product, changes = {}, products = []) {
+    const halfProductId = changes.halfProductId || null;
+    const half = halfProductId && findProduct(products, halfProductId);
+    if (halfProductId && (product.type !== 'pizza' || !half || half.type !== 'pizza' || half.id === product.id)) throw new Error('Neplatná druhá polovina pizzy.');
+    const base = changes.base || defaultBase(product);
+    const halfBase = half ? changes.halfBase || defaultBase(half) : null;
+    if (product.type === 'pizza' ? !Object.hasOwn(BASES, base) : base !== null) throw new Error('Neplatný základ pizzy.');
+    if (halfBase && !Object.hasOwn(BASES, halfBase)) throw new Error('Neplatný základ druhé poloviny.');
     const allowedExtras = product.type === 'pizza' ? EXTRAS : [];
     const removed = [...new Set(changes.removed || [])].sort();
     const extras = [...new Set(changes.extras || [])].sort();
-    if (removed.some(value => !allowedRemoved.includes(value)) || extras.some(value => !allowedExtras.includes(value))) throw new Error('Neplatná surovina.');
+    const halfRemoved = [...new Set(changes.halfRemoved || [])].sort();
+    const halfExtras = [...new Set(changes.halfExtras || [])].sort();
+    if (removed.some(value => !ingredients(product).includes(value)) || extras.some(value => !allowedExtras.includes(value)) || halfRemoved.some(value => !half || !ingredients(half).includes(value)) || halfExtras.some(value => !half || !EXTRAS.includes(value))) throw new Error('Neplatná surovina.');
     const note = String(changes.note || '').trim().slice(0, 240);
-    return {removed, extras, note};
+    return {removed, extras, halfRemoved, halfExtras, note, base, halfProductId, halfBase};
   }
 
-  function unitPrice(product, changes = {}) {
-    const {extras} = configuration(product, changes);
-    const included = product.number === 26 ? 3 : 0;
-    return product.price + Math.max(0, extras.length - included) * EXTRA_PRICE;
+  function priceBreakdown(product, changes = {}, products = []) {
+    const config = configuration(product, changes, products);
+    const half = config.halfProductId && findProduct(products, config.halfProductId);
+    // The custom recipe includes three ingredients once, also when selected as a half.
+    const included = product.number === 26 || half?.number === 26 ? 3 : 0;
+    const pizzaPrice = half ? Math.max(product.price, half.price) + HALF_PRICE : product.price;
+    const swapNames = SWAP_INGREDIENTS.map(item => item.toLocaleLowerCase('cs'));
+    let includedRemaining = included;
+    // Allocate each free ingredient once. The UI and cart use this same breakdown.
+    const scopeCharges = (id, removed, extras) => {
+      const swapSlots = included ? 0 : removed.filter(item => swapNames.includes(item.toLocaleLowerCase('cs'))).length;
+      let swapsRemaining = swapSlots;
+      const charges = extras.map(ingredient => {
+        if (includedRemaining > 0) {includedRemaining--; return {ingredient, price:0, reason:'included'};}
+        if (swapsRemaining > 0 && SWAP_INGREDIENTS.includes(ingredient)) {swapsRemaining--; return {ingredient, price:0, reason:'swap'};}
+        return {ingredient, price:EXTRA_PRICE, reason:'extra'};
+      });
+      return {id, charges, swapSlots, swapsRemaining, swaps:swapSlots - swapsRemaining};
+    };
+    const scopes = [scopeCharges('first', config.removed, config.extras), ...(half ? [scopeCharges('second', config.halfRemoved, config.halfExtras)] : [])];
+    const swaps = scopes.reduce((sum, scope) => sum + scope.swaps, 0);
+    const extrasPrice = scopes.flatMap(scope => scope.charges).reduce((sum, charge) => sum + charge.price, 0);
+    return {pizzaPrice, extrasPrice, included, includedRemaining, swaps, scopes, total:pizzaPrice + extrasPrice};
+  }
+  const unitPrice = (product, changes = {}, products = []) => priceBreakdown(product, changes, products).total;
+
+  function describeChanges(config, product, products = []) {
+    const half = config.halfProductId && findProduct(products, config.halfProductId);
+    const scopes = [[half ? `½ ${product.name}` : '', config.removed || [], config.extras || []], ...(half ? [[`½ ${half.name}`, config.halfRemoved || [], config.halfExtras || []]] : [])];
+    return scopes.flatMap(([name, removed, extras]) => [removed.length ? `${name ? name + ' · ' : ''}Bez: ${removed.join(', ')}` : '', extras.length ? `${name ? name + ' · ' : ''}Navíc: ${extras.join(', ')}` : ''].filter(Boolean));
   }
 
   class Cart {
@@ -38,8 +84,8 @@
       const product = this.products.get(productId);
       if (!product) throw new Error('Neznámá položka.');
       if (!Number.isSafeInteger(quantity) || quantity < 1) throw new Error('Neplatný počet kusů.');
-      const config = configuration(product, changes);
-      return {productId, ...config, quantity, unitPrice: unitPrice(product, config), signature: JSON.stringify([productId, config.removed, config.extras, config.note])};
+      const config = configuration(product, changes, this.products);
+      return {productId, ...config, quantity, unitPrice: unitPrice(product, config, this.products), signature: JSON.stringify([productId, config.base, config.halfProductId, config.halfBase, config.removed, config.extras, config.halfRemoved, config.halfExtras, config.note])};
     }
     insert(prepared) {
       const existing = this.items.find(line => line.signature === prepared.signature);
@@ -64,7 +110,7 @@
     remove(lineId) { this.lines.delete(lineId); }
     clear() { this.lines.clear(); }
   }
-  const api = {Cart, EXTRAS, EXTRA_PRICE, ingredients, configuration, unitPrice};
+  const api = {describeChanges, Cart, BASES, EXTRA_GROUPS, SWAP_INGREDIENTS, EXTRAS, EXTRA_PRICE, HALF_PRICE, defaultBase, ingredients, configuration, priceBreakdown, unitPrice};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.PiPizzaCart = api;
 })(typeof window !== 'undefined' ? window : globalThis);
