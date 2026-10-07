@@ -90,6 +90,33 @@ test('both design variants use identical checkout business rules',()=>{
   assert.deepEqual(second.totals(458,method,20),totals(458,method,20));
  }
 });
+test('tip rounding always reaches the next higher 50 or 100 without double-counting a tip',()=>{
+ const {roundUpTip,totals}=require('../verze-2/checkout-model.js');
+ for(const [subtotal,increment,extra,total] of [[219,50,31,250],[219,100,81,300],[250,50,50,300],[300,100,100,400],[249.9,50,.1,250],[249.99,100,50.01,300]]){
+  assert.equal(roundUpTip(subtotal,increment),extra);
+  assert.equal(totals(subtotal,'card',extra).total,total);
+  assert.equal(totals(subtotal,'cash',extra).total,subtotal);
+ }
+ for(const [subtotal,increment] of [[-1,50],[NaN,50],[Infinity,100],[219,0],[219,25]])assert.throws(()=>roundUpTip(subtotal,increment));
+});
+test('the day picker partitions all valid quarter-hour slots in Prague, including DST changes',()=>{
+ const {scheduledDays,scheduledSlots,isScheduledTimeValid}=require('../verze-2/checkout-model.js');
+ for(const current of ['2026-10-07T13:07:23Z','2026-03-28T22:00:00Z','2026-10-24T22:00:00Z','2026-10-09T21:45:00Z']){
+  const now=Date.parse(current),days=scheduledDays(now);
+  assert.deepEqual(days.flatMap(day=>day.slots.map(({value,label})=>({value,label}))),scheduledSlots(now));
+  for(const day of days){
+   assert.match(day.value,/^\d{4}-\d{2}-\d{2}$/);
+   assert.ok(day.slots.length>0);
+   day.slots.forEach((slot,index)=>{
+    assert.match(slot.time,/^\d{2}:(00|15|30|45)$/);
+    assert.ok(isScheduledTimeValid(slot.value,now));
+    const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Prague',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(slot.value));
+    assert.equal(date,day.value);
+    if(index)assert.equal(Date.parse(slot.value)-Date.parse(day.slots[index-1].value),15*60000);
+   });
+  }
+ }
+});
 test('shared browser delivery state emits a change once and rejects invalid levels',()=>{
  const vm=require('node:vm');
  const fs=require('node:fs');

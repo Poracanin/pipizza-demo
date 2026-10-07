@@ -35,6 +35,12 @@
     const gratuity = method.online ? Math.round(tip * 100) : 0;
     return {subtotal:base / 100, cardFee:0, tip:gratuity / 100, delivery:0, total:(base + gratuity) / 100};
   }
+  function roundUpTip(subtotal, increment) {
+    if (!Number.isFinite(subtotal) || subtotal < 0 || ![50,100].includes(increment)) throw new Error('Neplatné zaokrouhlení.');
+    const cents = Math.round(subtotal * 100), step = increment * 100;
+    // Always the next higher multiple, even when the total is already round.
+    return ((Math.floor(cents / step) + 1) * step - cents) / 100;
+  }
   const TIME_ZONE = 'Europe/Prague';
   const MIN_LEAD_MINUTES = 75;
   const SLOT_MINUTES = 15;
@@ -93,13 +99,25 @@
     }
     return slots;
   }
+  function scheduledDays(now = Date.now()) {
+    const days = new Map();
+    const dateLabel = new Intl.DateTimeFormat('cs-CZ', {timeZone:TIME_ZONE, weekday:'long', day:'numeric', month:'numeric'});
+    const timeLabel = new Intl.DateTimeFormat('cs-CZ', {timeZone:TIME_ZONE, hour:'2-digit', minute:'2-digit', hourCycle:'h23'});
+    for (const slot of scheduledSlots(now)) {
+      const timestamp = Date.parse(slot.value), parts = calendarParts(timestamp);
+      const key = `${parts.year}-${parts.month}-${parts.day}`;
+      if (!days.has(key)) days.set(key, {value:key, label:dateLabel.format(timestamp), slots:[]});
+      days.get(key).slots.push({...slot, time:timeLabel.format(timestamp)});
+    }
+    return [...days.values()];
+  }
   function deliveryEstimate(level = 1) {
     if (level !== 1 && level !== 2) throw new Error('Stav rozvozu musí být 1 nebo 2.');
     return Object.freeze(level === 1
       ? {level:1, label:'cca 40–60 minut', minutes:60}
       : {level:2, label:'cca 1 hodina 25 minut', minutes:85});
   }
-  const api = {ADDRESSES, searchAddresses, paymentDetails, totals, scheduledSlots, isScheduledTimeValid, deliveryEstimate, openingStatus, TIME_ZONE, MIN_LEAD_MINUTES};
+  const api = {ADDRESSES, searchAddresses, paymentDetails, totals, roundUpTip, scheduledSlots, scheduledDays, isScheduledTimeValid, deliveryEstimate, openingStatus, TIME_ZONE, MIN_LEAD_MINUTES};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else {
     root.PiPizzaCheckoutModel = api;

@@ -1,0 +1,100 @@
+/* A day at a time, with quarter-hour choices. */
+#checkout-dialog #scheduled-time-picker{margin-top:16px;padding:17px;border:1px solid #79b43e55;border-radius:12px;background:#182110}
+#checkout-dialog #scheduled-time-picker>label{font-size:13px;font-weight:600}
+#checkout-dialog #scheduled-day{margin:8px 0 17px;background:#24271c;border-color:#79b43e66;font-size:16px;text-transform:capitalize;color:#f5efdf;color-scheme:dark}
+#checkout-dialog .scheduled-slot-field{margin:0;padding:0;border:0;min-width:0}
+#checkout-dialog .scheduled-slot-field legend{font:500 13px/1.5 var(--sans);margin-bottom:9px}
+#checkout-dialog .scheduled-slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-height:230px;overflow:auto;padding:3px;scrollbar-width:thin;scrollbar-color:var(--brand-green) transparent}
+#checkout-dialog .scheduled-slots label{position:relative;cursor:pointer}
+#checkout-dialog .scheduled-slots input{position:absolute;opacity:0;width:1px;height:1px}
+#checkout-dialog .scheduled-slots span{display:grid;place-items:center;min-height:44px;border:1px solid #ffffff24;border-radius:7px;background:#24291d;color:#f3efdf;font:500 14px/1 var(--sans);font-variant-numeric:tabular-nums}
+#checkout-dialog .scheduled-slots input:checked+span{background:var(--brand-green);border-color:#a6d774;color:var(--brand-green-ink);font-weight:700}
+#checkout-dialog .scheduled-slots input:focus-visible+span{outline:2px solid #d6edb4;outline-offset:1px}
+#checkout-dialog .scheduled-slots label:hover span{border-color:var(--brand-green)}
+#checkout-dialog #scheduled-help{font-size:11px;color:#b6bea8;margin-top:12px}
+#checkout-dialog #scheduled-selection{font-size:12px;line-height:1.6;color:#c1e594;margin-top:7px}
+
+/* The optional thank-you is a compact, distinctive green card. */
+#checkout-dialog #checkout-tip{position:relative;padding:19px;border:1px solid #79b43e7a;border-radius:14px;background:radial-gradient(ellipse at top right,#7fb4382b,transparent 70%),linear-gradient(130deg,#24331a,#192211);margin:32px 0 23px;min-width:0}
+#checkout-dialog #checkout-tip legend{float:left;width:100%;margin:0 0 6px;font:400 27px/1.2 var(--display);display:flex;align-items:center;justify-content:space-between;gap:8px;color:#f3f2df}
+#checkout-dialog #checkout-tip legend small{font:500 10px/1.4 var(--sans);color:#c4dea9;background:#79b43e20;border:1px solid #79b43e50;border-radius:20px;padding:4px 8px;margin:0}
+#checkout-dialog .tip-intro{clear:both;font-size:12px;line-height:1.7;color:#c1ccb4;margin-bottom:17px}
+#checkout-dialog .tip-options{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:7px}
+#checkout-dialog .tip-options span{font:500 13px/1.4 var(--sans);min-height:44px;padding:12px 4px;text-align:center;border-radius:8px;background:#ffffff08;border:1px solid #93b8744a;color:#f4efdf;white-space:nowrap}
+#checkout-dialog .tip-options input:checked+span,#checkout-dialog .tip-round-options input:checked+span{background:var(--brand-green);color:#17230d;border-color:#b2d590;box-shadow:0 2px 12px #080e0530}
+#checkout-dialog .tip-round-caption{font-size:11px;color:#c1ccb4;margin:17px 0 9px}
+#checkout-dialog .tip-round-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#checkout-dialog .tip-round-options label{position:relative;cursor:pointer}
+#checkout-dialog .tip-round-options input{position:absolute;opacity:0;width:1px;height:1px}
+#checkout-dialog .tip-round-options span{display:flex;flex-direction:column;gap:4px;min-height:97px;padding:11px 12px;border:1px solid #93b8744a;border-radius:9px;background:#ffffff08;color:#f4efdf}
+#checkout-dialog .tip-round-options small{font:400 11px/1.4 var(--sans);color:inherit}
+#checkout-dialog .tip-round-options strong{font:400 27px/1.1 var(--display);color:inherit}
+#checkout-dialog .tip-round-options input:focus-visible+span{outline:2px solid #d6edb4;outline-offset:3px}
+#checkout-dialog #tip-custom-open{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px;padding:12px 14px;min-height:46px;border:1px dashed #99c17080;border-radius:9px;background:transparent;color:#deedce;font:500 13px/1.4 var(--sans)}
+#checkout-dialog #tip-custom-open strong{margin-left:6px;color:inherit}
+#checkout-dialog #tip-custom-open .icon{width:19px;height:19px}
+#checkout-dialog #tip-custom-open[aria-pressed=true]{background:var(--brand-green);color:var(--brand-green-ink);border-style:solid}
+#checkout-dialog #tip-selection{font-size:11px;line-height:1.6;color:#c1d5ad;margin:13px 0 0}
+
+/* Contact values, rather than their labels, carry the visual weight. */
+#checkout-dialog .checkout-review{background:linear-gradient(140deg,#29271c,#211e18);border:1px solid #a5b66d40;border-radius:13px;padding:21px}
+#checkout-dialog #checkout-contact-review .review-detail,#checkout-dialog #success-details .review-detail{gap:13px;margin-top:20px}
+#checkout-dialog .review-detail p{min-width:0;flex:1}
+#checkout-dialog .review-detail .icon{width:34px;height:34px;padding:7px;background:#79b43e1b;border:1px solid #79b43e35;border-radius:9px;color:var(--brand-green);margin-top:0}
+#checkout-dialog .review-detail .review-label{font:400 12px/1.6 var(--sans);color:#bcb6a4;margin-bottom:5px}
+#checkout-dialog .review-detail .review-value{font:600 16px/1.55 var(--sans);color:#f4eedf;overflow-wrap:anywhere}
+#checkout-dialog .review-detail .review-email{font:600 14px/1.6 var(--sans);color:#e6e6d4;overflow-wrap:anywhere;margin-top:2px}
+#checkout-dialog .review-detail .review-time{font:500 12px/1.6 var(--sans);color:#b9d994;margin-top:8px}
+
+/* A native dialog keeps focus inside the custom amount picker. */
+#tip-dialog{width:410px;max-width:calc(100vw - 28px);max-height:calc(100dvh - 28px);padding:25px 28px 18px;margin:auto;overflow:auto;border:1px solid #79b43e6b;border-radius:24px;background:radial-gradient(ellipse at top,#37502288,transparent 52%),#1d2015;color:#f4efdf;text-align:center;box-shadow:0 25px 100px #0009;scrollbar-color:var(--brand-green) #1d2015}
+#tip-dialog::backdrop{background:#080b06b8;backdrop-filter:blur(5px)}
+#tip-dialog .tip-close{position:absolute;right:13px;top:13px;width:36px;height:36px;border-radius:50%;color:#d7ddc8;background:#ffffff0c}
+#tip-dialog .tip-dialog-icon{display:grid;place-items:center;width:40px;height:40px;background:#79b43e22;color:#b5dd80;border-radius:50%;margin:0 auto 10px}
+#tip-dialog .tip-dialog-icon .icon{width:23px;height:23px}
+#tip-dialog h2{font:400 35px/1.15 var(--display);margin:0;color:#f4efdf;letter-spacing:.01em}
+#tip-description{font:400 12px/1.7 var(--sans);color:#bfc6b0;margin:9px 0 0}
+#tip-dial{position:relative;touch-action:none;cursor:grab;width:230px;height:230px;margin:6px auto 0;border-radius:50%;outline-offset:0}
+#tip-dial:active{cursor:grabbing}
+#tip-dial:focus-visible{outline:2px solid #b7dc88}
+#tip-dial>svg{width:100%;height:100%;overflow:visible}
+.tip-dial-track,#tip-dial-progress{fill:none;stroke-width:12;stroke-linecap:round;transform:rotate(135deg);transform-origin:120px 120px}
+.tip-dial-track{stroke:#ffffff12;stroke-dasharray:461.82 615.75}
+#tip-dial-progress{stroke:var(--brand-green);stroke-dasharray:0 615.75}
+#tip-dial-thumb{fill:#eef5de;stroke:var(--brand-green);stroke-width:5;filter:drop-shadow(0 2px 5px #0005)}
+.tip-dial-amount{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.tip-dial-amount small{font:400 12px/1.5 var(--sans);color:#bfc6b0}
+.tip-dial-amount strong{font:400 52px/1.2 var(--display);margin:3px 0;color:#f0f4df;font-variant-numeric:tabular-nums}
+.tip-dial-amount span{font:500 11px/1.5 var(--sans);color:#b5dd80}
+.tip-dial-limits{display:flex;justify-content:space-between;max-width:164px;margin:-21px auto 12px;color:#aeb99e;font:400 10px/1.5 var(--sans);pointer-events:none}
+.tip-modal-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}
+#tip-dialog .tip-modal-presets button{min-height:40px;border:1px solid #ffffff25;border-radius:8px;background:#ffffff06;color:#e5e9d9;font:500 12px/1.4 var(--sans)}
+#tip-dialog .tip-modal-presets button[aria-pressed=true]{background:var(--brand-green);color:#17230d;border-color:#a6d774}
+#tip-amount-form>label{display:flex;justify-content:space-between;gap:10px;font:500 12px/1.5 var(--sans);text-align:left;margin-bottom:7px}
+#tip-amount-form>label span{font-weight:400;color:#b1bba2}
+.tip-amount-input{position:relative}
+#tip-amount{width:100%;min-height:46px;background:#10160b;border:1px solid #78895b70;color:#f3f1de;border-radius:8px;padding:9px 52px 9px 13px;font:600 18px/1.4 var(--sans);color-scheme:dark}
+.tip-amount-input>span{position:absolute;right:16px;top:14px;font:400 12px/1.5 var(--sans);color:#c0c9af}
+#tip-modal-total{display:flex;justify-content:space-between;gap:10px;font:400 11px/1.5 var(--sans);color:#bfc6b0;margin:13px 0}
+#tip-modal-total strong{font-size:13px;color:#f3f1de}
+#tip-dialog #tip-apply{width:100%;min-height:48px;display:flex;justify-content:center;gap:10px;background:var(--brand-green);border:1px solid #a5d16e;border-radius:9px;color:#17230d;font:400 24px/1 var(--display);padding:12px}
+#tip-dialog #tip-apply:disabled{opacity:.45;cursor:not-allowed}
+#tip-dialog .tip-cancel{background:transparent;color:#bcc5ac;font:400 12px/1.5 var(--sans);min-height:40px;margin-top:3px}
+#tip-dialog button:focus-visible,#tip-amount:focus-visible,#tip-custom-open:focus-visible{outline:2px solid #d6edb4;outline-offset:3px}
+@media(max-width:380px){
+ #checkout-dialog #checkout-tip{padding:14px}
+ #checkout-dialog #checkout-tip legend{font-size:24px}
+ #checkout-dialog .tip-options span{font-size:11px}
+ #checkout-dialog .tip-round-options span{padding:10px}
+ #checkout-dialog .checkout-review{padding:16px}
+ #tip-dialog{padding:22px 20px 14px}
+ #tip-dial{width:210px;height:210px}
+ #checkout-dialog .scheduled-slots{gap:6px}
+}
+@media(max-height:700px){
+ #tip-dialog .tip-dialog-icon{display:none}
+ #tip-dialog{padding-top:22px}
+ #tip-dial{width:185px;height:185px;margin-top:0}
+ .tip-dial-amount strong{font-size:42px}
+ .tip-dial-limits{max-width:135px;margin-top:-16px}
+}

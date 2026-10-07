@@ -18,11 +18,12 @@
   <link rel="stylesheet" href="dark.css?v=20261005-3">
   <script src="menu-data.js?v=20261007-2" defer></script>
   <script src="cart-model.js?v=20261007-2" defer></script>
-  <script src="checkout-model.js?v=20261007-2" defer></script>
+  <script src="checkout-model.js?v=20261007-3" defer></script>
   <script src="assets/vendor/leaflet/leaflet.js" defer></script>
   <script src="address-model.js?v=20261007-1" defer></script>
   <script src="delivery.js?v=20261007-5" defer></script>
-  <script src="checkout.js?v=20261007-4" defer></script>
+  <script src="tip-picker.js?v=1" defer></script>
+  <script src="checkout.js?v=20261007-5" defer></script>
   <script src="script.js?v=20261007-16" defer></script>
   <link rel="stylesheet" href="../updates.css?v=20261005-3">
   <script src="../experience.js?v=20261007-1" defer></script>
@@ -39,6 +40,7 @@
   <link rel="stylesheet" href="brand-hero.css?v=5">
   <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="legal.css?v=1">
+  <link rel="stylesheet" href="checkout-refinement.css?v=1">
   <script src="privacy.js?v=1" defer></script>
 
 </head>
@@ -185,7 +187,16 @@
             <div id="checkout-house-map" class="house-map" aria-label="Mapa vybraného domu" hidden></div>
           </div>
           <div class="pickup-card" id="pickup-card" hidden><svg class="icon"><use href="#i-pin"/></svg><div><strong>PiPizza Jistebník</strong><span>Jistebník 181, 742 82</span><small>Vyzvednutí přímo u nás v pizzerii.</small></div></div>
-          <fieldset class="choice-field time-field"><legend>Kdy máte hlad?</legend><div id="checkout-delivery-estimate" class="checkout-delivery-estimate" aria-live="polite"></div><div class="time-options"><label><input type="radio" name="timing" value="asap" checked><span>Co nejdříve <small>cca 40–60 min</small></span></label><label><input type="radio" name="timing" value="scheduled"><span>Doručení na čas <small>Alespoň 1 h 15 min předem</small></span></label></div><label id="scheduled-time-label" hidden>Požadovaný čas<select id="scheduled-time" name="scheduledTime"></select><small class="field-help">Objednejte alespoň 1 hodinu a 15 minut předem. Časy jsou v časovém pásmu Europe/Prague.</small></label></fieldset>
+          <fieldset class="choice-field time-field">
+            <legend>Kdy máte hlad?</legend>
+            <div class="time-options"><label><input type="radio" name="timing" value="asap" checked><span>Co nejdříve <small>cca 40–60 min</small></span></label><label><input type="radio" name="timing" value="scheduled"><span>Na konkrétní čas <small>Nejméně 1 h 15 min předem</small></span></label></div>
+            <div id="scheduled-time-picker" hidden>
+              <label for="scheduled-day">Vyberte den</label><select id="scheduled-day" aria-describedby="scheduled-help"></select>
+              <fieldset class="scheduled-slot-field"><legend>Vyberte čas</legend><div id="scheduled-slots" class="scheduled-slots"></div></fieldset>
+              <p id="scheduled-help" class="field-help">Časy po 15 minutách, nejméně 1 h 15 min předem. V místním čase pizzerie.</p>
+              <p id="scheduled-selection" aria-live="polite"></p>
+            </div>
+          </fieldset>
           <label class="checkout-note">Poznámka pro nás <small>nepovinné</small><textarea name="note" rows="2" maxlength="300" placeholder="Patro, jméno na zvonku nebo jiné přání…"></textarea></label>
           <p class="checkout-error" id="checkout-error" role="alert" hidden></p>
         </section>
@@ -205,14 +216,51 @@
               <label class="checkout-choice payment-receipt"><input type="radio" name="payment" value="qr-on-delivery" aria-label="QR kódem při převzetí"><span><span class="payment-method-icon"><svg class="icon"><use href="#i-qr"/></svg></span><span class="payment-method-copy"><strong>QR kódem</strong><small>QR kód také na účtence</small></span><i></i></span></label>
             </div>
           </fieldset>
-          <fieldset id="checkout-tip" class="choice-field"><legend>Něco pro náš tým? <small>nepovinné</small></legend><div class="tip-options"><label><input type="radio" name="tip" value="0" checked><span>Bez spropitného</span></label><label><input type="radio" name="tip" value="10"><span>10 Kč</span></label><label><input type="radio" name="tip" value="20"><span>20 Kč</span></label><label><input type="radio" name="tip" value="50"><span>50 Kč</span></label></div></fieldset>
+          <fieldset id="checkout-tip" class="choice-field">
+            <legend>Něco pro náš tým? <small>Dobrovolné</small></legend>
+            <p class="tip-intro">Malé díky těm, kteří pro vás pečou a rozvážejí.</p>
+            <div class="tip-options">
+              <label><input type="radio" name="tip" value="0" checked><span>Bez dýška</span></label>
+              <label><input type="radio" name="tip" value="10"><span>10 Kč</span></label>
+              <label><input type="radio" name="tip" value="20"><span>20 Kč</span></label>
+              <label><input type="radio" name="tip" value="50"><span>50 Kč</span></label>
+            </div>
+            <p class="tip-round-caption">Nebo zaokrouhlit celou objednávku</p>
+            <div class="tip-round-options">
+              <label><input type="radio" name="tip" value="round50"><span><small>Na další padesátku</small><strong id="tip-round50-total"></strong><small id="tip-round50-extra"></small></span></label>
+              <label><input type="radio" name="tip" value="round100"><span><small>Na další stovku</small><strong id="tip-round100-total"></strong><small id="tip-round100-extra"></small></span></label>
+            </div>
+            <button type="button" id="tip-custom-open" aria-haspopup="dialog" aria-controls="tip-dialog" aria-pressed="false"><span>Vlastní dýško <strong id="tip-custom-value"></strong></span><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg></button>
+            <p id="tip-selection" aria-live="polite"></p>
+          </fieldset>
           <div class="checkout-review"><div class="review-heading"><h3>Všechno sedí?</h3><button type="button" id="edit-checkout-contact">Upravit údaje</button></div><div id="checkout-contact-review"></div></div>
         </section>
         <section class="checkout-panel checkout-success" data-panel="3" hidden><span class="success-check"><svg class="icon"><use href="#i-check"/></svg></span><span class="eyebrow">TAK A JE TO!</span><h2 id="checkout-success-title" tabindex="-1">Objednávku máme.<br>Děkujeme!</h2><p class="checkout-lead">Jsme rádi, že vám chutná. <img class="checkout-heart" src="assets/vendor/twemoji/svg/2764.svg" alt="srdce" width="18" height="18"></p><div class="order-reference"><small>Číslo objednávky</small><strong id="demo-order-number"></strong></div><div id="success-payment" class="success-payment"></div><div class="demo-order-progress"><span class="active"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Přijato</span><i></i><span>Pečeme</span><i></i><span id="success-last-step">Rozvážíme</span></div><div id="success-details"></div></section>
       </form>
-      <aside class="checkout-summary" aria-label="Souhrn objednávky"><div class="summary-title"><h3>Na co se těšíte</h3><span id="checkout-item-count"></span></div><div id="checkout-order-items"></div><div class="checkout-costs" id="checkout-costs"></div><p class="checkout-price-note">Cena za pizzu je konečná, bez skrytých poplatků za krabici, dovoz nebo špatné počasí.</p><div class="checkout-promise"><svg class="icon"><use href="#i-heart"/></svg><span>Poctivá pizza. Čerstvé suroviny.<br>Upečeno s radostí v Jistebníku.</span></div></aside>
+      <aside class="checkout-summary" aria-label="Souhrn objednávky"><div class="summary-title"><h3>Na co se těšíte</h3><span id="checkout-item-count"></span></div><div id="checkout-order-items"></div><div class="checkout-costs" id="checkout-costs"></div><p class="checkout-price-note">Cena za pizzu je konečná, bez skrytých poplatků za krabici, dovoz nebo špatné počasí.</p></aside>
     </div>
     <div class="checkout-foot"><button type="button" class="checkout-back" id="checkout-back"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg> Zpět do košíku</button><div><small>Celkem</small><strong id="checkout-foot-total"></strong></div><button type="submit" form="checkout-form" class="button button-green" id="checkout-next">Pokračovat k platbě <svg class="icon"><use href="#i-arrow"/></svg></button><p class="checkout-preview-notice">Prezentační verze · objednávky a platby jsou simulované. <a href="obchodni-podminky.html" target="_blank" rel="noopener">Obchodní podmínky</a> · <a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">Ochrana údajů</a></p></div>
+  </dialog>
+
+  <dialog id="tip-dialog" aria-labelledby="tip-title" aria-describedby="tip-description">
+    <button type="button" class="icon-button close-dialog tip-close" aria-label="Zavřít výběr dýška"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <span class="tip-dialog-icon" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></span>
+    <h2 id="tip-title">Dýško podle vás</h2>
+    <p id="tip-description">Otočte kolečkem nebo napište částku.<br>Každé díky potěší.</p>
+    <div id="tip-dial" role="slider" tabindex="0" aria-label="Výše dýška" aria-valuemin="0" aria-valuemax="500" aria-valuenow="0" aria-valuetext="0 Kč" aria-describedby="tip-dial-help">
+      <svg viewBox="0 0 240 240" aria-hidden="true"><circle class="tip-dial-track" cx="120" cy="120" r="98"/><circle id="tip-dial-progress" cx="120" cy="120" r="98"/><circle id="tip-dial-thumb" cx="50.7" cy="189.3" r="10"/></svg>
+      <div class="tip-dial-amount" aria-hidden="true"><small>Pro náš tým</small><strong id="tip-dial-value">0 Kč</strong><span>Děkujeme!</span></div>
+    </div>
+    <p id="tip-dial-help" class="sr-only">Šipkami měníte částku o korunu, Page Up a Page Down o 10 Kč. Home nastaví 0 Kč, End 500 Kč.</p>
+    <div class="tip-dial-limits" aria-hidden="true"><span>0 Kč</span><span>500 Kč</span></div>
+    <div class="tip-modal-presets" aria-label="Rychlý výběr dýška"><button type="button" data-tip-amount="20">20 Kč</button><button type="button" data-tip-amount="50">50 Kč</button><button type="button" data-tip-amount="100">100 Kč</button><button type="button" data-tip-amount="200">200 Kč</button></div>
+    <form id="tip-amount-form">
+      <label for="tip-amount">Vlastní částka <span>0–500 Kč</span></label>
+      <div class="tip-amount-input"><input id="tip-amount" type="number" inputmode="numeric" min="0" max="500" step="1" required value="0"><span>Kč</span></div>
+      <p id="tip-modal-total">Celkem s objednávkou <strong></strong></p>
+      <button type="submit" class="button button-green" id="tip-apply">Přidat dýško <span>0 Kč</span></button>
+      <button type="button" class="tip-cancel close-dialog">Zpět beze změny</button>
+    </form>
   </dialog>
 
   <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title"><div class="dialog-header"><h2 id="info-title"></h2><button class="icon-button close-dialog" aria-label="Zavřít informace"><svg class="icon"><use href="#i-close"/></svg></button></div><div id="info-content"></div></dialog>

@@ -7,29 +7,59 @@
       const form = $('#checkout-form');
       const address = $('#checkout-address');
       const results = $('#address-suggestions');
-      const {paymentDetails, totals, scheduledSlots, isScheduledTimeValid, TIME_ZONE} = root.PiPizzaCheckoutModel;
+      const {paymentDetails, totals, roundUpTip, scheduledDays, isScheduledTimeValid, TIME_ZONE} = root.PiPizzaCheckoutModel;
       const money = value => new Intl.NumberFormat('cs-CZ',{style:'currency',currency:'CZK',minimumFractionDigits:Number.isInteger(value)?0:2,maximumFractionDigits:2}).format(value);
       const escape = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
       const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-      const value = name => form.elements[name].value;
+      const value = name => {
+        const control=form.elements[name];
+        return control?.type==='radio' && !control.checked ? '' : control?.value || '';
+      };
       let step=1, busy=false, completed=false, snapshot=null;
+      let customTip=0, days=[];
       const delivery = () => value('fulfillment') === 'delivery';
-      const prices = () => totals(cart.total,value('payment'),Number(value('tip')));
+      const tipAmount = () => value('tip').startsWith('round') ? roundUpTip(cart.total,Number(value('tip').slice(5))) : value('tip') ? Number(value('tip')) : customTip;
+      const prices = () => totals(cart.total,value('payment'),tipAmount());
       const estimate = () => root.PiDelivery.state;
       function renderDeliveryEstimate(){
         const state = estimate();
-        const target = $('#checkout-delivery-estimate');
-        target.hidden = !delivery();
-        target.innerHTML = `<span class="delivery-squares" aria-hidden="true">${'<i></i>'.repeat(state.level)}</span><span><strong>${state.level === 1 ? '1 čtvereček' : '2 čtverečky'} · ${escape(state.label)}</strong><small>Orientační doba doručení podle vytížení rozvozu.</small></span>`;
         $('[name="timing"][value="asap"]').nextElementSibling.querySelector('small').textContent = delivery() ? state.label : 'cca 25 minut';
       }
       function refreshSlots(){
-        const select = $('#scheduled-time');
-        const previous = select.value;
-        const slots = scheduledSlots();
-        select.innerHTML = '<option value="">Vyberte den a čas</option>' + slots.map(slot=>`<option value="${slot.value}">${escape(slot.label)}</option>`).join('');
-        if(slots.some(slot=>slot.value === previous)) select.value = previous;
+        const previous = value('scheduledTime'), select = $('#scheduled-day'), previousDay = select.value;
+        days = scheduledDays();
+        select.innerHTML = days.map(day=>`<option value="${day.value}">${escape(day.label)}</option>`).join('');
+        const selectedDay = days.find(day=>day.slots.some(slot=>slot.value===previous)) || days.find(day=>day.value===previousDay);
+        if(selectedDay)select.value=selectedDay.value;
+        renderSlots(previous);
       }
+      function renderSlots(previous=''){
+        const slots=days.find(day=>day.value===$('#scheduled-day').value)?.slots || [];
+        $('#scheduled-slots').innerHTML=slots.map(slot=>`<label><input type="radio" name="scheduledTime" value="${slot.value}" ${slot.value===previous?'checked':''}><span>${slot.time}</span></label>`).join('') || '<p>Žádné volné časy. Zavolejte nám prosím.</p>';
+        renderSelectedTime();
+      }
+      function renderSelectedTime(){
+        const slot=days.flatMap(day=>day.slots).find(slot=>slot.value===value('scheduledTime'));
+        $('#scheduled-selection').textContent=slot?`Vybráno: ${slot.label}`:'Vyberte si čas, který vám vyhovuje.';
+      }
+      $('#scheduled-day').addEventListener('change',()=>renderSlots());
+      function renderTip(){
+        for(const increment of [50,100]){
+          const extra=roundUpTip(cart.total,increment);
+          $(`#tip-round${increment}-total`).textContent=money(totals(cart.total,'card',extra).total);
+          $(`#tip-round${increment}-extra`).textContent=`Dýško +${money(extra)}`;
+        }
+        const custom=!value('tip');
+        $('#tip-custom-open').setAttribute('aria-pressed',String(custom));
+        $('#tip-custom-value').textContent=custom?money(customTip):'';
+        $('#tip-selection').textContent=tipAmount()?`Děkujeme! Pro náš tým ${money(tipAmount())}.`:'Dýško je na vás. Bez něj je to také v pořádku.';
+      }
+      const tipPicker=root.PiPizzaTipPicker.create({money, onApply:amount=>{
+        customTip=amount;
+        form.querySelectorAll('[name="tip"]').forEach(input=>input.checked=false);
+        renderTip();renderSummary();
+      }});
+      $('#tip-custom-open').addEventListener('click',()=>tipPicker.open(tipAmount(),cart.total));
       function showError(message, input) {
         $('#checkout-error').textContent=message; $('#checkout-error').hidden=false;
         if(input){input.setAttribute('aria-invalid','true');input.focus();}
@@ -43,12 +73,19 @@
         onInvalidate: () => {$('#selected-address').hidden=true;$('#checkout-house-map').hidden=true;}
       });
       const closeResults = () => addressPicker.close();
-      form.addEventListener('input',event=>{event.target.removeAttribute('aria-invalid');$('#checkout-error').hidden=true;});
+      form.addEventListener('input',event=>{
+        event.target.removeAttribute('aria-invalid');
+        if(event.target.name==='scheduledTime')form.querySelectorAll('[name="scheduledTime"]').forEach(input=>input.removeAttribute('aria-invalid'));
+        $('#checkout-error').hidden=true;
+      });
       function syncOptions(){
         $('#delivery-fields').hidden=!delivery(); $('#pickup-card').hidden=delivery(); address.required=delivery();
-        const scheduled=value('timing')==='scheduled';$('#scheduled-time-label').hidden=!scheduled;$('#scheduled-time').required=scheduled;
+        const scheduled=value('timing')==='scheduled';$('#scheduled-time-picker').hidden=!scheduled;
+        $('#scheduled-day').disabled=!scheduled;
+        form.querySelectorAll('[name="scheduledTime"]').forEach(input=>input.disabled=!scheduled);
         $('#checkout-tip').hidden=!paymentDetails(value('payment')).online;
         renderDeliveryEstimate();
+        renderSelectedTime();renderTip();
         renderSummary();
       }
       form.addEventListener('change',event=>{if(event.target.name === 'timing')refreshSlots();syncOptions();});
@@ -58,7 +95,7 @@
       });
       function contactText(){
         const when=value('timing')==='scheduled'?new Intl.DateTimeFormat('cs-CZ',{dateStyle:'short',timeStyle:'short',timeZone:TIME_ZONE}).format(new Date(value('scheduledTime')))+' · čas v ČR':delivery()?`Co nejdříve · ${estimate().label}`:'Co nejdříve · přibližně 25 min';
-        return `<div>${icon(delivery()?'truck':'pin')}<p><strong>${delivery()?'Doručení':'Osobní vyzvednutí'}</strong><span>${escape(delivery()?address.value:'PiPizza, Jistebník 181, 742 82')}</span><small>${escape(when)}</small></p></div><div>${icon('phone')}<p><strong>${escape(value('customerName'))}</strong><span>${escape(value('phone'))} · ${escape(value('email'))}</span>${value('note').trim()?`<small>Poznámka: ${escape(value('note'))}</small>`:''}</p></div>`;
+        return `<div class="review-detail">${icon(delivery()?'truck':'pin')}<p><span class="review-label">${delivery()?'Doručení na adresu':'Osobní vyzvednutí'}</span><strong class="review-value">${escape(delivery()?address.value:'PiPizza, Jistebník 181, 742 82')}</strong><small class="review-time">${escape(when)}</small></p></div><div class="review-detail">${icon('phone')}<p><span class="review-label">Kontakt · ${escape(value('customerName'))}</span><strong class="review-value">${escape(value('phone'))}</strong><strong class="review-email">${escape(value('email'))}</strong>${value('note').trim()?`<small>Poznámka: ${escape(value('note'))}</small>`:''}</p></div>`;
       }
       function renderSummary(){
         if(completed)return;
@@ -111,7 +148,7 @@
         if(value('timing')==='scheduled' && !isScheduledTimeValid(value('scheduledTime'))){
           refreshSlots();
           if(step !== 1)setStep(1);
-          showError('Vyberte platný čas alespoň 1 hodinu a 15 minut předem. Nabídku časů jsme aktualizovali.',$('#scheduled-time'));
+          showError('Vyberte platný čas alespoň 1 hodinu a 15 minut předem. Nabídku časů jsme aktualizovali.',$('[name="scheduledTime"]') || $('#scheduled-day'));
           return false;
         }
         return true;
@@ -139,7 +176,7 @@
       $('#edit-checkout-contact').addEventListener('click',()=>setStep(1));
       $('#checkout-close').addEventListener('click',()=>{if(!busy)dialog.close();});
       dialog.addEventListener('cancel',event=>{if(busy)event.preventDefault();});
-      dialog.addEventListener('close',()=>{closeResults();if(completed){form.reset();addressPicker.reset();$('#selected-address').hidden=true;$('#address-clear').hidden=true;}});
+      dialog.addEventListener('close',()=>{closeResults();if(completed){form.reset();customTip=0;addressPicker.reset();$('#selected-address').hidden=true;$('#address-clear').hidden=true;}});
       $('#start-checkout').addEventListener('click',()=>{
         if(!cart.count)return;
         $('#cart-dialog').close();completed=false;snapshot=null;
