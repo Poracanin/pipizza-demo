@@ -1,0 +1,54 @@
+/* Version 2: one circular viewport for every pizza, including pizza bread.
+   Per-photo framing removes unequal background margins and normalizes perspective.
+   Source images are preserved; labels and item numbers stay outside the crop. */
+.product-card .product-image-button .pizza-photo {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  clip-path: circle(50%);
+}
+.product-card .product-image-button .pizza-photo > img {
+  position: absolute;
+  left: var(--photo-left, 0%);
+  top: var(--photo-top, 0%);
+  width: var(--photo-width, 100%);
+  height: var(--photo-height, 100%);
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
+  border-radius: 0;
+  filter: none;
+  transform: none;
+}
+/* Uniform 2% overscan keeps the dark background outside the circular edge. */
+[data-pizza-photo="01-margarita"] { --photo-left: -5.377%; --photo-top: -4.976%; --photo-width: 109.416%; --photo-height: 111.815%; }
+[data-pizza-photo="02-sunkova"] { --photo-left: -6.440%; --photo-top: -4.991%; --photo-width: 113.333%; --photo-height: 110.870%; }
+[data-pizza-photo="03-hawai"] { --photo-left: -10.142%; --photo-top: -8.452%; --photo-width: 120.283%; --photo-height: 116.438%; }
+[data-pizza-photo="04-syrova"] { --photo-left: -4.013%; --photo-top: -3.582%; --photo-width: 107.595%; --photo-height: 107.595%; }
+[data-pizza-photo="05-boston"] { --photo-left: -8.018%; --photo-top: -7.462%; --photo-width: 116.972%; --photo-height: 115.385%; }
+[data-pizza-photo="06-los-angeles"] { --photo-left: -9.701%; --photo-top: -7.550%; --photo-width: 120.853%; --photo-height: 116.972%; }
+[data-pizza-photo="07-san-francisco"] { --photo-left: -9.065%; --photo-top: -7.491%; --photo-width: 118.605%; --photo-height: 115.909%; }
+[data-pizza-photo="08-chicago"] { --photo-left: -1.000%; --photo-top: -1.000%; --photo-width: 102.000%; --photo-height: 102.000%; }
+[data-pizza-photo="09-orlando"] { --photo-left: -8.486%; --photo-top: -7.291%; --photo-width: 116.972%; --photo-height: 112.335%; }
+[data-pizza-photo="10-new-york"] { --photo-left: -5.921%; --photo-top: -3.198%; --photo-width: 111.842%; --photo-height: 109.914%; }
+[data-pizza-photo="11-full-house"] { --photo-left: -8.018%; --photo-top: -7.986%; --photo-width: 116.972%; --photo-height: 116.438%; }
+[data-pizza-photo="12-vegetarianska"] { --photo-left: -5.900%; --photo-top: -4.923%; --photo-width: 111.354%; --photo-height: 108.974%; }
+[data-pizza-photo="13-montana"] { --photo-left: -9.103%; --photo-top: -7.986%; --photo-width: 119.159%; --photo-height: 116.438%; }
+[data-pizza-photo="14-tvaruzkova"] { --photo-left: -1.829%; --photo-top: -3.125%; --photo-width: 103.659%; --photo-height: 106.250%; }
+[data-pizza-photo="15-detroit"] { --photo-left: -1.000%; --photo-top: -1.000%; --photo-width: 102.000%; --photo-height: 102.000%; }
+[data-pizza-photo="16-keywest"] { --photo-left: -5.435%; --photo-top: -5.456%; --photo-width: 110.870%; --photo-height: 111.408%; }
+[data-pizza-photo="17-atlanta"] { --photo-left: -1.000%; --photo-top: -1.000%; --photo-width: 102.000%; --photo-height: 102.000%; }
+[data-pizza-photo="18-florida"] { --photo-left: -5.921%; --photo-top: -5.533%; --photo-width: 111.842%; --photo-height: 113.333%; }
+[data-pizza-photo="19-broccoli"] { --photo-left: -1.000%; --photo-top: -1.000%; --photo-width: 102.000%; --photo-height: 102.823%; }
+[data-pizza-photo="20-oregon"] { --photo-left: -2.249%; --photo-top: -2.264%; --photo-width: 104.082%; --photo-height: 105.372%; }
+[data-pizza-photo="21-balkan"] { --photo-left: -8.486%; --photo-top: -5.080%; --photo-width: 116.972%; --photo-height: 113.333%; }
+[data-pizza-photo="22-brooklyn"] { --photo-left: -1.000%; --photo-top: -1.000%; --photo-width: 102.000%; --photo-height: 103.659%; }
+[data-pizza-photo="23-colorado"] { --photo-left: -1.829%; --photo-top: -3.561%; --photo-width: 103.659%; --photo-height: 106.695%; }
+[data-pizza-photo="24-dallas"] { --photo-left: -1.000%; --photo-top: -1.000%; --photo-width: 102.000%; --photo-height: 102.410%; }
+[data-pizza-photo="25-moravska"] { --photo-left: -3.107%; --photo-top: -5.815%; --photo-width: 105.372%; --photo-height: 109.442%; }
+[data-pizza-photo="26-dle-vaseho-prani"] { --photo-left: -2.638%; --photo-top: -2.638%; --photo-width: 105.275%; --photo-height: 105.275%; }
+[data-pizza-photo="27-chleba"] { --photo-left: -4.038%; --photo-top: -2.264%; --photo-width: 108.511%; --photo-height: 105.372%; }

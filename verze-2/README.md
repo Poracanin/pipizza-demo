@@ -1,5 +1,11 @@
 # PiPizza — aktivní verze 2
 
+## Fotografie pizz z 21. 10. 2026
+
+24 položek nabídky včetně pizza chleba používá dodané fotografie z WhatsApp. Webové kopie jsou v `assets/pizza/` jako WebP 1000 × 1000 px; původní JPEGy zůstávají v `../fotky-pizz/`. Přesné přiřazení názvů je v `data/fotografie-zdroje.json`. U Orlanda je použit poslední zaslaný snímek. Margarita, Keywest a „Podle vašeho přání“ zatím zachovávají původní ilustrační fotografie, protože k nim nové snímky nebyly dodány. Stejné cesty používá serverový katalog `../private/catalog.json`, a tedy i administrace.
+
+V nabídce mají všech 26 pizz i pizza chleba shodný kruhový výřez. `pizza-photos.css` nastavuje každé fotografii vlastní zarámování podle okraje pizzy, vyrovnává rozdílné okraje pozadí a mírný oválný tvar. Velikost kruhů se řídí společnou responzivní kartou. Číslo a štítek pizzy zůstávají mimo ořez, nápoje si zachovávají původní zobrazení. Originální fotografie se nemění.
+
 Od posledního pokynu uživatele se upravuje pouze tato verze. Verze 1 se již nepoužívá; soubory v kořeni a sdílené styly neměnit způsobem, který by ji ovlivnil. Nové úpravy vzhledu patří do `verze-2/`.
 
 Místní náhled: http://127.0.0.1:8765/verze-2/ (server spuštěný z kořene projektu).

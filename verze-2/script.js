@@ -30,9 +30,12 @@
     document.querySelector('#empty-results').hidden = visible.length !== 0;
     grid.hidden = visible.length === 0;
     grid.innerHTML = visible.map((product, index) => {
-      const art = product.image
+      const image = product.image
         ? `<img src="${escape(product.image)}" alt="${escape(product.name)} — ilustrační fotografie" width="900" height="900" ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'}>`
         : `<div class="simple-product-art">${icon(product.type === 'drinks' ? 'drink' : 'box')}</div>`;
+      const art = product.image && (product.type === 'pizza' || product.id === '27-chleba')
+        ? `<span class="pizza-photo" data-pizza-photo="${escape(product.id)}">${image}</span>`
+        : image;
       const badge = product.spicy ? `<span class="product-label">${icon('pepper')} Pikantní</span>` : product.vegetarian ? `<span class="product-label vegetarian-label">${icon('leaf')} Bez masa</span>` : '';
       const number = product.number ? `<span class="product-number">${String(product.number).padStart(2, '0')}</span>` : '';
       return `<article data-card-detail="${escape(product.id)}" class="product-card product-card-${escape(product.type)}${product.name.length > 12 ? ' product-card-long-name' : ''}" style="--title-length:${Math.max(8, product.name.length)}"><a href="?pizza=${encodeURIComponent(product.id)}" class="product-image-button" data-detail="${escape(product.id)}" aria-label="Prohlédnout ${escape(product.name)}">${art}${number}${badge}</a><div class="product-info"><h2><a href="?pizza=${encodeURIComponent(product.id)}" class="product-title" data-detail="${escape(product.id)}">${escape(product.name)}</a></h2><p class="product-description">${escape(product.description)}</p><div class="product-bottom"><span class="product-price">${money(product.price)}</span><div class="card-actions"><button class="add-button" data-add="${escape(product.id)}" aria-label="Přidat ${escape(product.name)} do objednávky">${icon('cart')}<span>Přidat do košíku</span></button>${product.type === 'pizza' ? `<button class="edit-button" data-detail="${escape(product.id)}" aria-label="Upravit ${escape(product.name)}"><span>Upravit podle sebe</span>${icon('arrow')}</button>` : ''}</div></div></div></article>`;

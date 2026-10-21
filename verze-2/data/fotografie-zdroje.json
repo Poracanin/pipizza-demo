@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-21",
+  "source": "Snímky dodané uživatelem z WhatsApp; originály jsou ve složce fotky-pizz v kořeni projektu.",
+  "processing": "WebP 1000 × 1000 px, kvalita 82. Zachován celý snímek bez ořezu; původní JPEGy zůstávají ve složce fotky-pizz.",
+  "selection": "Použita nejnovější série z 21. 10. 2026. U Orlanda poslední zaslaný snímek (Orlando.jpeg). Starší varianty a detaily zůstávají v originálech.",
+  "items": [
+    {
+      "id": "02-sunkova",
+      "name": "Šunková",
+      "image": "assets/pizza/02-sunkova.webp",
+      "sourceFile": "Šunková.jpeg"
+    },
+    {
+      "id": "03-hawai",
+      "name": "Hawai",
+      "image": "assets/pizza/03-hawai.webp",
+      "sourceFile": "Hawai.jpeg"
+    },
+    {
+      "id": "04-syrova",
+      "name": "Sýrová",
+      "image": "assets/pizza/04-syrova.webp",
+      "sourceFile": "Syrova.jpeg"
+    },
+    {
+      "id": "05-boston",
+      "name": "Boston",
+      "image": "assets/pizza/05-boston.webp",
+      "sourceFile": "Boston.jpeg"
+    },
+    {
+      "id": "06-los-angeles",
+      "name": "Los Angeles",
+      "image": "assets/pizza/06-los-angeles.webp",
+      "sourceFile": "Los Angeles.jpeg"
+    },
+    {
+      "id": "07-san-francisco",
+      "name": "San Francisco",
+      "image": "assets/pizza/07-san-francisco.webp",
+      "sourceFile": "San Francisco.jpeg"
+    },
+    {
+      "id": "08-chicago",
+      "name": "Chicago",
+      "image": "assets/pizza/08-chicago.webp",
+      "sourceFile": "Chicago.jpeg"
+    },
+    {
+      "id": "09-orlando",
+      "name": "Orlando",
+      "image": "assets/pizza/09-orlando.webp",
+      "sourceFile": "Orlando.jpeg"
+    },
+    {
+      "id": "10-new-york",
+      "name": "New York",
+      "image": "assets/pizza/10-new-york.webp",
+      "sourceFile": "New york.jpeg"
+    },
+    {
+      "id": "11-full-house",
+      "name": "Full House",
+      "image": "assets/pizza/11-full-house.webp",
+      "sourceFile": "Full House.jpeg"
+    },
+    {
+      "id": "12-vegetarianska",
+      "name": "Vegetariánská",
+      "image": "assets/pizza/12-vegetarianska.webp",
+      "sourceFile": "Vegetarián.jpeg"
+    },
+    {
+      "id": "13-montana",
+      "name": "Montana",
+      "image": "assets/pizza/13-montana.webp",
+      "sourceFile": "Montana.jpeg"
+    },
+    {
+      "id": "14-tvaruzkova",
+      "name": "Tvarůžková",
+      "image": "assets/pizza/14-tvaruzkova.webp",
+      "sourceFile": "Tvaruzkova.jpeg"
+    },
+    {
+      "id": "15-detroit",
+      "name": "Detroit",
+      "image": "assets/pizza/15-detroit.webp",
+      "sourceFile": "Detroit.jpeg"
+    },
+    {
+      "id": "17-atlanta",
+      "name": "Atlanta",
+      "image": "assets/pizza/17-atlanta.webp",
+      "sourceFile": "Atlanta.jpeg"
+    },
+    {
+      "id": "18-florida",
+      "name": "Florida",
+      "image": "assets/pizza/18-florida.webp",
+      "sourceFile": "Florida.jpeg"
+    },
+    {
+      "id": "19-broccoli",
+      "name": "Brokolice",
+      "image": "assets/pizza/19-broccoli.webp",
+      "sourceFile": "Brocoli.jpeg"
+    },
+    {
+      "id": "20-oregon",
+      "name": "Oregon",
+      "image": "assets/pizza/20-oregon.webp",
+      "sourceFile": "Oregon.jpeg"
+    },
+    {
+      "id": "21-balkan",
+      "name": "Balkán",
+      "image": "assets/pizza/21-balkan.webp",
+      "sourceFile": "Balkán.jpeg"
+    },
+    {
+      "id": "22-brooklyn",
+      "name": "Brooklyn",
+      "image": "assets/pizza/22-brooklyn.webp",
+      "sourceFile": "Brooklyn.jpeg"
+    },
+    {
+      "id": "23-colorado",
+      "name": "Colorado",
+      "image": "assets/pizza/23-colorado.webp",
+      "sourceFile": "Colorado.jpeg"
+    },
+    {
+      "id": "24-dallas",
+      "name": "Dallas",
+      "image": "assets/pizza/24-dallas.webp",
+      "sourceFile": "Dallas.jpeg"
+    },
+    {
+      "id": "25-moravska",
+      "name": "Moravská",
+      "image": "assets/pizza/25-moravska.webp",
+      "sourceFile": "Moravská.jpeg"
+    },
+    {
+      "id": "27-chleba",
+      "name": "Pizza chleba",
+      "image": "assets/pizza/27-chleba.webp",
+      "sourceFile": "Chleba.jpeg"
+    }
+  ],
+  "unchangedWithoutNewPhoto": [
+    "01-margarita",
+    "16-keywest",
+    "26-dle-vaseho-prani"
+  ]
+}

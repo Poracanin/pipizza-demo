@@ -25,7 +25,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/02-sunkova.webp",
+    "image": "assets/pizza/02-sunkova.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -41,7 +41,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/09-hawai.webp",
+    "image": "assets/pizza/03-hawai.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -57,7 +57,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/19-quattro-formaggi.webp",
+    "image": "assets/pizza/04-syrova.webp",
     "type": "pizza",
     "vegetarian": true,
     "spicy": false,
@@ -73,7 +73,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/12-kureci.webp",
+    "image": "assets/pizza/05-boston.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -89,7 +89,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/13-picante.webp",
+    "image": "assets/pizza/06-los-angeles.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": true,
@@ -105,7 +105,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/20-bellizzi.webp",
+    "image": "assets/pizza/07-san-francisco.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -121,7 +121,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/10-capricciosa.webp",
+    "image": "assets/pizza/08-chicago.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -137,7 +137,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/07-slaninova.webp",
+    "image": "assets/pizza/09-orlando.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -153,7 +153,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/17-selska.webp",
+    "image": "assets/pizza/10-new-york.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -169,7 +169,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/20-bellizzi.webp",
+    "image": "assets/pizza/11-full-house.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -185,7 +185,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/05-vegetariana.webp",
+    "image": "assets/pizza/12-vegetarianska.webp",
     "type": "pizza",
     "vegetarian": true,
     "spicy": false,
@@ -201,7 +201,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/12-kureci.webp",
+    "image": "assets/pizza/13-montana.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -217,7 +217,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/15-nivova.webp",
+    "image": "assets/pizza/14-tvaruzkova.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -233,7 +233,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/15-nivova.webp",
+    "image": "assets/pizza/15-detroit.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -268,7 +268,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/16-kari-kureci.webp",
+    "image": "assets/pizza/17-atlanta.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -284,7 +284,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/12-kureci.webp",
+    "image": "assets/pizza/18-florida.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -300,7 +300,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/11-spenatova.webp",
+    "image": "assets/pizza/19-broccoli.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -318,7 +318,7 @@ window.PIPIZZA_MENU = [
       7,
       10
     ],
-    "image": "../assets/pizza/08-americana.webp",
+    "image": "assets/pizza/20-oregon.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -334,7 +334,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/14-vegetariana-extra.webp",
+    "image": "assets/pizza/21-balkan.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -351,7 +351,7 @@ window.PIPIZZA_MENU = [
       3,
       7
     ],
-    "image": "../assets/pizza/08-americana.webp",
+    "image": "assets/pizza/22-brooklyn.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -367,7 +367,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/07-slaninova.webp",
+    "image": "assets/pizza/23-colorado.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -384,7 +384,7 @@ window.PIPIZZA_MENU = [
       3,
       7
     ],
-    "image": "../assets/pizza/13-picante.webp",
+    "image": "assets/pizza/24-dallas.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": true,
@@ -400,7 +400,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/17-selska.webp",
+    "image": "assets/pizza/25-moravska.webp",
     "type": "pizza",
     "vegetarian": false,
     "spicy": false,
@@ -437,7 +437,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": null,
+    "image": "assets/pizza/27-chleba.webp",
     "type": "extras",
     "vegetarian": false,
     "spicy": false
