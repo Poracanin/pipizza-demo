@@ -19,7 +19,7 @@
   const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
   const find = id => products.find(product => product.id === id);
   const categoryTitles = {pizza:'Pizzy', vegetarian:'Bez masa', spicy:'Pikantní', drinks:'Nápoje', extras:'Něco navíc'};
-  const matchesCategory = product => category === 'vegetarian' ? product.vegetarian : category === 'spicy' ? product.spicy : product.type === category;
+  const matchesCategory = product => category === 'vegetarian' ? product.vegetarian : category === 'spicy' ? product.spicy : (product.menuCategory || product.type) === category;
   const plural = (count, variants) => variants[count === 1 ? 0 : count > 1 && count < 5 ? 1 : 2];
 
   function renderProducts() {

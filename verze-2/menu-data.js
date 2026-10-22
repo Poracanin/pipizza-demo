@@ -439,6 +439,7 @@ window.PIPIZZA_MENU = [
     ],
     "image": "assets/pizza/27-chleba.webp",
     "type": "extras",
+    "menuCategory": "pizza",
     "vegetarian": false,
     "spicy": false
   },
