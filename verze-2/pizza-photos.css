@@ -25,7 +25,7 @@
   transform: none;
 }
 /* Uniform 2% overscan keeps the dark background outside the circular edge. */
-[data-pizza-photo="01-margarita"] { --photo-left: -5.377%; --photo-top: -4.976%; --photo-width: 109.416%; --photo-height: 111.815%; }
+[data-pizza-photo="01-margarita"] { --photo-left: -6.953%; --photo-top: -5.278%; --photo-width: 114.478%; --photo-height: 112.583%; }
 [data-pizza-photo="02-sunkova"] { --photo-left: -6.440%; --photo-top: -4.991%; --photo-width: 113.333%; --photo-height: 110.870%; }
 [data-pizza-photo="03-hawai"] { --photo-left: -10.142%; --photo-top: -8.452%; --photo-width: 120.283%; --photo-height: 116.438%; }
 [data-pizza-photo="04-syrova"] { --photo-left: -4.013%; --photo-top: -3.582%; --photo-width: 107.595%; --photo-height: 107.595%; }

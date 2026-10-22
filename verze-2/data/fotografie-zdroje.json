@@ -2,8 +2,14 @@
   "date": "2026-10-21",
   "source": "Snímky dodané uživatelem z WhatsApp; originály jsou ve složce fotky-pizz v kořeni projektu.",
   "processing": "WebP 1000 × 1000 px, kvalita 82. Zachován celý snímek bez ořezu; původní JPEGy zůstávají ve složce fotky-pizz.",
-  "selection": "Použita nejnovější série z 21. 10. 2026. U Orlanda poslední zaslaný snímek (Orlando.jpeg). Starší varianty a detaily zůstávají v originálech.",
+  "selection": "Použita nejnovější série z 21. 10. 2026. U Orlanda poslední zaslaný snímek (Orlando.jpeg). Starší varianty a detaily zůstávají v originálech. Margarita doplněna 22. 10. 2026 z fotografie poskytnuté uživatelem.",
   "items": [
+    {
+      "id": "01-margarita",
+      "name": "Margarita",
+      "image": "assets/pizza/01-margarita.webp",
+      "sourceFile": "Margarita.jpeg"
+    },
     {
       "id": "02-sunkova",
       "name": "Šunková",
@@ -150,8 +156,8 @@
     }
   ],
   "unchangedWithoutNewPhoto": [
-    "01-margarita",
     "16-keywest",
     "26-dle-vaseho-prani"
-  ]
+  ],
+  "updated": "2026-10-22"
 }

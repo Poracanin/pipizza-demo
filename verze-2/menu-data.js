@@ -9,7 +9,7 @@ window.PIPIZZA_MENU = [
       1,
       7
     ],
-    "image": "../assets/pizza/01-margherita.webp",
+    "image": "assets/pizza/01-margarita.webp",
     "type": "pizza",
     "vegetarian": true,
     "spicy": false,
