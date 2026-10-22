@@ -4,7 +4,7 @@
   const escape = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let addressesPromise;
   function loadAddresses() {
-    if (!addressesPromise) addressesPromise = fetch('data/addresses.json').then(response => {
+    if (!addressesPromise) addressesPromise = fetch('data/addresses.json?v=20261022').then(response => {
       if (!response.ok) throw new Error('Adresář se nepodařilo načíst.');
       return response.json();
     }).then(indexAddresses).catch(error => {addressesPromise = null; throw error;});
@@ -28,7 +28,7 @@
         const rows = await loadAddresses();
         if (request !== revision) return;
         matches = searchAddresses(rows, input.value);
-        results.innerHTML = matches.map((item,index) => `<button type="button" role="option" aria-selected="false" id="${results.id}-${index}" data-address-index="${index}"><span>${escape(item.label)}<small>${escape(item.town)} · rozvoz zdarma</small></span><svg class="icon icon-diagonal" aria-hidden="true"><use href="#i-arrow"/></svg></button>`).join('');
+        results.innerHTML = matches.map((item,index) => `<button type="button" role="option" aria-selected="false" id="${results.id}-${index}" data-address-index="${index}"><span>${escape(item.label)}<small>${escape(item.areaLabel || item.town)} · rozvoz zdarma</small></span><svg class="icon icon-diagonal" aria-hidden="true"><use href="#i-arrow"/></svg></button>`).join('');
         results.hidden = !matches.length; input.setAttribute('aria-expanded',String(!!matches.length));
         status.textContent = matches.length ? 'Vyberte přesnou adresu z nabídky.' : 'Adresu jsme v oblasti rozvozu nenašli. Zkuste obec a číslo domu, případně zavolejte 720 400 500.';
       } catch (_) { if (request === revision) status.textContent = 'Adresář se nepodařilo načíst. Zkuste psát znovu nebo zavolejte 720 400 500.'; }
@@ -85,13 +85,13 @@
     if (loading) return loading;
     loading = (async () => {
       const state = mapAt(container);if (!state) return null;
-      const response = await fetch('data/delivery-areas.geojson');if (!response.ok) throw new Error('Map data');
+      const response = await fetch('data/delivery-areas.geojson?v=20261022');if (!response.ok) throw new Error('Map data');
       const data = await response.json();
       const brandGreen = getComputedStyle(document.documentElement).getPropertyValue('--brand-green').trim() || '#79b43e';
-      const areas = L.geoJSON(data,{style:{color:'#50772a',weight:1.5,fillColor:brandGreen,fillOpacity:.2},onEachFeature(feature,layer) {
+      const areas = L.geoJSON(data,{style:feature=>({color:'#50772a',weight:1.5,fillColor:brandGreen,fillOpacity:feature.properties.kind==='Vybraná ulice'?.8:.2}),pointToLayer:(feature,latlng)=>L.circleMarker(latlng,{radius:5}),onEachFeature(feature,layer) {
         layer.bindTooltip(escape(feature.properties.name),{sticky:true});
-        const popup=document.createElement('div');popup.className='coverage-popup';popup.innerHTML=`<strong>${escape(feature.properties.name)}</strong><span>Rozvoz z Jistebníku · zdarma</span>`;layer.bindPopup(popup);
-        layer.on('mouseover',()=>layer.setStyle({fillOpacity:.4,weight:2}));layer.on('mouseout',()=>layer.setStyle({fillOpacity:.2,weight:1.5}));
+        const popup=document.createElement('div');popup.className='coverage-popup';popup.innerHTML=`<strong>${escape(feature.properties.name)}</strong><span>Rozvoz z Jistebníku · zdarma</span>${feature.properties.description?`<span>${escape(feature.properties.description)}</span>`:''}`;layer.bindPopup(popup);
+        layer.on('mouseover',()=>layer.setStyle({fillOpacity:.6,weight:2}));layer.on('mouseout',()=>layer.setStyle({fillOpacity:feature.properties.kind==='Vybraná ulice'?.8:.2,weight:1.5}));
       }}).addTo(state.map);
       L.marker([49.7534022,18.1287856],{icon:L.divIcon({className:'pizzeria-pin',html:'<span aria-hidden="true"><img src="assets/vendor/twemoji/svg/1f355.svg" alt="" width="22" height="22"></span>',iconSize:[34,34]}),title:'PiPizza · Jistebník 181'}).addTo(state.map).bindTooltip('PiPizza Jistebník',{permanent:true,direction:'bottom'});
       state.bounds=areas.getBounds();

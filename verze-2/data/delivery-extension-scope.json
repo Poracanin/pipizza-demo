@@ -1,0 +1,25 @@
+{
+  "approvedOn": "2026-10-22",
+  "sourceDate": "2026-09-30",
+  "municipalities": [
+    {"code": 568406, "name": "Slatina", "mapName": "Slatina a Nový Svět", "districtCode": 3804, "districtName": "Nový Jičín"},
+    {"code": 512745, "name": "Těškovice", "districtCode": 3806, "districtName": "Opava"},
+    {"code": 512907, "name": "Kyjovice", "districtCode": 3806, "districtName": "Opava"},
+    {"code": 506711, "name": "Dolní Lhota", "districtCode": 3807, "districtName": "Ostrava-město"},
+    {"code": 568643, "name": "Kateřinice", "districtCode": 3804, "districtName": "Nový Jičín"},
+    {"code": 598135, "name": "Fryčovice", "districtCode": 3802, "districtName": "Frýdek-Místek"},
+    {"code": 568686, "name": "Mošnov", "districtCode": 3804, "districtName": "Nový Jičín"},
+    {"code": 568775, "name": "Pustějov", "districtCode": 3804, "districtName": "Nový Jičín"}
+  ],
+  "street": {
+    "code": 1418793,
+    "name": "Sasanková",
+    "municipalityCode": 554821,
+    "municipalityName": "Ostrava",
+    "partCode": 414212,
+    "partName": "Svinov",
+    "mapName": "Janová – Sasanková",
+    "aliases": ["Janová"],
+    "scope": "Všechna adresní místa v ulici Sasanková; ostatní ulice Svinova nejsou zahrnuté."
+  }
+}
