@@ -39,6 +39,8 @@ body:not(.product-view):not(.header-scrolled) .header-phone small { color:#e5e3d
 #menu .section-heading h1 { font:500 14px/1.4 var(--sans); text-transform:none; letter-spacing:0; color:var(--muted); }
 .footer-price-note { font:400 11px/1.7 var(--sans); color:var(--muted); margin:24px 0 0; }
 .product-card { cursor:pointer; }
+/* Keep pizza bread aligned with cards that have a 33px customization row. */
+.product-card[data-card-detail="27-chleba"] .card-actions { grid-template-rows:auto 33px; }
 .product-card .product-number { inset:auto auto 10px -12px; width:auto; height:auto; background:none; border:0; box-shadow:none; border-radius:0; font:400 34px/1 var(--display); color:#b9d19a; text-shadow:0 2px 6px #000; }
 .site-header .header-actions .cart-toggle { min-width:64px; width:auto; height:48px; min-height:48px; padding:0 14px; border-radius:14px; border:1px solid #94ad7648; background:linear-gradient(145deg,#365b44,#243c2e); box-shadow:inset 0 1px 0 #ffffff12; color:#f5f1e8; gap:14px; }
 .site-header .cart-icon { align-items:center; gap:9px; }
