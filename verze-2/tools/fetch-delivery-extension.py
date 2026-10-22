@@ -16,7 +16,6 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'RUUAN Mpy databaze/RUIAN-data/rozsireni-20261022'
-CODES = [568406, 512745, 512907, 506711, 568643, 598135, 568686, 568775, 554821]
 CATALOG = 'https://atom.cuzk.gov.cz/RUIAN-CSV-ADR-OB/RUIAN-CSV-ADR-OB.xml'
 NS = {'a': 'http://www.w3.org/2005/Atom'}
 
@@ -32,9 +31,25 @@ def download(url):
         }
 
 
+def fetch_boundaries(codes, layer, filename):
+    params = {'where': 'kod IN (' + ','.join(map(str, codes)) + ')',
+              'outFields': 'kod,nazev,platiod,platido' + (',obec' if layer == 8 else ''),
+              'returnGeometry': 'true', 'outSR': '4326', 'f': 'geojson'}
+    url = f'https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/{layer}/query?' + urlencode(params)
+    data, boundary = download(url)
+    geo = json.loads(data)
+    assert len(geo['features']) == len(codes)
+    assert {f['properties']['kod'] for f in geo['features']} == set(codes)
+    assert all(f['geometry']['type'] in ('Polygon', 'MultiPolygon') for f in geo['features'])
+    (OUT / filename).write_bytes(data)
+    return boundary | {'file': filename}
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     scope = json.loads((ROOT / 'verze-2/data/delivery-extension-scope.json').read_text())
+    municipalities = [m['code'] for m in scope['municipalities']]
+    codes = list(dict.fromkeys(municipalities + [d['municipalityCode'] for d in scope['districts']] + [scope['street']['municipalityCode']]))
     published = ROOT / 'verze-2/data/delivery-sources.json'
     pinned = {s['code']: s for s in json.loads(published.read_text())['sources']} if published.exists() else {}
     catalog, _ = download(CATALOG)
@@ -65,22 +80,15 @@ def main():
         return meta
 
     with ThreadPoolExecutor(max_workers=4) as pool:
-        sources = list(pool.map(fetch_code, CODES))
-    params = {'where': 'kod IN (' + ','.join(map(str, CODES[:-1])) + ')',
-              'outFields': 'kod,nazev,platiod,platido', 'returnGeometry': 'true', 'outSR': '4326', 'f': 'geojson'}
-    url = 'https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/12/query?' + urlencode(params)
-    data, boundary = download(url)
-    geo = json.loads(data)
-    assert len(geo['features']) == 8
-    assert {f['properties']['kod'] for f in geo['features']} == set(CODES[:-1])
-    (OUT / 'municipalities.geojson').write_bytes(data)
-    boundary['file'] = 'municipalities.geojson'
+        sources = list(pool.map(fetch_code, codes))
+    boundary = fetch_boundaries(municipalities, 12, 'municipalities.geojson')
+    districts = fetch_boundaries([d['code'] for d in scope['districts']], 8, 'districts.geojson')
     manifest = {'provider': 'ČÚZK / RÚIAN', 'license': 'CC BY 4.0', 'catalog': CATALOG,
-                'sources': sources, 'boundaries': boundary}
+                'sources': sources, 'boundaries': boundary, 'districtBoundaries': districts}
     (OUT / 'sources.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     for source in sources:
         print(source['code'], source['data_date'], source['source_rows'], source['file'])
-    print('Downloaded 8 complete municipality boundaries; Sasanková will use exact address points.')
+    print('Downloaded complete municipality and district boundaries; Sasanková will use exact address points.')
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@
   const escape = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let addressesPromise;
   function loadAddresses() {
-    if (!addressesPromise) addressesPromise = fetch('data/addresses.json?v=20261022').then(response => {
+    if (!addressesPromise) addressesPromise = fetch('data/addresses.json?v=20261022-2').then(response => {
       if (!response.ok) throw new Error('Adresář se nepodařilo načíst.');
       return response.json();
     }).then(indexAddresses).catch(error => {addressesPromise = null; throw error;});
@@ -85,7 +85,7 @@
     if (loading) return loading;
     loading = (async () => {
       const state = mapAt(container);if (!state) return null;
-      const response = await fetch('data/delivery-areas.geojson?v=20261022');if (!response.ok) throw new Error('Map data');
+      const response = await fetch('data/delivery-areas.geojson?v=20261022-2');if (!response.ok) throw new Error('Map data');
       const data = await response.json();
       const brandGreen = getComputedStyle(document.documentElement).getPropertyValue('--brand-green').trim() || '#79b43e';
       const areas = L.geoJSON(data,{style:feature=>({color:'#50772a',weight:1.5,fillColor:brandGreen,fillOpacity:feature.properties.kind==='Vybraná ulice'?.8:.2}),pointToLayer:(feature,latlng)=>L.circleMarker(latlng,{radius:5}),onEachFeature(feature,layer) {

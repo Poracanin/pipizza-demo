@@ -1,5 +1,6 @@
 """Export the public RÚIAN snapshot to browser and PHP data; requires PROJ cs2cs."""
 import json
+import hashlib
 import sqlite3
 import subprocess
 from pathlib import Path
@@ -47,6 +48,9 @@ def main():
     source_manifest = None
     if has_rules:
         source_manifest = json.loads((BASE / 'rozsireni-20261022/sources.json').read_text())
+        for key in ('boundaries', 'districtBoundaries'):
+            source = source_manifest[key]
+            assert hashlib.sha256((BASE / 'rozsireni-20261022' / source['file']).read_bytes()).hexdigest() == source['sha256']
         extra = json.loads((BASE / 'rozsireni-20261022/municipalities.geojson').read_text())
         by_code = {r['municipality_code']: r for r in rules if r['kind'] == 'municipality'}
         for feature in extra['features']:
@@ -55,6 +59,24 @@ def main():
             parts = [p[0] for p in conn.execute('SELECT municipality_part_name FROM municipality_parts WHERE municipality_code=? ORDER BY municipality_part_name', (code,))]
             feature['properties'] = {'id': rule['rule_id'], 'code': code, 'name': rule['display_name'],
                                      'count': rule['address_count'], 'kind': 'Celá obec', 'parts': parts}
+            features.append(feature)
+        scope = json.loads((OUT / 'delivery-extension-scope.json').read_text())
+        districts = {d['code']: d for d in scope['districts']}
+        extra_districts = json.loads((BASE / 'rozsireni-20261022/districts.geojson').read_text())
+        assert {f['properties']['kod'] for f in extra_districts['features']} == set(districts)
+        by_id = {r['rule_id']: r for r in rules}
+        for feature in extra_districts['features']:
+            code = feature['properties']['kod']
+            district = districts[code]
+            assert feature['properties']['obec'] == district['municipalityCode']
+            assert feature['properties']['nazev'] == district['name']
+            rule = by_id[f'momc-{code}']
+            selected = [r for r in rows if r['city_district_code'] == code]
+            assert len(selected) == rule['address_count']
+            assert all(r['municipality_part_code'] == district['partCode'] for r in selected)
+            feature['properties'] = {'id': rule['rule_id'], 'code': code, 'name': rule['display_name'],
+                                     'count': len(selected), 'kind': 'Městský obvod Ostravy',
+                                     'parts': [district['name']], 'part_code': district['partCode']}
             features.append(feature)
         for code, rule in streets.items():
             selected = [r for r in rows if r['municipality_code'] == rule['municipality_code'] and r['street_code'] == code]
@@ -80,6 +102,7 @@ def main():
                   'streetAddressPoints': sum(r['address_count'] for r in streets.values()),
                   'rules': [dict(r) | {'aliases': json.loads(r['aliases'])} for r in rules],
                   'sources': sources, 'boundaries': source_manifest['boundaries'],
+                  'districtBoundaries': source_manifest['districtBoundaries'],
                   'streetMapGeometry': 'Exact RÚIAN address points; no whole-Svinov delivery polygon.'}
         write_json(OUT / 'delivery-sources.json', report)
     conn.close()

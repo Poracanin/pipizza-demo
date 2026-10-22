@@ -11,6 +11,9 @@
     {"code": 568686, "name": "Mošnov", "districtCode": 3804, "districtName": "Nový Jičín"},
     {"code": 568775, "name": "Pustějov", "districtCode": 3804, "districtName": "Nový Jičín"}
   ],
+  "districts": [
+    {"code": 554375, "name": "Proskovice", "municipalityCode": 554821, "partCode": 133477}
+  ],
   "street": {
     "code": 1418793,
     "name": "Sasanková",

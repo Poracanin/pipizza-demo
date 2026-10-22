@@ -13,13 +13,13 @@ test('v2 real address search matches house numbers exactly and ignores accents a
   assert.equal(searchAddresses(indexed,'ji').length,0);
   assert.ok(searchAddresses(indexed,'Klimkovice').length<=8);
 });
-test('v2 delivery scope adds eight municipalities and only Sasanková in Svinov',()=>{
-  assert.equal(rows.length,19145);assert.equal(new Set(rows.map(r=>r.id)).size,19145);
+test('v2 delivery scope adds eight municipalities, Proskovice and only Sasanková in Svinov',()=>{
+  assert.equal(rows.length,19547);assert.equal(new Set(rows.map(r=>r.id)).size,19547);
   for(const r of rows) assert.ok(r.point[0]>49.5&&r.point[0]<50&&r.point[1]>17.5&&r.point[1]<18.5);
   const areas=JSON.parse(fs.readFileSync(require.resolve('../verze-2/data/delivery-areas.geojson'),'utf8'));
-  assert.equal(areas.features.length,30);
-  assert.equal(areas.features.filter(f=>['Polygon','MultiPolygon'].includes(f.geometry.type)).length,29);
-  assert.deepEqual(areas.features.filter(f=>f.properties.kind==='Městský obvod Ostravy').map(f=>f.properties.name).sort(),['Polanka nad Odrou','Stará Bělá']);
+  assert.equal(areas.features.length,31);
+  assert.equal(areas.features.filter(f=>['Polygon','MultiPolygon'].includes(f.geometry.type)).length,30);
+  assert.deepEqual(areas.features.filter(f=>f.properties.kind==='Městský obvod Ostravy').map(f=>f.properties.name).sort(),['Polanka nad Odrou','Proskovice','Stará Bělá']);
   assert.ok(!areas.features.some(f=>f.properties.name==='Ostrava'));
   assert.ok(!areas.features.some(f=>f.properties.name==='Svinov'));
   const street=areas.features.find(f=>f.properties.id==='ulice-1418793');
@@ -30,6 +30,31 @@ test('v2 delivery scope adds eight municipalities and only Sasanková in Svinov'
   assert.deepEqual(street.properties.addressIds,houses.map(r=>r.id));
   assert.deepEqual(street.geometry.coordinates,houses.map(r=>[r.point[1],r.point[0]]));
   assert.ok(houses.some(r=>r.id==='88556581'),'September source includes newly added house 1307/22s');
+});
+test('Proskovice search resolves a real house and all 402 addresses lie inside its district boundary',()=>{
+  const homes=rows.filter(r=>r.town==='Proskovice');
+  assert.equal(homes.length,402);
+  const matches=searchAddresses(indexed,'proskovice kaluzni 2');
+  assert.deepEqual(matches.map(r=>r.id),['3176509']);
+  assert.equal(matches[0].label,'Kalužní 2/2, Proskovice, 724 00 Ostrava');
+  const areas=JSON.parse(fs.readFileSync(require.resolve('../verze-2/data/delivery-areas.geojson'),'utf8'));
+  const area=areas.features.find(f=>f.properties.id==='momc-554375');
+  assert.equal(area.properties.part_code,133477);
+  assert.equal(area.properties.count,homes.length);
+  const inRing=([x,y],ring)=>{
+    let inside=false;
+    for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+      const [ax,ay]=ring[i], [bx,by]=ring[j];
+      if((ay>y)!==(by>y)&&x<(bx-ax)*(y-ay)/(by-ay)+ax) inside=!inside;
+    }
+    return inside;
+  };
+  const polygons=area.geometry.type==='Polygon'?[area.geometry.coordinates]:area.geometry.coordinates;
+  for(const home of homes){
+    const point=[home.point[1],home.point[0]];
+    assert.ok(polygons.some(([outer,...holes])=>inRing(point,outer)&&!holes.some(hole=>inRing(point,hole))),home.label);
+  }
+  assert.equal(searchAddresses(indexed,'Výškovice Ostrava').length,0,'Adjacent unapproved Ostrava-Jih remains outside delivery');
 });
 test('all requested places have complete imported address sets and searchable real house numbers',()=>{
   const expected={'Nový Svět':42,'Slatina':224,'Těškovice':260,'Kyjovice':416,'Dolní Lhota':547,'Kateřinice':238,'Fryčovice':801,'Ptáčník':25,'Mošnov':339,'Pustějov':349};

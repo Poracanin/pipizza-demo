@@ -74,6 +74,7 @@ def address_record(row, source, row_number):
 def main():
     manifest = json.loads((SOURCES / 'sources.json').read_text())
     by_code = {m['code']: m for m in SCOPE['municipalities']}
+    districts = {str(d['code']): d for d in SCOPE['districts']}
     street = SCOPE['street']
     batches = []
     for source in manifest['sources']:
@@ -84,14 +85,22 @@ def main():
             assert archive.testzip() is None
             rows = list(csv.DictReader(io.StringIO(archive.read(source['csv_member']).decode('cp1250')), delimiter=';'))
         assert len(rows) == source['source_rows']
-        included = [(i, r) for i, r in enumerate(rows, 2) if source['code'] in by_code or r['Kód ulice'] == str(street['code'])]
+        included = [(i, r) for i, r in enumerate(rows, 2)
+                    if source['code'] in by_code or r['Kód ulice'] == str(street['code']) or r['Kód MOMC'] in districts]
         assert included
         assert all(int(r['Kód obce']) == source['code'] for _, r in included)
         if source['code'] in by_code:
             assert all(r['Název obce'] == by_code[source['code']]['name'] for _, r in included)
         else:
-            assert source['code'] == street['municipalityCode']
-            assert all(int(r['Kód části obce']) == street['partCode'] and r['Název ulice'] == street['name'] for _, r in included)
+            for _, row in included:
+                if row['Kód MOMC'] in districts:
+                    district = districts[row['Kód MOMC']]
+                    assert source['code'] == district['municipalityCode']
+                    assert int(row['Kód části obce']) == district['partCode']
+                    assert row['Název MOMC'] == row['Název části obce'] == district['name']
+                else:
+                    assert source['code'] == street['municipalityCode']
+                    assert int(row['Kód části obce']) == street['partCode'] and row['Název ulice'] == street['name']
         source['included_rows'] = len(included)
         batches.append((source, included))
 
@@ -161,14 +170,27 @@ def main():
                         conn.execute('INSERT OR REPLACE INTO map_coverage VALUES (?,?,?,?,?,?)',
                                      ('Nový Svět', code, 149705, 'part', count, 'Součást Slatiny; nesčítat duplicitně.'))
                 else:
-                    conn.execute('INSERT OR REPLACE INTO delivery_rules VALUES (?,?,?,?,?,?,?,?)',
-                                 (f'ulice-{street["code"]}', 'street', code, street['partCode'], street['code'], street['mapName'], json.dumps(street['aliases'], ensure_ascii=False), len(rows)))
+                    if code == street['municipalityCode']:
+                        street_count = sum(r['Kód ulice'] == str(street['code']) for _, r in rows)
+                        assert street_count > 0
+                        conn.execute('INSERT OR REPLACE INTO delivery_rules VALUES (?,?,?,?,?,?,?,?)',
+                                     (f'ulice-{street["code"]}', 'street', code, street['partCode'], street['code'], street['mapName'], json.dumps(street['aliases'], ensure_ascii=False), street_count))
+                    for district_code, district in districts.items():
+                        if code != district['municipalityCode']:
+                            continue
+                        count = sum(r['Kód MOMC'] == district_code for _, r in rows)
+                        assert count > 0
+                        conn.execute('INSERT OR REPLACE INTO delivery_rules VALUES (?,?,?,?,?,?,?,?)',
+                                     (f'momc-{district_code}', 'part', code, district['partCode'], None, district['name'], '[]', count))
+                        conn.execute('INSERT OR REPLACE INTO map_coverage VALUES (?,?,?,?,?,?)',
+                                     (district['name'], code, district['partCode'], 'part', count, 'Celý městský obvod; rozšíření 22. 10. 2026'))
                     conn.execute('UPDATE municipalities SET address_count=(SELECT count(*) FROM addresses WHERE municipality_code=?) WHERE municipality_code=?', (code, code))
             conn.execute("INSERT INTO addresses_fts(addresses_fts) VALUES('rebuild')")
             conn.execute("INSERT INTO addresses_fts(addresses_fts,rank) VALUES('integrity-check',1)")
             metadata = {'schema_version': '2', 'updated_at': SCOPE['approvedOn'],
                         'source_data_date': '2026-08-31 (původní rozsah); 2026-09-30 (rozšíření)',
-                        'map_label_count': '34', 'usage': 'Public address snapshot; delivery_rules defines complete municipalities, selected parts and an exact street.',
+                        'map_label_count': str(conn.execute("SELECT (SELECT count(*) FROM map_coverage) + (SELECT count(*) FROM delivery_rules WHERE kind='street')").fetchone()[0]),
+                        'usage': 'Public address snapshot; delivery_rules defines complete municipalities, selected parts and an exact street.',
                         'extension_scope': street['scope']}
             conn.executemany('INSERT OR REPLACE INTO metadata VALUES (?,?)', metadata.items())
             conn.execute('PRAGMA user_version=2')
@@ -186,7 +208,8 @@ def main():
     report = {'date': SCOPE['approvedOn'], 'total': total, 'previousTotal': baseline_count,
               'addedTotal': total - baseline_count, 'lastRunPreviousTotal': original_count,
               'sourceDate': '2026-09-30', 'counts': counts, 'sources': manifest['sources'],
-              'street': {**street, 'count': next(len(rows) for s, rows in batches if s['code'] == street['municipalityCode'])}}
+              'street': {**street, 'count': sum(r['Kód ulice'] == str(street['code']) for s, rows in batches for _, r in rows)},
+              'districts': [d | {'count': sum(r['Kód MOMC'] == str(d['code']) for s, rows in batches for _, r in rows)} for d in districts.values()]}
     (SOURCES / 'import-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(f'Imported {total - original_count} additional addresses. Total {total}. Backup: {backup.name}')
     print('SQLite integrity, foreign keys and FTS index verified.')
